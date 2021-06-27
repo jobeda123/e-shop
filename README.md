@@ -1,0 +1,1 @@
+git remote add origin https://github.com/jobeda123/e-shop.git
