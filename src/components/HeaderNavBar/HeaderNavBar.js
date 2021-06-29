@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import SearchIcon from "@material-ui/icons/Search";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 import {
   faSearch,
   faUser,
@@ -26,7 +24,7 @@ const Header = () => {
 
   return (
     <>
-      <nav>
+      <nav className="sticky-top">
         <ul>
           <li className="col-md-2">
             <div className="d-flex justify-content-around">

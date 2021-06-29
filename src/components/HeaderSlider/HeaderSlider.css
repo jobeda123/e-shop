@@ -1,5 +1,5 @@
 .carousel-item{
-    height:600px;
+    height:630px;
     min-height: 300px;
     background: no-repeat scroll center scroll;
     /* -webkit-background-size: cover; */
@@ -33,7 +33,7 @@
 /* -------right side content------------ */
 .sliderCaptionRight{
     bottom: 200px;
-    padding-left: 640px;
+    padding-left: 600px;
     /* border: 1px solid red; */
     right:150px;
     text-align: right;

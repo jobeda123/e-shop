@@ -1,0 +1,14 @@
+.titleLine {
+    border-top: 3px solid black;
+    width:80px;
+    margin:0px 20px;
+}
+
+
+.careArea{
+    /* border: 1px solid black; */
+    margin:0px auto;
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:50px 10px;
+}
