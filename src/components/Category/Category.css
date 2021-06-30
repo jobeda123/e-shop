@@ -47,7 +47,7 @@
     background-color: rgba(114, 91, 91, 0.8);
 }
 
-.women-men-btn:hover {
+.category .women-men-btn:hover {
     background-color:#000;
     color: white;
 }

@@ -4,6 +4,7 @@ import {
   faSearch,
   faUser,
   faShoppingCart,
+  faShoppingBasket
 } from "@fortawesome/free-solid-svg-icons";
 import pic from "../../images/jewellery.png";
 import "./HeaderNavBar.css";
@@ -15,12 +16,15 @@ import jewellery from "../../images/jewellery.png";
 import electronics from "../../images/electronics.png";
 
 const Header = () => {
+  const [addToCart, setAddToCart] = useState({});
   const pics = [
     { name: women },
     { name: men },
     { name: jewellery },
     { name: electronics },
   ];
+
+  console.log(addToCart);
 
   return (
     <>
@@ -57,12 +61,12 @@ const Header = () => {
             </button>
 
             <button type="button" class="position-relative">
-              <FontAwesomeIcon icon={faShoppingCart} size="2x" />
+              <FontAwesomeIcon icon={faShoppingBasket} size="2x" />
               <span
-                class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
-                style={{ backgroundColor: "#EBB5AC", color: "black" }}
+                class="position-absolute top-0 translate-middle badge rounded-pill"
+                style={{ backgroundColor: "#EBB5AC", color: "white", fontSize:"17px", marginTop:"5px" }}
               >
-                1
+                {addToCart.length ===undefined ? 0: addToCart.length}
               </span>
             </button>
           </li>

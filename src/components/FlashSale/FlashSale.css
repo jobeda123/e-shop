@@ -5,10 +5,29 @@
 }
 
 
-.careArea{
+.cardArea{
     /* border: 1px solid black; */
     margin:0px auto;
     display:grid;
     grid-template-columns: repeat(4,1fr);
     gap:50px 10px;
+}
+
+.loadBtn{
+    background:#FFFFFF;
+    color:black;
+    padding: 7px 20px;
+    font-weight: 700;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+/* pink color: #EBB5AC */
+
+/* text black color: #000 */
+
+.loadBtn:hover{
+    background: #EBB5AC;
+    color: white;
+    border: 2px solid #EBB5AC;
 }

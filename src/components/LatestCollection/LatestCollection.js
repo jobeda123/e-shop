@@ -1,8 +1,8 @@
 import React from "react";
-import "./FlashSale.css";
-import FlashSaleCard from "../FlashSaleCard/FlashSaleCard";
+import LatestCollectionCard from '../LatestCollectionCard/LatestCollectionCard';
 
-const FlashSale = () => {
+
+const LatestCollection = () => {
   return (
     <section className="container">
       {/* title */}
@@ -11,7 +11,7 @@ const FlashSale = () => {
         style={{ marginTop: "50px" }}
       >
         <div className="titleLine align-self-center"></div>
-        <h3>Flash Sale</h3>
+        <h3>Latest Collection</h3>
         <div className="titleLine align-self-center"></div>
       </div>
       <div
@@ -24,19 +24,20 @@ const FlashSale = () => {
           marginBottom: "30px",
         }}
       >
-        <p>Offer sale in this month</p>
+        <p>New arrival of this summer</p>
       </div>
 
-      {/* Flash Sale Cards */}
+
+      {/* Latest Collection Cards */}
       <div className="row cardArea">
-        <FlashSaleCard />
-        <FlashSaleCard />
-        <FlashSaleCard />
-        <FlashSaleCard />
-        <FlashSaleCard />
-        <FlashSaleCard />
-        <FlashSaleCard />
-        <FlashSaleCard />
+        <LatestCollectionCard />
+        <LatestCollectionCard />
+        <LatestCollectionCard />
+        <LatestCollectionCard />
+        <LatestCollectionCard />
+        <LatestCollectionCard />
+        <LatestCollectionCard />
+        <LatestCollectionCard />
       </div>
 
       <button className="loadBtn my-5"
@@ -46,4 +47,4 @@ const FlashSale = () => {
   );
 };
 
-export default FlashSale;
+export default LatestCollection;

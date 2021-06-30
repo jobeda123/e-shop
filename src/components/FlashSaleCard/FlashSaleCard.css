@@ -1,13 +1,23 @@
-.imageArea:hover{
-    filter: grayscale(50%);
-    transition: filter 0.5s ease-in-out;
+.imageArea:hover img{
+    /* filter: grayscale(50%);
+    transition: filter 0.5s ease-in-out; */
+    opacity: 0.8;
+    transition: 0.5s ease-in-out;
+    
 }
 
 .imageArea span{
     display:none;
     position: absolute;
     left: 60px;
-    top: 100px;
+    top: 80px;
+}
+
+.imageArea .quickBtn{
+    display:none;
+    position: absolute;
+    left: 60px;
+    top: 150px;
 }
 
 .imageArea:hover span{
@@ -28,8 +38,9 @@
     border:none;
     padding:10px 12px;
     border-radius:10px;
-    
 }
+
+
 
 .actualPrice{
     text-decoration:line-through;
@@ -46,3 +57,14 @@
     position:relative;
 }
 
+.imageArea .discountArea{
+    position:absolute;
+    display: block;
+    left:15px;
+    top: 6%;
+    background: #FF4E00;
+    padding:12px 7px;
+    border-radius:100%;
+    color:white;
+    font-size:15px;
+}
