@@ -6,6 +6,8 @@ import Category from '../../components/Category/Category';
 import FlashSale from '../../components/FlashSale/FlashSale';
 import LatestCollection from '../../components/LatestCollection/LatestCollection';
 import NoName from '../../components/NoName/NoName';
+import Footer from '../../components/Footer/Footer';
+
 
 
 const HomePage = () => {
@@ -17,6 +19,7 @@ const HomePage = () => {
             <FlashSale />
             <LatestCollection />
             <NoName />
+            <Footer />
         </header>
     );
 };

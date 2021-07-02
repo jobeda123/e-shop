@@ -1,0 +1,13 @@
+.textArea .icon{
+    color: #808080;;
+    font-size: 25px;
+} 
+
+.normalText:hover{
+    cursor: pointer;
+    color:gray
+}
+
+/* .area{
+    border: 1px solid black;
+} */

@@ -1,0 +1,35 @@
+.modalCartTitle{
+    font-size:35px;
+}
+
+.modalAddCartBtn{
+    background-color:#EBB5AC;
+    color:white;
+    padding: 15px;
+    font-weight: 600;
+    border-radius: 10px;
+    border:none;
+}
+
+.modalAddCartBtn:hover{
+    background-color:#222222;
+    color: white;
+}
+
+.oldPrice{
+    text-decoration:line-through;
+    font-size:25px;
+    color: gray;
+    padding-right: 20px;
+}
+
+.newPrice{
+    font-size:25px;
+    color: red;
+}
+
+.modalPrice{
+    font-size:25px;
+    color: gray;
+    padding-right: 20px;
+}

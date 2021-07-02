@@ -74,31 +74,3 @@ ul .search-icon .icon{
     cursor: pointer;
 }
 
-.canvasWidth{
-    width:230px;
-}
-
-.categoryIcon{
-    /* width:150px; */
-    width: 100%;
-    /* border: 1px solid blue; */
-    margin: 10px;
-}
-
-.categoryIcon img{
-    width: 30px;
-}
-
-.canvasArea a{
-    color: black;
-    text-decoration: none;
-    font-size:20px;
-    font-weight: 500;
-}
-.canvasArea a:hover{
-    background-color: #EBB5AC;
-    color: white;
-}
-
-
-

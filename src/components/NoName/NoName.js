@@ -4,14 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeadphones,
   faShieldAlt,
-  faTruck,
+  faShippingFast,
   faUndoAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import NoNameCard from "../NoNameCard/NoNameCard";
 
 const iconData = [
   {
-    icon: faTruck,
+    icon: faShippingFast,
     title: "FREE DELIVERY",
     description: "Free delivery on order above $200",
   },
