@@ -31,7 +31,7 @@ const Header = () => {
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasCategory"
                 aria-controls="offcanvasCategory"
-                style={{ backgroundColor: "#EBB5AC", color: "#f2f2f2" }}
+                style={{ backgroundColor: "rgb(218, 87, 109)", color: "#f2f2f2" }}
               >
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -41,7 +41,7 @@ const Header = () => {
 
           <li className="search-icon col-md-8 d-flex justify-content-center">
             <input type="search" placeholder="Search" />
-            <label className="icon">
+            <label>
               <span>
                 <FontAwesomeIcon className="icon" icon={faSearch} size="3x" />
               </span>
@@ -76,7 +76,7 @@ const Header = () => {
               <span
                 class="position-absolute top-0 translate-middle badge rounded-pill"
                 style={{
-                  backgroundColor: "#EBB5AC",
+                  backgroundColor: "rgb(218, 87, 109)",
                   color: "white",
                   fontSize: "17px",
                   marginTop: "5px",

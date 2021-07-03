@@ -1,12 +1,17 @@
-.textArea .icon{
-    color: #808080;;
+.textArea .addressIcon{
+    color: #808080;
     font-size: 25px;
 } 
 
+.normalText{
+    color: #808080;
+}
+
 .normalText:hover{
     cursor: pointer;
-    color:gray
+    color:white
 }
+
 
 /* .area{
     border: 1px solid black;

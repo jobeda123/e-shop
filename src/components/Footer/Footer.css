@@ -1,11 +1,12 @@
 .footer-area{
-    background-image: linear-gradient(to bottom, #fad6d0, #EBB5AC);
+    background-image: linear-gradient(to top, black, rgb(218, 87, 109));
     /* opacity: 0.8; */
 }
 
 
 .socialIcon{
-    color: #808080;
+    /* color: #808080; */
+    color: white;
     margin-top: 20px;
     margin-right: 15px;
 }
