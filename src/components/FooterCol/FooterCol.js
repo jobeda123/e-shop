@@ -18,10 +18,10 @@ const FooterCol = (props) => {
             {props.menuTitle === "eShop" ? (
               <div className="d-flex">
                 <div className="mr-2">
-                  <FontAwesomeIcon className="icon" icon={item.icon} />
+                  <FontAwesomeIcon className="addressIcon" icon={item.icon} />
                 </div>
                 <div>
-                  <p>
+                  <p style={{color:"#808080"}}>
                     {item.name}
                   </p>
                 </div>
@@ -30,7 +30,7 @@ const FooterCol = (props) => {
                 props.menuTitle !=="Payment Method"? <p className="normalText" key={index}>
                 {item.name}
               </p>
-              : <p>{item.name}</p>
+              : <p style={{color:"#808080"}}>{item.name}</p>
             )}
           </div>
         ))}

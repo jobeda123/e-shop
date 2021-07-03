@@ -1,4 +1,4 @@
-/* pink color: #EBB5AC */
+/* pink color: rgb(218, 87, 109) */
 
 /* text black color: #000 */
 
@@ -29,7 +29,7 @@
 
 
 .categoryIcon:hover{
-    background-color: #EBB5AC;
+    background-color: rgb(218, 87, 109);
     color: white;
 }
 
@@ -44,7 +44,7 @@
 
 .cartCheckOutBtn{
     border: none;
-    background: #EBB5AC;
+    background: rgb(218, 87, 109);
     color:white;
     padding: 10px;
     border-radius:10px 12px;
