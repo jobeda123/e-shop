@@ -1,0 +1,58 @@
+/* pink color: #EBB5AC */
+
+/* text black color: #000 */
+
+*{
+    margin: 0px;
+    padding: 0px;
+    /* color: #f2f2f2; */
+    box-sizing: border-box;
+}
+
+.cartCanvasWidth{
+    width:350px;
+}
+
+.categoryIcon{
+    /* width:150px; */
+    width: 100%;
+    /* border: 1px solid blue; */
+    /* margin: 10px 0px; */
+    border: none;
+    background: #FFFFFF;
+    padding: 10px
+}
+
+.categoryIcon img{
+    width: 30px;
+}
+
+
+.categoryIcon:hover{
+    background-color: #EBB5AC;
+    color: white;
+}
+
+
+
+.cartScroll{
+    height: 400px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    overflow-y: scroll;
+}
+
+.cartCheckOutBtn{
+    border: none;
+    background: #EBB5AC;
+    color:white;
+    padding: 10px;
+    border-radius:10px 12px;
+    font-weight: bold;
+    float: left;
+}
+
+.cartCheckOutBtn:hover{
+    background:black;
+}
+

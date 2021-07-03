@@ -1,0 +1,34 @@
+/* pink color: #EBB5AC */
+
+/* text black color: #000 */
+
+*{
+    margin: 0px;
+    padding: 0px;
+    /* color: #f2f2f2; */
+    box-sizing: border-box;
+}
+
+.userCanvasWidth{
+    width:250px;
+}
+
+.userIcon{
+    border: none;
+    background: #FFFFFF;
+    width:100%;
+    padding:10px 5px;
+}
+
+
+.userIcon:hover{
+    background-color: #EBB5AC;
+    color: white;
+}
+
+.userIcon span{
+    font-size: 18px;
+}
+
+
+

@@ -1,0 +1,96 @@
+.carousel-item{
+    height:630px;
+    min-height: 300px;
+    background: no-repeat scroll center scroll;
+    /* -webkit-background-size: cover; */
+    background-size: cover;
+}
+
+.carousel-item::before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #000;
+    opacity: 0.2;
+}
+
+/* -------right side content------------ */
+.sliderCaptionRight{
+    bottom: 200px;
+    padding-left: 600px;
+    /* border: 1px solid red; */
+    right:150px;
+    text-align: right;
+    line-height: 20px;
+}
+
+.sliderCaptionRight h5{
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.sliderCaptionRight p{
+    font-size: 25px;
+    font-weight: 200;
+}
+
+.sliderCaptionRight button{
+    background-color:#000;
+    color:white;
+    padding: 15px;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 1px solid #000;
+}
+
+.sliderCaptionRight button:hover{
+    background-color:#222222;
+    border: 1px solid #222222;
+    color: white;
+}
+
+
+/* -------left side content------------ */
+
+.sliderCaptionLeft{
+    bottom: 200px;
+    padding-right: 640px;
+    /* border: 1px solid red; */
+    left:150px;
+    text-align: left;
+    line-height: 20px;
+}
+
+.sliderCaptionLeft h5{
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.sliderCaptionLeft p{
+    font-size: 25px;
+    font-weight: 200;
+}
+
+.sliderCaptionLeft button{
+    background-color:#000;
+    color:white;
+    padding: 15px;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 1px solid #000;
+}
+
+.sliderCaptionLeft button:hover{
+    background-color:#222222;
+    border: 1px solid #222222;
+    color: white;
+}
+
+
+
+
+

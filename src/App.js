@@ -12,10 +12,11 @@ import HomePage from './pages/HomePage/HomePage';
 export const UserContext = createContext();
 
 function App() {
-  const [drawer, setDrawer] = useState(false);
+  const [addCart, setAddCart] = useState([]);
+  localStorage.setItem('cart',JSON.stringify(addCart));
 
   return (
-  <UserContext.Provider value={[drawer, setDrawer]}>
+  <UserContext.Provider value={[addCart, setAddCart]}>
   <div className="App">
     <Router>
       <Switch>

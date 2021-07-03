@@ -1,0 +1,16 @@
+.footer-area{
+    background-image: linear-gradient(to bottom, #fad6d0, #EBB5AC);
+    /* opacity: 0.8; */
+}
+
+
+.socialIcon{
+    color: #808080;
+    margin-top: 20px;
+    margin-right: 15px;
+}
+
+.paymentIcon{
+    color: #808080;;
+    font-size: 30px;
+}

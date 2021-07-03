@@ -1,8 +1,22 @@
+/* pink color: #EBB5AC */
+
+/* text black color: #000 */
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    /* color: #f2f2f2; */
+    box-sizing: border-box;
+}
+
 nav{
     background: #222222;
     padding:10px 40px 10px 70px;
     border-left: none;
     border-right: none;
+    color: #f2f2f2;
+    height:65px;
 }
 
 nav ul{
@@ -11,12 +25,12 @@ nav ul{
     flex-wrap: wrap;
     align-items: center;
     justify-content:center;
-    border:1px solid red;
+    /* border:1px solid red; */
 }
 
-nav ul li{
+/* nav ul li{
     border: 1px solid green;
-}
+} */
 
 
 nav ul .search-icon{
@@ -25,7 +39,7 @@ nav ul .search-icon{
     display:flex;
     background:#222222;
     border-radius:5px;
-    
+    color: #f2f2f2;
 }
 
 nav ul .search-icon input{
@@ -48,10 +62,15 @@ ul .search-icon .icon{
     border-radius: 0 5px 5px 0;
     /* background:#f2f2f2; */
     background:#EBB5AC;
-    
 } 
 
 .user-cart-icon button{
     background:none;
     border: none;
+    color: #f2f2f2;
 }
+
+.logo:hover{
+    cursor: pointer;
+}
+
