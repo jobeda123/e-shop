@@ -1,22 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
   faUser,
-  faShoppingCart,
   faShoppingBasket,
 } from "@fortawesome/free-solid-svg-icons";
 import "./HeaderNavBar.css";
-
-// for category icon
-import men from "../../images/men.png";
-import women from "../../images/women.png";
-import jewellery from "../../images/jewellery.png";
-import electronics from "../../images/electronics.png";
 import { useContext } from "react";
 import { UserContext } from "../../App";
 import CategoryDrawer from "../CategoryDrawer/CategoryDrawer";
 import CartDrawer from "../CartDrawer/CartDrawer";
+import UserDrawer from "../UserDrawer/UserDrawer";
 
 
 const Header = () => {
@@ -56,9 +50,14 @@ const Header = () => {
 
           <li class="col-md-2 user-cart-icon d-flex justify-content-evenly">
             <button
+              onClick={() => {
+                console.log("Account button clicked....");
+              }}
               type="button"
-              onClick={() => console.log("Account click...")}
               class="position-relative"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasUser"
+              aria-controls="offcanvasUser"
             >
               <FontAwesomeIcon icon={faUser} size="2x" />
             </button>
@@ -93,6 +92,7 @@ const Header = () => {
       </nav>
       <CategoryDrawer />
       <CartDrawer />
+      <UserDrawer />
     </>
   );
 };

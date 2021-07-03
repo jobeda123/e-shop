@@ -1,14 +1,13 @@
 import React from "react";
 import "./CartDrawer.css";
-// for category icon
-import men from "../../images/men.png";
-import women from "../../images/women.png";
-import jewellery from "../../images/jewellery.png";
-import electronics from "../../images/electronics.png";
+import SmallCartDetail from "../SmallCartDetail/SmallCartDetail";
+import CartPriceDetail from "../CartPriceDetail/CartPriceDetail";
+import EmptyCart from "../EmptyCart/EmptyCart";
 
 const CartDrawer = () => {
   const myArray = localStorage.getItem("cart");
   const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
+  console.log(fromLocalStorage);
 
   return (
     <div
@@ -19,7 +18,7 @@ const CartDrawer = () => {
     >
       <div class="offcanvas-header">
         <h4 class="offcanvas-title" id="offcanvasCartLabel">
-          Shopping Cart: {fromLocalStorage.length}
+          Shopping Cart
         </h4>
 
         <button
@@ -29,38 +28,24 @@ const CartDrawer = () => {
           aria-label="Close"
         ></button>
       </div>
+
       <div class="offcanvas-body">
-        <div>
-          <button
-            className="categoryIcon d-block d-flex justify-content-start"
-            onClick={() => console.log("Women category icon click")}
-          >
-            <img src={women} alt="" /> <span className="px-2">Women</span>
-          </button>
-
-          <button
-            className="categoryIcon d-block d-flex justify-content-start"
-            onClick={() => console.log("Men category icon click")}
-          >
-            <img src={men} alt="" /> <span className="px-2">Men</span>
-          </button>
-
-          <button
-            className="categoryIcon d-block d-flex justify-content-start"
-            onClick={() => console.log("Jewellery category icon click")}
-          >
-            <img src={jewellery} alt="" />
-            <span className="px-2">Jewellery</span>
-          </button>
-
-          <button
-            className="categoryIcon d-block d-flex justify-content-start"
-            onClick={() => console.log("Electronics category icon click")}
-          >
-            <img src={electronics} alt="" />
-            <span className="px-2">Electronics</span>
-          </button>
-        </div>
+        {fromLocalStorage.length === 0 ? (
+          // Empty Cart Error
+          <EmptyCart></EmptyCart>
+        ) : (
+          <div>
+            {/* Total Cart Details */}
+            <div className="cartScroll py-2">
+              {fromLocalStorage.map((data, index) => (
+                <SmallCartDetail key={index} cartData={data}></SmallCartDetail>
+              ))}
+            </div>
+            {/* Total Price Details */}
+            <CartPriceDetail />
+            <button className="cartCheckOutBtn my-3">CHECK OUT</button>
+          </div>
+        )}
       </div>
     </div>
   );

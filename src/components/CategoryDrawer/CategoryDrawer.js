@@ -1,16 +1,16 @@
 import React from "react";
-import './CategoryDrawer.css';
-
 // for category icon
 import men from "../../images/men.png";
 import women from "../../images/women.png";
 import jewellery from "../../images/jewellery.png";
 import electronics from "../../images/electronics.png";
+import './CategoryDrawer.css';
 
-const UserDrawer = () => {
+
+const CategoryDrawer = () => {
   return (
     <div
-      class="offcanvas offcanvas-start canvasWidth"
+      class="offcanvas offcanvas-start categoryCanvasWidth"
       tabindex="-1"
       id="offcanvasCategory"
       aria-labelledby="offcanvasCategoryLabel"
@@ -64,4 +64,4 @@ const UserDrawer = () => {
   );
 };
 
-export default UserDrawer;
+export default CategoryDrawer;

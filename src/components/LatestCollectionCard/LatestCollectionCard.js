@@ -13,7 +13,7 @@ const LatestCollectionCard = () => {
 
   const cardDetails = {
     itemPic: dress,
-    itemTitle: "Blue Shirt And Formal Pant",
+    itemTitle: "Blue Shirt",
     itemDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima aliquam quisquam aut, error illo natus exercitationem architecto sapiente tempore nihil",
     oldPrice: 95.86,
@@ -64,7 +64,7 @@ const LatestCollectionCard = () => {
           </span>
         </div>
         <Card.Body style={{ height: "6rem" }} className="text-left">
-          <Card.Title>Pink Dress</Card.Title>
+          <Card.Title>{cardDetails.itemTitle}</Card.Title>
           <div className="d-flex">
             <Card.Text className="price">${p}</Card.Text>
           </div>

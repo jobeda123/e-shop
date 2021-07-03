@@ -1,0 +1,31 @@
+.SmallCartDetailTitle{
+    font-size:20px;
+    font-weight:600;
+}
+
+.smallOldPrice{
+    text-decoration:line-through;
+    font-size:18px;
+    color: gray;
+}
+
+.smallUpdatedPrice{
+    font-size:18px;
+    color: red;
+}
+
+.smallNormalPrice{
+    font-size:18px;
+    color: gray;
+}
+
+.smallRemoveBtn{
+    border: none;
+    /* color:red; */
+}
+
+.smallRemoveBtn:hover{
+    color:red;
+}
+
+

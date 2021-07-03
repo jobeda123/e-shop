@@ -2,6 +2,7 @@ import React from "react";
 import "./FlashSale.css";
 import FlashSaleCard from "../FlashSaleCard/FlashSaleCard";
 
+
 const FlashSale = () => {
   return (
     <section className="container">
