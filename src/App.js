@@ -4,10 +4,14 @@ import { createContext, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import HomePage from './pages/HomePage/HomePage';
+import WomenPage from './pages/WomenPage/WomenPage';
+import MenPage from './pages/MenPage/MenPage';
+import JewelleryPage from './pages/JewelleryPage/JewelleryPage';
+import ElectronicsPage from './pages/ElectronicsPage/ElectronicsPage';
+
 
 export const UserContext = createContext();
 
@@ -23,6 +27,22 @@ function App() {
 
         <Route path="/home">
           <HomePage />
+        </Route>
+
+        <Route path="/category/women">
+          <WomenPage />
+        </Route>
+
+        <Route path="/category/men">
+          <MenPage />
+        </Route>
+
+        <Route path="/category/jewellery">
+          <JewelleryPage />
+        </Route>
+
+        <Route path="/category/electronics">
+          <ElectronicsPage />
         </Route>
 
         {/* <Route path="/womenClothing">

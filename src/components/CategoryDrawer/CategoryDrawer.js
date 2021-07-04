@@ -5,9 +5,12 @@ import women from "../../images/women.png";
 import jewellery from "../../images/jewellery.png";
 import electronics from "../../images/electronics.png";
 import './CategoryDrawer.css';
+import { useHistory } from "react-router-dom";
 
 
 const CategoryDrawer = () => {
+  let history = useHistory();
+
   return (
     <div
       class="offcanvas offcanvas-start categoryCanvasWidth"
@@ -31,21 +34,30 @@ const CategoryDrawer = () => {
         <div>
           <button
             className="categoryIcon d-block d-flex justify-content-start"
-            onClick={() => console.log("Women category icon click")}
+            onClick={() => {
+              console.log("Women category icon click");
+              history.push("/category/women") 
+            }}
           >
             <img src={women} alt="" /> <span className="px-2">Women</span>
           </button>
 
           <button
             className="categoryIcon d-block d-flex justify-content-start"
-            onClick={() => console.log("Men category icon click")}
+            onClick={() => {
+              console.log("Men category icon click");
+              history.push("/category/men") 
+            }}
           >
             <img src={men} alt="" /> <span className="px-2">Men</span>
           </button>
 
           <button
             className="categoryIcon d-block d-flex justify-content-start"
-            onClick={() => console.log("Jewellery category icon click")}
+            onClick={() => {
+              console.log("Jewellery category icon click");
+              history.push("/category/jewellery") 
+            }}
           >
             <img src={jewellery} alt="" />
             <span className="px-2">Jewellery</span>
@@ -53,7 +65,10 @@ const CategoryDrawer = () => {
 
           <button
             className="categoryIcon d-block d-flex justify-content-start"
-            onClick={() => console.log("Electronics category icon click")}
+            onClick={() => {
+              console.log("Electronics category icon click");
+              history.push("/category/electronics") 
+            }}
           >
             <img src={electronics} alt="" />
             <span className="px-2">Electronics</span>
