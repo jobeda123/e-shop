@@ -12,7 +12,7 @@ import Footer from '../../components/Footer/Footer';
 
 const HomePage = () => {
     return (
-        <header>
+        <>
             <HeaderNavBar />
             <HeaderSlider />
             <Category />
@@ -20,7 +20,7 @@ const HomePage = () => {
             <LatestCollection />
             <NoName />
             <Footer />
-        </header>
+        </>
     );
 };
 
