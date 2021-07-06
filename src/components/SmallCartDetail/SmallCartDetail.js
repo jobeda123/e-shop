@@ -3,6 +3,7 @@ import "./SmallCartDetail.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
+
 const SmallCartDetail = (props) => {
   console.log(props);
   

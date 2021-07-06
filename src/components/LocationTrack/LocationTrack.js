@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import "./LocationTrack.css";
-
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,9 +13,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export default function LocationTrack(props) {
   const classes = useStyles();
+  let history = useHistory();
 
   return (
     <div className={(classes.root, "container")}>
@@ -27,7 +27,10 @@ export default function LocationTrack(props) {
         <a
           className="locationStyle"
           href="/home"
-          // onClick={handleClick}
+          onClick={(e) => {
+            e.preventDefault();
+            history.push("/home");
+          }}
         >
           Home
         </a>

@@ -3,11 +3,13 @@ import "./CartDrawer.css";
 import SmallCartDetail from "../SmallCartDetail/SmallCartDetail";
 import CartPriceDetail from "../CartPriceDetail/CartPriceDetail";
 import EmptyCart from "../EmptyCart/EmptyCart";
+import { useHistory } from "react-router";
 
 const CartDrawer = () => {
   const myArray = localStorage.getItem("cart");
   const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
   console.log(fromLocalStorage);
+  let history = useHistory();
 
   return (
     <div
@@ -43,7 +45,24 @@ const CartDrawer = () => {
             </div>
             {/* Total Price Details */}
             <CartPriceDetail />
-            <button className="cartCheckOutBtn my-3">CHECK OUT</button>
+            <button
+              className="cartViewBtn my-2 col-md-12"
+              onClick={() => {
+                console.log("View Button");
+                history.push("/shoppingCart");
+              }}
+            >
+              VIEW CART
+            </button>
+            <button
+              className="cartCheckOutBtn mb-2 col-md-12"
+              onClick={() => {
+                console.log("Check out Button");
+                history.push("/shipping");
+              }}
+            >
+              CHECK OUT
+            </button>
           </div>
         )}
       </div>

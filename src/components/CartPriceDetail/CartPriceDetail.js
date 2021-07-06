@@ -1,9 +1,10 @@
 import React from "react";
 
+
 const CartPriceDetail = () => {
   const myArray = localStorage.getItem("cart");
   const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
-  console.log(fromLocalStorage);
+  // console.log(fromLocalStorage);
 
   const deliveryCharge = 7;
   let totalPrice = 0;
@@ -19,7 +20,7 @@ const CartPriceDetail = () => {
     }
 
     totalPrice = deliveryCharge + subTotalPrice;
-    console.log("total price: ", subTotalPrice);
+    // console.log("total price: ", subTotalPrice);
   }
 
   return (

@@ -44,15 +44,24 @@
 
 .cartCheckOutBtn{
     border: none;
+    background: black;
+    color:white;
+    padding: 10px;
+    border-radius:10px 12px;
+    font-weight: bold;
+}
+
+.cartCheckOutBtn:hover{
+    background:rgb(218, 87, 109);
+}
+
+
+.cartViewBtn{
+    border: none;
     background: rgb(218, 87, 109);
     color:white;
     padding: 10px;
     border-radius:10px 12px;
     font-weight: bold;
-    float: left;
-}
-
-.cartCheckOutBtn:hover{
-    background:black;
 }
 

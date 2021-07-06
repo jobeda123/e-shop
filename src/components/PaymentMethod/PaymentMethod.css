@@ -1,0 +1,14 @@
+.paymentMethodArea{
+    border:1px solid #cccccc;
+    color: black;
+    height: 170px;
+    text-align: left;
+    padding:10px;
+    margin-top: 25px;
+}
+
+.paymentMethodArea h4{
+    border-bottom: 1px solid gray;
+    padding: 10px 0px;
+}
+
