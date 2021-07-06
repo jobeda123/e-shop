@@ -11,6 +11,8 @@ import WomenPage from './pages/WomenPage/WomenPage';
 import MenPage from './pages/MenPage/MenPage';
 import JewelleryPage from './pages/JewelleryPage/JewelleryPage';
 import ElectronicsPage from './pages/ElectronicsPage/ElectronicsPage';
+import ShoppingCartPage from './pages/ShoppingCartPage/ShoppingCartPage';
+
 
 
 export const UserContext = createContext();
@@ -43,6 +45,10 @@ function App() {
 
         <Route path="/category/electronics">
           <ElectronicsPage />
+        </Route>
+
+        <Route path="/shoppingCart">
+          <ShoppingCartPage />
         </Route>
 
         {/* <Route path="/womenClothing">
