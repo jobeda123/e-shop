@@ -17,7 +17,7 @@ const ElectronicsPage = () => {
       <HeaderNavbar></HeaderNavbar>
       <CategoryBanner bannerDetail={bannerDetail}></CategoryBanner>
       <LocationTrack data={"Shopping Cart"}></LocationTrack>
-      {/* Shopping cart detail */}
+      {/* Shopping cart detail page */}
       <CartTable></CartTable>
       <Footer></Footer>
     </>
