@@ -1,0 +1,38 @@
+.shippingArea{
+    border: 1px solid #cccccc;
+    text-align: left;
+    padding:10px;
+    
+}
+
+.shippingArea h4{
+    border-bottom: 1px solid gray;
+    padding: 10px 0px;
+}
+
+.shippingArea form{
+    display:flex;
+    flex-direction:column;
+}
+
+.shippingArea input{
+    border: none;
+    border-bottom: 1px solid gray;
+    margin: 15px 10px;
+}
+
+.shippingArea span{
+    padding:10px;
+    color:red;
+}
+
+.shippingArea button{
+    border:none;
+    width:250px;
+    background-color: black;
+    color: white;
+    padding: 15px;
+    font-weight: 600;
+    border-radius:10px;
+    margin:20px 0px;
+}

@@ -5,7 +5,6 @@ import CartPriceDetail from "../CartPriceDetail/CartPriceDetail";
 import EmptyCart from "../EmptyCart/EmptyCart";
 import { useHistory } from "react-router";
 
-
 const CartDrawer = () => {
   const myArray = localStorage.getItem("cart");
   const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
@@ -50,15 +49,17 @@ const CartDrawer = () => {
               className="cartViewBtn my-2 col-md-12"
               onClick={() => {
                 console.log("View Button");
-                history.push("/shoppingCart")
-
+                history.push("/shoppingCart");
               }}
             >
               VIEW CART
             </button>
             <button
               className="cartCheckOutBtn mb-2 col-md-12"
-              onClick={() => console.log("Check out Button")}
+              onClick={() => {
+                console.log("Check out Button");
+                history.push("/shipping");
+              }}
             >
               CHECK OUT
             </button>

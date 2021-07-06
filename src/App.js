@@ -12,6 +12,7 @@ import MenPage from './pages/MenPage/MenPage';
 import JewelleryPage from './pages/JewelleryPage/JewelleryPage';
 import ElectronicsPage from './pages/ElectronicsPage/ElectronicsPage';
 import ShoppingCartPage from './pages/ShoppingCartPage/ShoppingCartPage';
+import ShippingPage from './pages/ShippingPage/ShippingPage';
 
 
 
@@ -49,6 +50,10 @@ function App() {
 
         <Route path="/shoppingCart">
           <ShoppingCartPage />
+        </Route>
+
+        <Route path="/shipping">
+          <ShippingPage />
         </Route>
 
         {/* <Route path="/womenClothing">

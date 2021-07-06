@@ -5,7 +5,7 @@ import CategoryBanner from "../../components/CategoryBanner/CategoryBanner";
 import shoppingCartBack from "../../images/shopping_back.jpg";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import CartTable from "../../components/CartTable/CartTable";
-
+import TotalAmountSummaryCard from "../../components/TotalAmountSummaryCard/TotalAmountSummaryCard";
 
 const ElectronicsPage = () => {
   const bannerDetail = {
@@ -17,8 +17,17 @@ const ElectronicsPage = () => {
       <HeaderNavbar></HeaderNavbar>
       <CategoryBanner bannerDetail={bannerDetail}></CategoryBanner>
       <LocationTrack data={"Shopping Cart"}></LocationTrack>
-      {/* Shopping cart detail page */}
-      <CartTable></CartTable>
+
+      {/* Shopping cart detail page  and total amount summary*/}
+      <div className="container d-flex">
+        <div className="col-md-8">
+          <CartTable></CartTable>
+        </div>
+        <div className="col-md-4 my-5">
+          <TotalAmountSummaryCard role="shopping"></TotalAmountSummaryCard>
+        </div>
+      </div>
+
       <Footer></Footer>
     </>
   );
