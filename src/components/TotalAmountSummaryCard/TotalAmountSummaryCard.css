@@ -1,10 +1,11 @@
 .totalAmountSummaryCardArea{
     border:1px solid #cccccc;
     color: black;
-    height: 280px;
+    /* height: 280px; */
     text-align: left;
     padding:10px;
 }
+
 .totalAmountSummaryCardArea h4{
     border-bottom: 1px solid gray;
     padding: 10px 0px;

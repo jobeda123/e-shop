@@ -2,7 +2,11 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import "./TotalAmountSummaryCard.css";
 
+
 const TotalAmountSummaryCard = (props) => {
+
+  const displayButton = props.displayButton;
+  const displayHeight = props.displayHeight;
   let history = useHistory();
   const myArray = localStorage.getItem("cart");
   const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
@@ -24,8 +28,9 @@ const TotalAmountSummaryCard = (props) => {
     totalPrice = deliveryCharge + subTotalPrice;
   }
 
+  
   return (
-    <div className="totalAmountSummaryCardArea">
+    <div className="totalAmountSummaryCardArea" style={{height:displayHeight}}>
       <h4>Total Amount Summary</h4>
       <div className="d-flex justify-content-between">
         <p>Shipping Charge:</p>
@@ -40,14 +45,14 @@ const TotalAmountSummaryCard = (props) => {
         <h6>${totalPrice.toFixed(2)}</h6>
       </div>
 
-      {props.role ==="shopping" && <button
+      <button style={{display:displayButton}}
         onClick={() => {
           console.log("Check out button click");
           history.push("/shipping");
         }}
       >
         PROCEED TO CHECKOUT
-      </button>}
+      </button>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import CartTable from "../../components/CartTable/CartTable";
 import TotalAmountSummaryCard from "../../components/TotalAmountSummaryCard/TotalAmountSummaryCard";
 
+
 const ElectronicsPage = () => {
   const bannerDetail = {
     pic: shoppingCartBack,
@@ -21,10 +22,10 @@ const ElectronicsPage = () => {
       {/* Shopping cart detail page  and total amount summary*/}
       <div className="container d-flex">
         <div className="col-md-8">
-          <CartTable></CartTable>
+          <CartTable deleteButton={"block"}></CartTable>
         </div>
         <div className="col-md-4 my-5">
-          <TotalAmountSummaryCard role="shopping"></TotalAmountSummaryCard>
+          <TotalAmountSummaryCard displayButton={"block"} displayHeight={"280px"}></TotalAmountSummaryCard>
         </div>
       </div>
 

@@ -4,7 +4,10 @@ import "./CartTable.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
-const CartTable = () => {
+
+const CartTable = (props) => {
+  const buttonDisplay = props.deleteButton;
+  console.log(buttonDisplay);
   const myArray = localStorage.getItem("cart");
   const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
   // console.log(fromLocalStorage);
@@ -47,7 +50,7 @@ const CartTable = () => {
               <td>
                 <div className="d-flex justify-content-evenly">
                   <button
-                    style={{ backgroundColor: "white" }}
+                    style={{ backgroundColor: "white", display: buttonDisplay}}
                     className="smallRemoveBtn"
                     onClick={() =>console.log("remove button clicked")}
                   >
