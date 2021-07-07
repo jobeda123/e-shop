@@ -8,6 +8,7 @@ import { useState } from "react";
 import ProductModal from "../ProductModal/ProductModal";
 import { UserContext } from "../../App";
 
+
 const LatestCollectionCard = () => {
   const [addCart, setAddCart] = useContext(UserContext);
 

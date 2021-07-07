@@ -32,7 +32,7 @@ const ShippingPage = () => {
         </div>
         <div className="col-md-4 offset-1 my-5">
           <TotalAmountSummaryCard role="shipping" />
-          <PaymentMethod  paymentFunction={submitMethod}/>
+          <PaymentMethod paymentFunction={submitMethod}/>
         </div>
       </div>
 

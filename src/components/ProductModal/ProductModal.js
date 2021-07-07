@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Container, Modal, Row } from "react-bootstrap";
 import "./ProductModal.css";
 
+
 export default function ProductModal(props) {
   const { itemTitle, itemDescription, oldPrice, itemPic, discount } =
     props.data;
