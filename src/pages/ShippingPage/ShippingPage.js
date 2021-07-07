@@ -8,6 +8,8 @@ import TotalAmountSummaryCard from "../../components/TotalAmountSummaryCard/Tota
 import ShippingAddress from "../../components/ShippingAddress/ShippingAddress";
 import PaymentMethod from "../../components/PaymentMethod/PaymentMethod";
 
+
+
 const ShippingPage = () => {
   const bannerDetail = {
     pic: shippingBack,
@@ -19,6 +21,7 @@ const ShippingPage = () => {
   const submitMethod = (data) => {
     setPaymentMethod(data);
   };
+
   return (
     <>
       <HeaderNavbar></HeaderNavbar>
@@ -31,7 +34,7 @@ const ShippingPage = () => {
           <ShippingAddress></ShippingAddress>
         </div>
         <div className="col-md-4 offset-1 my-5">
-          <TotalAmountSummaryCard role="shipping" />
+          <TotalAmountSummaryCard displayButton={"none"} displayHeight={"200px"}/>
           <PaymentMethod paymentFunction={submitMethod}/>
         </div>
       </div>

@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Col, Container, Modal, Row } from "react-bootstrap";
 import "./ProductModal.css";
-
+import { UserContext } from "../../App";
 
 export default function ProductModal(props) {
+  const [addCart, setAddCart] = useContext(UserContext);
   const { itemTitle, itemDescription, oldPrice, itemPic, discount } =
     props.data;
+
+  const cardDetails = {
+    itemPic: itemPic,
+    itemTitle: itemTitle,
+    itemDescription: itemDescription,
+    oldPrice: oldPrice,
+    discount: discount,
+  };
+
+  const handleAddCart = (cardDetails) => {
+    console.log("add to cart button click from latest offer");
+
+    const myArray = localStorage.getItem("cart");
+    const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
+
+    //console.log("From local Storage", fromLocalStorage);
+    const newCart = [...fromLocalStorage, cardDetails]; // all cart item copy
+
+    setAddCart(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+
+    // localStorage.removeItem('cart');
+  };
 
   const newPrice = (oldPrice - (oldPrice * discount) / 100).toFixed(2);
   return (
@@ -35,12 +59,13 @@ export default function ProductModal(props) {
                     <p className="modalPrice">${oldPrice}</p>
                   )}
                 </div>
-                
+
                 <button
                   className="modalAddCartBtn"
-                  onClick={() =>
-                    console.log("Modal add to cart button click..")
-                  }
+                  onClick={() => {
+                    console.log("Modal add to cart button click..");
+                    handleAddCart(cardDetails);
+                  }}
                 >
                   Add To Cart
                 </button>

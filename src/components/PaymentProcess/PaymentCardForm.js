@@ -9,6 +9,7 @@ import {
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCcVisa } from "@fortawesome/free-brands-svg-icons";
+import { useState } from "react";
 
 
 const useOptions = () => {
@@ -37,6 +38,8 @@ const useOptions = () => {
 };
 
 const PaymentCardForm = () => {
+  const [paymentInformation, setPaymentInformation] = useState({});
+
   let history = useHistory();
   const stripe = useStripe();
   const elements = useElements();
@@ -56,9 +59,20 @@ const PaymentCardForm = () => {
       card: elements.getElement(CardNumberElement),
     });
     console.log("[PaymentMethod]", payload);
+
+    
+    const eventPaymentInfo = {
+      cardName: payload.paymentMethod.card.brand,
+      paymentId: payload.paymentMethod.id,
+      date: new Date(),
+    }
     if (payload.error === undefined) {
+      const newPayment = {...paymentInformation, eventPaymentInfo}
+      setPaymentInformation(newPayment);
+      localStorage.setItem('paymentInfo',JSON.stringify(newPayment));
+      // localStorage.removeItem('cart');
       alert("Successfully Purchased Your Order!!! Thank You");
-      history.push("/home");
+      history.push("/orderSummary");
     }
   };
 

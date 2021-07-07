@@ -13,6 +13,7 @@ import JewelleryPage from './pages/JewelleryPage/JewelleryPage';
 import ElectronicsPage from './pages/ElectronicsPage/ElectronicsPage';
 import ShoppingCartPage from './pages/ShoppingCartPage/ShoppingCartPage';
 import ShippingPage from './pages/ShippingPage/ShippingPage';
+import OrderSummaryPage from './pages/OrderSummaryPage/OrderSummaryPage';
 
 
 
@@ -54,6 +55,10 @@ function App() {
 
         <Route path="/shipping">
           <ShippingPage />
+        </Route>
+
+        <Route path="/orderSummary">
+          <OrderSummaryPage />
         </Route>
 
         {/* <Route path="/womenClothing">
