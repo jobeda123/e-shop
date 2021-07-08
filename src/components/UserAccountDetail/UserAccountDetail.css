@@ -1,0 +1,37 @@
+.userAccountDetailArea{
+    text-align: left;
+}
+
+.blackBtn{
+    border: none;
+    background-color:black;
+    color: white;
+    border-radius:10px;
+    padding:10px 12px;
+    font-weight: 500;
+}
+
+.blackBtn:hover{
+    background-color:rgb(218,87,109);
+}
+
+.passwordUpdate form{
+    border: 1px solid lightgray;
+    width:400px;
+    margin: 20px 0px;
+}
+
+.passwordUpdate input{
+    border: none;
+    border-bottom: 1px solid gray;
+    margin: 15px 10px;
+    width:95%;
+}
+
+.passwordUpdate textarea{
+    border: none;
+    border-bottom: 1px solid gray;
+    margin: 15px 10px;
+    width:95%;
+    padding:0px;
+}

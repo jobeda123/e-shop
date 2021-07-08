@@ -1,0 +1,9 @@
+#status div{
+    background-color:rgb(255,235,237);
+    /* margin: 10px; */
+    border-radius:10px;
+    color: rgb(255,74,89);
+    padding:10px 5px;
+    text-align:center;
+    font-weight: 600;
+}

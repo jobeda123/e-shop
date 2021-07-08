@@ -11,10 +11,11 @@ import { UserContext } from "../../App";
 import CategoryDrawer from "../CategoryDrawer/CategoryDrawer";
 import CartDrawer from "../CartDrawer/CartDrawer";
 import UserDrawer from "../UserDrawer/UserDrawer";
-import { Link  } from "react-router-dom"; 
+import { useHistory } from "react-router";
 
 
 const Header = () => {
+  let history = useHistory();
   // for get cart item from local storage
   const [addCart, setAddCart] = useContext(UserContext);
   const myArray = localStorage.getItem("cart");
@@ -36,7 +37,7 @@ const Header = () => {
               >
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <h4 className="logo">eShop</h4>
+              <h4 className="logo" onClick={() => history.push("/home")}>eShop</h4>
             </div>
           </li>
 
@@ -83,7 +84,7 @@ const Header = () => {
                   marginTop: "5px",
                 }}
               >
-                {fromLocalStorage.length === undefined
+                {fromLocalStorage?.length === undefined
                   ? 0
                   : fromLocalStorage.length}
               </span>

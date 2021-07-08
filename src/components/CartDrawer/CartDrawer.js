@@ -32,14 +32,14 @@ const CartDrawer = () => {
       </div>
 
       <div class="offcanvas-body">
-        {fromLocalStorage.length === 0 ? (
+        {fromLocalStorage?.length === 0 ? (
           // Empty Cart Error
           <EmptyCart></EmptyCart>
         ) : (
           <div>
             {/* Total Cart Details */}
             <div className="cartScroll py-2">
-              {fromLocalStorage.map((data, index) => (
+              {fromLocalStorage?.map((data, index) => (
                 <SmallCartDetail key={index} cartData={data}></SmallCartDetail>
               ))}
             </div>
