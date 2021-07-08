@@ -10,7 +10,7 @@ const CartPriceDetail = () => {
   let totalPrice = 0;
   // calculate total price
   let subTotalPrice = 0;
-  for (let i = 0; i < fromLocalStorage.length; i++) {
+  for (let i = 0; i < fromLocalStorage?.length; i++) {
     if (fromLocalStorage[i].discount !== 0) {
       subTotalPrice +=
         fromLocalStorage[i].oldPrice -

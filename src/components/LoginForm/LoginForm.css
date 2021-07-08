@@ -1,0 +1,38 @@
+.loginArea{
+    text-align: center;
+    /* border: 1px solid green; */
+}
+
+.loginBtn{
+    border: none;
+    background-color:black;
+    color: white;
+    border-radius:10px;
+    padding:10px 20px;
+    font-weight: 500;
+}
+
+.loginBtn:hover{
+    background-color:rgb(218,87,109);
+}
+
+.loginForm form{
+    border: 1px solid lightgray;
+    width:400px;
+    margin: 20px 0px;
+}
+
+.loginForm input{
+    border: none;
+    border-bottom: 1px solid gray;
+    margin: 15px 10px;
+    width:95%;
+}
+
+.loginArea a{
+    color: rgb(218,87,109);
+    font-weight:500;
+}
+.title p{
+    font-size:20px;
+}
