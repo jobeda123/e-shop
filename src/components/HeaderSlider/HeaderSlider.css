@@ -1,6 +1,6 @@
 .carousel-item {
   /* height:630px; */
-  min-height: 300px;
+  min-height: 220px;
   max-height: 630px;
   background: no-repeat scroll center scroll;
   /* -webkit-background-size: cover; */
@@ -21,23 +21,21 @@
 }
 
 /* -------right side content------------ */
-.sliderCaptionRight {
-  bottom: 200px;
-  padding-left: 600px;
+.sliderCaptionRight{
+  bottom: 35%;
   /* border: 1px solid red; */
-  right: 150px;
+  right: 10%;
   text-align: right;
   line-height: 20px;
   position: absolute;
 }
 
-
-.sliderCaptionRight h5 {
+.sliderCaptionRight h5{
   font-size: 50px;
   font-weight: 600;
 }
 
-.sliderCaptionRight p {
+.sliderCaptionRight p{
   font-size: 25px;
   font-weight: 200;
 }
@@ -51,22 +49,46 @@
   border: 1px solid #000;
 }
 
-.sliderCaptionRight button:hover {
-  background-color: #222222;
-  border: 1px solid #222222;
-  color: white;
+
+@media (max-width: 576px) {
+  .sliderCaptionRight{
+    /* border: 1px solid yellow; */
+    bottom: 20%;
+  }
+  .sliderCaptionRight h5{
+    font-size: 14px;
+  }
+  .sliderCaptionRight p{
+    font-size: 12px;
+  }
+  .sliderCaptionRight button {
+    padding: 5px;
+    font-size: 10px;
+  }
 }
+
+
+
 
 /* -------left side content------------ */
 
-.sliderCaptionLeft {
+/* .sliderCaptionLeft {
   bottom: 200px;
   padding-right: 640px;
-  /* border: 1px solid red; */
+  border: 1px solid red;
   left: 150px;
   text-align: left;
   line-height: 20px;
+} */
+
+.sliderCaptionLeft {
+  bottom: 35%;
+  /* border: 1px solid red; */
+  left: 10%;
+  text-align: left;
+  line-height: 20px;
 }
+
 
 .sliderCaptionLeft h5 {
   font-size: 50px;
@@ -87,8 +109,20 @@
   border: 1px solid #000;
 }
 
-.sliderCaptionLeft button:hover {
-  background-color: #222222;
-  border: 1px solid #222222;
-  color: white;
+
+@media (max-width: 576px) {
+  .sliderCaptionLeft{
+    /* border: 1px solid yellow; */
+    bottom: 20%;
+  }
+  .sliderCaptionLeft h5{
+    font-size: 14px;
+  }
+  .sliderCaptionLeft p{
+    font-size: 12px;
+  }
+  .sliderCaptionLeft button {
+    padding: 5px;
+    font-size: 10px;
+  }
 }

@@ -7,7 +7,6 @@ import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import CartTable from "../../components/CartTable/CartTable";
 import TotalAmountSummaryCard from "../../components/TotalAmountSummaryCard/TotalAmountSummaryCard";
 
-
 const ElectronicsPage = () => {
   const bannerDetail = {
     pic: shoppingCartBack,
@@ -20,12 +19,26 @@ const ElectronicsPage = () => {
       <LocationTrack data={"Shopping Cart"}></LocationTrack>
 
       {/* Shopping cart detail page  and total amount summary*/}
-      <div className="container d-flex">
-        <div className="col-md-8">
-          <CartTable deleteButton={"block"}></CartTable>
-        </div>
-        <div className="col-md-4 my-5">
-          <TotalAmountSummaryCard displayButton={"block"} displayHeight={"280px"}></TotalAmountSummaryCard>
+      <div
+        className="container"
+        // style={{ border: "1px solid black" }}
+      >
+        <div className="row d-flex">
+          <div
+            className="col-md-8 col-sm-12"
+            // style={{ border: "1px solid red" }}
+          >
+            <CartTable deleteButton={"block"}></CartTable>
+          </div>
+          <div
+            className="col-md-4 my-5 col-sm-12"
+            // style={{ border: "1px solid orange" }}
+          >
+            <TotalAmountSummaryCard
+              displayButton={"block"}
+              displayHeight={"280px"}
+            ></TotalAmountSummaryCard>
+          </div>
         </div>
       </div>
 

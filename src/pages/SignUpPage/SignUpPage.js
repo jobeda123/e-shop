@@ -12,7 +12,7 @@ const SignUpPage = () => {
 
       {/* Login Form Area */}
       <div
-        style={{ marginTop: "50px", marginBottom: "100px" }}
+        style={{ marginTop: "50px", marginBottom: "50px" }}
         className="container"
       >
           <SignUpForm />

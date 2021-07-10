@@ -10,9 +10,7 @@ const LatestCollection = () => {
         className="d-flex justify-content-center"
         style={{ marginTop: "50px" }}
       >
-        <div className="titleLine align-self-center"></div>
         <h3 id="sectionName">Latest Collection</h3>
-        <div className="titleLine align-self-center"></div>
       </div>
 
       {/* Sub title */}

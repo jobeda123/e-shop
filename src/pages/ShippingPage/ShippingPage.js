@@ -8,8 +8,6 @@ import TotalAmountSummaryCard from "../../components/TotalAmountSummaryCard/Tota
 import ShippingAddress from "../../components/ShippingAddress/ShippingAddress";
 import PaymentMethod from "../../components/PaymentMethod/PaymentMethod";
 
-
-
 const ShippingPage = () => {
   const bannerDetail = {
     pic: shippingBack,
@@ -29,13 +27,18 @@ const ShippingPage = () => {
       <LocationTrack data={"Shipping"}></LocationTrack>
 
       {/* Shopping cart detail page  and total amount summary*/}
-      <div className="container d-flex">
-        <div className="col-md-6 my-5">
-          <ShippingAddress></ShippingAddress>
-        </div>
-        <div className="col-md-4 offset-1 my-5">
-          <TotalAmountSummaryCard displayButton={"none"} displayHeight={"200px"}/>
-          <PaymentMethod paymentFunction={submitMethod}/>
+      <div className="container">
+        <div className="row d-flex">
+          <div className="col-md-6 my-5 mr-5">
+            <ShippingAddress></ShippingAddress>
+          </div>
+          <div className="col-md-4 my-5">
+            <TotalAmountSummaryCard
+              displayButton={"none"}
+              displayHeight={"200px"}
+            />
+            <PaymentMethod paymentFunction={submitMethod} />
+          </div>
         </div>
       </div>
 

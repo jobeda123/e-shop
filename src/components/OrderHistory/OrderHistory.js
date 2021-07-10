@@ -16,7 +16,7 @@ const OrderHistory = () => {
   }];
   
   return (
-    <div className="userAccountDetailArea">
+    <div className="userAccountDetailArea smTable">
       <p style={{ fontWeight: "700" }}>My Orders :</p>
       <Table bordered size="lg">
         <tbody>
@@ -50,7 +50,7 @@ const OrderHistory = () => {
                 onClick={() => {
                   console.log("Details button for specific order: ", data.id);
                 }}
-                className="blackBtn"
+                className="blackBtn smTableBtn"
               >
                 Details
               </button>

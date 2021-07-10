@@ -108,7 +108,7 @@ const PaymentCardForm = () => {
         />
       </label>
       <br />
-      <button type="submit" className="payBtn" disabled={!stripe}>
+      <button type="submit" className="payBtn mt-3" disabled={!stripe}>
         {/* <FontAwesomeIcon className="payIcon" size="2x" icon={faCcVisa} /> */}
          CONFIRM PURCHASED
       </button>

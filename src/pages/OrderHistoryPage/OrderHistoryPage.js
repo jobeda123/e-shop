@@ -13,7 +13,7 @@ import OrderHistory from "../../components/OrderHistory/OrderHistory";
 const OrderHistoryPage = () => {
   const bannerDetail = {
     pic: menBack,
-    title: "Order History",
+    title: "View Order History",
   };
   return (
     <>
@@ -22,24 +22,26 @@ const OrderHistoryPage = () => {
       <LocationTrack data={"Order History"}></LocationTrack>
       {/* Profile Area */}
       <div
-        style={{ marginTop: "50px", marginBottom: "100px" }}
+        style={{ marginTop: "50px", marginBottom: "50px" }}
         className="container"
       >
         <div className="row">
           <div
             className="col-md-3 col-sm-6"
             style={{
-              border: "1px solid black",
+              // border: "1px solid black",
               paddingRight: "50px",
               paddingLeft: "25px",
+              marginBottom: "30px",
+              marginRight: "50px",
             }}
           >
             <Dashboard whichBtn="order" />
           </div>
 
           <div
-            className="col-md-8 offset-1"
-            style={{ border: "1px solid black" }}
+            className="col-md-8 col-sm-12"
+            // style={{ border: "1px solid black" }}
           >
             <OrderHistory></OrderHistory>
           </div>

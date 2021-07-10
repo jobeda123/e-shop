@@ -2,7 +2,6 @@ import React from "react";
 import "./FlashSale.css";
 import FlashSaleCard from "../FlashSaleCard/FlashSaleCard";
 
-
 const FlashSale = () => {
   return (
     <section className="container">
@@ -11,9 +10,7 @@ const FlashSale = () => {
         className="d-flex justify-content-center"
         style={{ marginTop: "50px" }}
       >
-        <div className="titleLine align-self-center"></div>
         <h3 id="sectionName">Flash Sale</h3>
-        <div className="titleLine align-self-center"></div>
       </div>
 
       {/* Sub title */}
@@ -42,9 +39,12 @@ const FlashSale = () => {
         <FlashSaleCard />
       </div>
 
-      <button className="loadBtn mt-4"
-      onClick={() =>console.log("Load More Button Is Clicking....")}
-      >Load More</button>
+      <button
+        className="loadBtn mt-4"
+        onClick={() => console.log("Load More Button Is Clicking....")}
+      >
+        Load More
+      </button>
     </section>
   );
 };

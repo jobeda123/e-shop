@@ -7,3 +7,17 @@
     text-align:center;
     font-weight: 600;
 }
+
+
+@media (max-width: 576px) {
+    .smTable {
+      font-size: 8px;
+    }
+    #status div{
+        padding:2px;
+    }
+    .smTableBtn{
+        font-size: 8px;
+        padding:5px;
+    }
+}

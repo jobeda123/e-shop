@@ -39,7 +39,7 @@ const HeaderSlider = () => {
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src={slider_1} class="d-block w-100 fluid" alt="..." />
-            <div class="carousel-caption d-none d-md-block sliderCaptionRight">
+            <div class="carousel-caption d-md-block sliderCaptionRight">
               <p>SUMMER 2021</p>
               <h5>New Arrival Collection</h5>
 
@@ -51,7 +51,7 @@ const HeaderSlider = () => {
 
           <div class="carousel-item">
             <img src={slider_2} class="d-block w-100 fluid" alt="..." />
-            <div class="carousel-caption d-none d-md-block sliderCaptionLeft">
+            <div class="carousel-caption d-md-block sliderCaptionLeft">
               <p>NEW SEASON</p>
               <h5>Lookbook Collection</h5>
               <div>
@@ -62,7 +62,7 @@ const HeaderSlider = () => {
 
           <div class="carousel-item">
             <img src={slider_3} class="d-block w-100 fluid" alt="..." />
-            <div class="carousel-caption d-none d-md-block sliderCaptionLeft">
+            <div class="carousel-caption d-md-block sliderCaptionLeft">
               <p>SUMMER SALE</p>
               <h5>Save up to 70%</h5>
               <div>

@@ -16,9 +16,9 @@ const Category = () => {
         className="d-flex justify-content-center"
         style={{ margin: "50px 0px 30px 0px"}}
       >
-        <div className="titleLine align-self-center"></div>
+        
         <h3 id="sectionName">Shop By Category</h3>
-        <div className="titleLine align-self-center"></div>
+        
       </div>
 
 

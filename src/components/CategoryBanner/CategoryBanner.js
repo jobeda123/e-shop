@@ -1,6 +1,5 @@
 import React from 'react';
 import './CategoryBanner.css';
-import womenBack from '../../images/women_back.jpg';
 
 
 const CategoryBanner = (props) => {

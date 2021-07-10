@@ -5,27 +5,25 @@
   box-sizing: border-box;
 }
 
-@media (max-width: 767.98px) {
-  #sectionName {
-    font-size: 25px;
-    /* color:green; */
-  }
-
+@media (max-width: 576px) {
   #jewellery-btn {
     left: 25%;
     top: 20%;
-    font-size: 20px;
+    font-size: 15px;
+    padding: 10px;
   }
 
   #electronics-btn {
-    font-size: 20px;
-    left: 20%;
+    left: 25%;
+    font-size: 15px;
+    padding: 10px;
+    bottom: 10%;
   }
 
   #women-men-btn{
-    font-size: 20px;
+    font-size: 15px;
+    padding: 10px;
   }
-
 }
 
 /* body{
