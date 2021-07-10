@@ -6,7 +6,7 @@ import "./FooterCol.css";
 const FooterCol = (props) => {
   // console.log(props);
   return (
-    <div className="col-md-3 area">
+    <div id="footerAlign" className="col-md-3 area">
       {props.menuTitle === "eShop" ? (
         <h2 className="text-white">{props.menuTitle}</h2>
       ) : (

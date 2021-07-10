@@ -1,12 +1,13 @@
 import React from "react";
-import './NoNameCard.css';
+import "./NoNameCard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
+
 const NoNameCard = (props) => {
-    const {icon,title,description} = props.details;
+  const { icon, title, description } = props.details;
   return (
-    <section className="container d-flex noNameArea">
+    <section className="d-flex col-md-3 col-sm-6 noNameArea">
       <div className="d-flex">
         <div className="noNameIcon">
           <span>

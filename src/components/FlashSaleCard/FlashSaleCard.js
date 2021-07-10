@@ -8,6 +8,7 @@ import { useState } from "react";
 import ProductModal from "../ProductModal/ProductModal";
 import { UserContext } from "../../App";
 
+
 const FlashSaleCard = () => {
   const [addCart, setAddCart] = useContext(UserContext);
 
@@ -45,7 +46,7 @@ const FlashSaleCard = () => {
 
   return (
     <>
-      <Card style={{ width: "16rem", padding: "0px", margin: "0px auto" }}>
+      <Card style={{ width: "16rem", padding: "0px", margin: "0px auto 30px auto" }}>
         <div className="imageArea">
           <Card.Img
             variant="top"

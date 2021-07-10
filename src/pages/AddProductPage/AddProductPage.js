@@ -11,7 +11,7 @@ import AddNewProduct from "../../components/AddNewProduct/AddNewProduct";
 const AddProductPage = () => {
   const bannerDetail = {
     pic: menBack,
-    title: "Add Product",
+    title: "Add New Product",
   };
   return (
     <>
@@ -21,24 +21,26 @@ const AddProductPage = () => {
 
       {/* Add Admin Area */}
       <div
-        style={{ marginTop: "50px", marginBottom: "100px" }}
+        style={{ marginTop: "50px", marginBottom: "50px" }}
         className="container"
       >
         <div className="row">
           <div
             className="col-md-3 col-sm-6"
             style={{
-              border: "1px solid black",
+              // border: "1px solid black",
               paddingRight: "50px",
               paddingLeft: "25px",
+              marginBottom: "30px",
+              marginRight: "50px",
             }}
           >
             <Dashboard whichBtn="addProduct" />
           </div>
 
           <div
-            className="col-md-8 offset-1"
-            style={{ border: "1px solid black" }}
+            className="col-md-8 col-sm-12"
+            // style={{ border: "1px solid black" }}
           >
             <AddNewProduct></AddNewProduct>
           </div>

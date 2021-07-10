@@ -41,7 +41,7 @@ const LatestCollectionCard = () => {
 
   return (
     <>
-      <Card style={{ width: "16rem", padding: "0px", margin: "0px auto" }}>
+      <Card style={{ width: "16rem", padding: "0px", margin: "0px auto 30px auto" }}>
         <div className="imageArea">
           <Card.Img
             variant="top"

@@ -10,10 +10,10 @@ const LatestCollection = () => {
         className="d-flex justify-content-center"
         style={{ marginTop: "50px" }}
       >
-        <div className="titleLine align-self-center"></div>
-        <h3>Latest Collection</h3>
-        <div className="titleLine align-self-center"></div>
+        <h3 id="sectionName">Latest Collection</h3>
       </div>
+
+      {/* Sub title */}
       <div
         style={{
           fontSize: "18px",
@@ -40,7 +40,7 @@ const LatestCollection = () => {
         <LatestCollectionCard />
       </div>
 
-      <button className="loadBtn my-5"
+      <button className="loadBtn mt-4"
       onClick={() =>console.log("Load More Button Is Clicking....")}
       >Load More</button>
     </section>

@@ -36,10 +36,10 @@ const OrderSummaryPage = () => {
           Back To Home
         </button>
         <div className="row d-flex">
-          <div className="col-md-6">
+          <div className="col-md-6 mr-5 mb-5 mt-3">
             <ShippingPaymentInformation />
           </div>
-          <div className="col-md-4 offset-2">
+          <div className="col-md-4  mt-3">
             <TotalAmountSummaryCard
               displayButton={"none"}
               displayHeight={"200px"}

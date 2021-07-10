@@ -48,9 +48,9 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="footer-area clear-both">
-      <div className="container pt-5 footer-div">
-        <div align="left" className="row py-5">
+    <footer className="footer-area clear-both mt-3">
+      <div className="container footer-div">
+        <div id="footerAlign" align="left" className="row py-5">
           <FooterCol key={1} menuTitle="eShop" menuItems={contact}>
             <ul className="list-inline">
               <li className="list-inline-item">
@@ -110,7 +110,7 @@ const Footer = () => {
           
         </div>
         <div className="copyRight text-center">
-          <p className="text-white pb-3">
+          <p className="text-white pb-3" style={{marginBottom:"0px"}}>
             Copyright {new Date().getFullYear()} eShop. All rights reserved.
           </p>
         </div>

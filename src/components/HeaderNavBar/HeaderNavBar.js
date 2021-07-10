@@ -25,7 +25,8 @@ const Header = () => {
     <>
       <nav className="sticky-top">
         <ul>
-          <li className="col-md-2">
+
+          <li className="col-md-2 col-sm-12 py-2">
             <div className="d-flex justify-content-around">
               <button
                 className="navbar-light navbar-toggler"
@@ -41,16 +42,13 @@ const Header = () => {
             </div>
           </li>
 
-          <li className="search-icon col-md-8 d-flex justify-content-center">
+          <li className="search-icon col-md-8 col-sm-12 py-2 d-flex justify-content-center">
             <input type="search" placeholder="Search" />
-            <label>
-              <span>
-                <FontAwesomeIcon className="icon" icon={faSearch} size="3x" />
-              </span>
-            </label>
+            <FontAwesomeIcon className="icon" icon={faSearch}/>
           </li>
 
-          <li class="col-md-2 user-cart-icon d-flex justify-content-evenly">
+
+          <li class="col-md-2 col-sm-12 py-2 user-cart-icon d-flex justify-content-evenly">
             <button
               onClick={() => {
                 console.log("Account button clicked....");
@@ -81,7 +79,7 @@ const Header = () => {
                   backgroundColor: "rgb(218, 87, 109)",
                   color: "white",
                   fontSize: "17px",
-                  marginTop: "5px",
+                  marginTop: "7px",
                 }}
               >
                 {fromLocalStorage?.length === undefined
@@ -92,8 +90,11 @@ const Header = () => {
           </li>
         </ul>
       </nav>
+
       <CategoryDrawer />
+
       <CartDrawer />
+
       <UserDrawer />
     </>
   );

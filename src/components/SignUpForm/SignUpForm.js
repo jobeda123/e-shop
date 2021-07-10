@@ -38,7 +38,7 @@ const SignUpForm = () => {
             />
             <br />
             <button
-              className="loginBtn ml-2 my-3 align-self-start"
+              className="loginBtn my-3 align-self-start"
               onClick={() => {
                 console.log("Sign up for new the account.....");
               }}

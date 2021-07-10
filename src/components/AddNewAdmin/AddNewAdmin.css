@@ -1,0 +1,9 @@
+@media (max-width: 576px) {
+    .userAccountDetailArea form input{
+      width:300px;
+    }
+    .passwordUpdate form{
+        width:325px;
+      }
+  }
+  
