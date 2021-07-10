@@ -1,5 +1,4 @@
 import React from "react";
-import "./NoName.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeadphones,
@@ -34,10 +33,15 @@ const iconData = [
 
 const NoName = () => {
   return (
-    <section className="container d-flex">
-      {iconData.map((data) => (
-        <NoNameCard details={data}></NoNameCard>
-      ))}
+    <section
+      className="container"
+      style={{ marginTop: "70px"}}
+    >
+      <div className="row">
+        {iconData.map((data) => (
+          <NoNameCard details={data}></NoNameCard>
+        ))}
+      </div>
     </section>
   );
 };

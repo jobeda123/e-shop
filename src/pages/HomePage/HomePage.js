@@ -1,5 +1,4 @@
 import React from 'react';
-import './HomePage.css';
 import HeaderNavBar from '../../components/HeaderNavBar/HeaderNavBar';
 import HeaderSlider from '../../components/HeaderSlider/HeaderSlider';
 import Category from '../../components/Category/Category';

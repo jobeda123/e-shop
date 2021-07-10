@@ -14,17 +14,20 @@ const Category = () => {
       {/* title */}
       <div
         className="d-flex justify-content-center"
-        style={{ margin: "50px 0px 30px 0px" }}
+        style={{ margin: "50px 0px 30px 0px"}}
       >
         <div className="titleLine align-self-center"></div>
-        <h3>Shop By Category</h3>
+        <h3 id="sectionName">Shop By Category</h3>
         <div className="titleLine align-self-center"></div>
       </div>
 
+
+
+      {/* picture by category */}
       <div className="row category">
-        <div className="col-md-8 d-flex">
+        <div className="col-md-8 d-flex mb-3">
           {/* Men Category Pic */}
-          <div className="col-md-6 men">
+          <div className="col-md-6">
             <img src={men_category} alt="" width="100%" height="100%" />
             <button
               onClick={() => {
@@ -32,6 +35,7 @@ const Category = () => {
                 history.push("/category/men");
               }}
               className="women-men-btn"
+              id="women-men-btn"
             >
               Men
             </button>
@@ -39,7 +43,7 @@ const Category = () => {
 
           {/* Jewellery and Electronics Category Pic */}
           <div className="col-md-6">
-            <div className="mb-4">
+            <div className="mb-3">
               <img src={jewellery_category} alt="" width="100%" />
               <button
                 onClick={() => {
@@ -47,12 +51,14 @@ const Category = () => {
                   history.push("/category/jewellery");
                 }}
                 className="jewellery-btn"
+                id="jewellery-btn"
               >
                 Jewellery
               </button>
             </div>
 
-            <div className="mt-4">
+            {/* <div className="mt-4"> */}
+            <div className="">
               <img src={electronics_category} alt="" width="100%" />
               <button
                 onClick={() => {
@@ -60,6 +66,7 @@ const Category = () => {
                   history.push("/category/electronics");
                 }}
                 className="electronics-btn"
+                id="electronics-btn"
               >
                 Electronics
               </button>
@@ -68,7 +75,7 @@ const Category = () => {
         </div>
 
         {/* Women Category Pic */}
-        <div className="col-md-4 women">
+        <div className="col-md-4 col-sm-12 px-4 pb-3">
           <img
             src={women_category}
             alt="Not Found"
@@ -81,6 +88,7 @@ const Category = () => {
               history.push("/category/women");
             }}
             className="women-men-btn"
+            id="women-men-btn"
           >
             Women
           </button>
