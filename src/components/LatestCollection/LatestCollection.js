@@ -1,8 +1,17 @@
-import React from "react";
-import LatestCollectionCard from '../LatestCollectionCard/LatestCollectionCard';
+import React, { useEffect, useState } from "react";
+import LatestCollectionCard from "../LatestCollectionCard/LatestCollectionCard";
 
 
 const LatestCollection = () => {
+  const [products, setProducts] = useState([]);
+
+  // to get data from server
+  useEffect(() => {
+    fetch("http://localhost:4000/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
+
   return (
     <section className="container">
       {/* title */}
@@ -27,22 +36,19 @@ const LatestCollection = () => {
         <p>New arrival of this summer</p>
       </div>
 
-
       {/* Latest Collection Cards */}
       <div className="row cardArea">
-        <LatestCollectionCard />
-        <LatestCollectionCard />
-        <LatestCollectionCard />
-        <LatestCollectionCard />
-        <LatestCollectionCard />
-        <LatestCollectionCard />
-        <LatestCollectionCard />
-        <LatestCollectionCard />
+        {products.map((product, index) => (
+          <LatestCollectionCard item={product} key={index}></LatestCollectionCard>
+        ))}
       </div>
 
-      <button className="loadBtn mt-4"
-      onClick={() =>console.log("Load More Button Is Clicking....")}
-      >Load More</button>
+      <button
+        className="loadBtn mt-4"
+        onClick={() => console.log("Load More Button Is Clicking....")}
+      >
+        Load More
+      </button>
     </section>
   );
 };

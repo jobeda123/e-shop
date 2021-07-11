@@ -1,14 +1,22 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import allData from '../../fakeData/fakeData';
 
 const AddNewProduct = () => {
   const { register, handleSubmit } = useForm();
+  console.log(allData);
 
   const onSubmit = (data) => {
     console.log("product info-----", data);
     alert("New Product Added Successfully....");
     // store data in the mongoDB
     // form input will be empty
+
+    fetch('http://localhost:4000/addProduct', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(allData)
+    })
   };
 
   const handleImageUpload = event => {
