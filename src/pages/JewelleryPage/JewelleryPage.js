@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HeaderNavbar from "../../components/HeaderNavBar/HeaderNavBar";
 import Footer from "../../components/Footer/Footer";
 import CategoryBanner from "../../components/CategoryBanner/CategoryBanner";
@@ -6,12 +6,19 @@ import LatestCollectionCard from "../../components/LatestCollectionCard/LatestCo
 import jewelleryBack from "../../images/jewellery_back.jpg";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 
-
 const JewelleryPage = () => {
   const bannerDetail = {
     pic: jewelleryBack,
     title: "Jewellery Collection",
   };
+  const [products, setProducts] = useState([]);
+
+  // to get data from server
+  useEffect(() => {
+    fetch("http://localhost:4000/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
 
   return (
     <>
@@ -24,18 +31,15 @@ const JewelleryPage = () => {
         style={{ marginTop: "50px", marginBottom: "100px" }}
         className="container row d-flex justify-content-center cardArea"
       >
-        <LatestCollectionCard />
-        <LatestCollectionCard />
-        <LatestCollectionCard />
-        <LatestCollectionCard />
-        <LatestCollectionCard />
-        <LatestCollectionCard />
-        <LatestCollectionCard />
-        <LatestCollectionCard />
-        <LatestCollectionCard />
-        <LatestCollectionCard />
-        <LatestCollectionCard />
-        <LatestCollectionCard />
+        {/* Latest Collection Cards */}
+        <div className="row cardArea">
+          {products.map((product, index) => (
+            <LatestCollectionCard
+              item={product}
+              key={index}
+            ></LatestCollectionCard>
+          ))}
+        </div>
       </div>
       <Footer></Footer>
     </>

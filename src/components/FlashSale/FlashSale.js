@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./FlashSale.css";
 import FlashSaleCard from "../FlashSaleCard/FlashSaleCard";
+import { useState } from "react";
 
 const FlashSale = () => {
+  const [products, setProducts] = useState([]);
+
+  // to get data from server
+  useEffect(() => {
+    fetch("http://localhost:4000/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
+
   return (
     <section className="container">
       {/* title */}
@@ -27,16 +37,12 @@ const FlashSale = () => {
         <p>Offer sale in this month</p>
       </div>
 
+
       {/* Flash Sale Cards */}
       <div className="row cardArea">
-        <FlashSaleCard />
-        <FlashSaleCard />
-        <FlashSaleCard />
-        <FlashSaleCard />
-        <FlashSaleCard />
-        <FlashSaleCard />
-        <FlashSaleCard />
-        <FlashSaleCard />
+        {products.map((product, index) => (
+          <FlashSaleCard item={product} key={index}></FlashSaleCard>
+        ))}
       </div>
 
       <button

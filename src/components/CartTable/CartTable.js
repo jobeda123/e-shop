@@ -12,6 +12,7 @@ const CartTable = (props) => {
   const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
   // console.log(fromLocalStorage);
 
+
   return (
     <div className="my-5 d-flex">
       <Table bordered size="sm">
@@ -42,7 +43,7 @@ const CartTable = (props) => {
                       ${data.oldPrice}
                     </p>
                     <p style={{ color: "red" }}>
-                      ${data.oldPrice - (data.discount * data.oldPrice) / 100}
+                      ${data.updatedPrice}
                     </p>
                   </div>
                 )}
@@ -66,7 +67,7 @@ const CartTable = (props) => {
                   </p>
                 ) : (
                   <p style={{ color: "black", fontWeight: 700 }}>
-                    ${data.oldPrice - (data.discount * data.oldPrice) / 100}
+                    ${data.updatedPrice}
                   </p>
                 )}
               </td>
@@ -74,7 +75,6 @@ const CartTable = (props) => {
           ))}
         </tbody>
       </Table>
-
       
     </div>
   );

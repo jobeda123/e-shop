@@ -7,6 +7,7 @@ import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import CartTable from "../../components/CartTable/CartTable";
 import TotalAmountSummaryCard from "../../components/TotalAmountSummaryCard/TotalAmountSummaryCard";
 
+
 const ElectronicsPage = () => {
   const bannerDetail = {
     pic: shoppingCartBack,

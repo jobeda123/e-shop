@@ -9,20 +9,24 @@ import ProductModal from "../ProductModal/ProductModal";
 import { UserContext } from "../../App";
 
 
-const LatestCollectionCard = () => {
+const LatestCollectionCard = (props) => {
   const [addCart, setAddCart] = useContext(UserContext);
 
-  const cardDetails = {
-    itemPic: dress,
-    itemTitle: "Blue Shirt",
-    itemDescription:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima aliquam quisquam aut, error illo natus exercitationem architecto sapiente tempore nihil",
-    oldPrice: 95.86,
+  const { description, discount, _id, title, price, image} = props.item;
+  const updatedPrice = (price - (price * discount) / 100).toFixed(2);
+
+
+ const cardDetails = {
+    itemID:_id,
+    itemPic: image,
+    itemTitle: title,
+    itemDescription:description,
+    oldPrice: price,
     discount: 0,
+    updatedPrice: updatedPrice,
   };
 
   const [modalShow, setModalShow] = useState(false);
-  const p = 95.86;
 
   const handleAddCart = (cardDetails) =>{
     console.log("add to cart button click from latest offer");
@@ -46,7 +50,7 @@ const LatestCollectionCard = () => {
           <Card.Img
             variant="top"
             style={{ height: "16rem" }}
-            src={dress}
+            src={image}
             className="cardImg"
           />
           <span>
@@ -64,10 +68,10 @@ const LatestCollectionCard = () => {
             </button>
           </span>
         </div>
-        <Card.Body style={{ height: "6rem" }} className="text-left">
-          <Card.Title>{cardDetails.itemTitle}</Card.Title>
+        <Card.Body style={{ height: "16rem" }} className="text-left">
+          <Card.Title>{title}</Card.Title>
           <div className="d-flex">
-            <Card.Text className="price">${p}</Card.Text>
+            <Card.Text className="price">${price}</Card.Text>
           </div>
         </Card.Body>
       </Card>

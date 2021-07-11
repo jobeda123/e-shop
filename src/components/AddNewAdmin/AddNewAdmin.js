@@ -11,7 +11,15 @@ const AddNewAdmin = () => {
     alert("New Admin Added Successfully....");
     // store data in the mongoDB
     // form input will be empty
+    
+    fetch('http://localhost:4000/addAdmin', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    })
   };
+
+
 
   return (
     <div className="userAccountDetailArea">

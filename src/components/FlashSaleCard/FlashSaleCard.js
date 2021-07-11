@@ -9,23 +9,25 @@ import ProductModal from "../ProductModal/ProductModal";
 import { UserContext } from "../../App";
 
 
-const FlashSaleCard = () => {
+const FlashSaleCard = (props) => {
   const [addCart, setAddCart] = useContext(UserContext);
+  const [modalShow, setModalShow] = useState(false);
+
+  // console.log("All data",props);
+
+  const { description, discount, _id, title, price, image} = props.item;
+  const updatedPrice = (price - (price * discount) / 100).toFixed(2);
 
   const cardDetails = {
-    itemID:0,
-    itemPic: dress,
-    itemTitle: "Pink Dress",
-    itemDescription:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima aliquam quisquam aut, error illo natus exercitationem architecto sapiente tempore nihil",
-    oldPrice: 84.8,
-    discount: 15,
+    itemID:_id,
+    itemPic: image,
+    itemTitle: title,
+    itemDescription:description,
+    oldPrice: price,
+    discount: discount,
+    updatedPrice: updatedPrice,
   };
 
-  const [modalShow, setModalShow] = useState(false);
-  const discount = 15;
-  const p = 84.8;
-  const price = p - (p * discount) / 100;
 
   const handleAddCart = (cardDetails) =>{
     console.log("add to cart button click");
@@ -51,7 +53,7 @@ const FlashSaleCard = () => {
           <Card.Img
             variant="top"
             style={{ height: "16rem" }}
-            src={dress}
+            src={image}
             className="cardImg"
           />
           <span>
@@ -71,11 +73,11 @@ const FlashSaleCard = () => {
 
           <p className="discountArea">-{discount}%</p>
         </div>
-        <Card.Body style={{ height: "6rem" }} className="text-left">
-          <Card.Title>Pink Dress</Card.Title>
+        <Card.Body style={{ height: "15rem" }} className="text-left">
+          <Card.Title>{title}</Card.Title>
           <div className="d-flex">
-            <Card.Text className="actualPrice pr-3">${p}</Card.Text>
-            <Card.Text className="updatedPrice">${price}</Card.Text>
+            <Card.Text className="actualPrice pr-3">${price}</Card.Text>
+            <Card.Text className="updatedPrice">${updatedPrice}</Card.Text>
           </div>
         </Card.Body>
       </Card>
