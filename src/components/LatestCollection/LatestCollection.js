@@ -12,6 +12,7 @@ const LatestCollection = () => {
       .then((data) => setProducts(data));
   }, []);
 
+
   return (
     <section className="container">
       {/* title */}
@@ -39,7 +40,7 @@ const LatestCollection = () => {
       {/* Latest Collection Cards */}
       <div className="row cardArea">
         {products.map((product, index) => (
-          <LatestCollectionCard item={product} key={index}></LatestCollectionCard>
+          <LatestCollectionCard item={product} key={index} ></LatestCollectionCard>
         ))}
       </div>
 

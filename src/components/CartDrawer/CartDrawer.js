@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./CartDrawer.css";
 import SmallCartDetail from "../SmallCartDetail/SmallCartDetail";
 import CartPriceDetail from "../CartPriceDetail/CartPriceDetail";
 import EmptyCart from "../EmptyCart/EmptyCart";
 import { useHistory } from "react-router";
+import { CartContext, HandleRemoveCartContext } from "../../App";
+import { useContext } from "react";
+
 
 const CartDrawer = () => {
-  const myArray = localStorage.getItem("cart");
-  const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
-  console.log(fromLocalStorage);
   let history = useHistory();
+  const [addCart, setAddCart] =useContext(CartContext);
 
   return (
     <div
@@ -32,15 +33,18 @@ const CartDrawer = () => {
       </div>
 
       <div class="offcanvas-body">
-        {fromLocalStorage?.length === 0 ? (
+        {addCart?.length === 0 ? (
           // Empty Cart Error
           <EmptyCart></EmptyCart>
         ) : (
           <div>
             {/* Total Cart Details */}
             <div className="cartScroll py-2">
-              {fromLocalStorage?.map((data, index) => (
-                <SmallCartDetail key={index} cartData={data}></SmallCartDetail>
+              {addCart?.map((data, index) => (
+                <SmallCartDetail
+                  key={index}
+                  cartData={data}
+                ></SmallCartDetail>
               ))}
             </div>
             {/* Total Price Details */}

@@ -6,6 +6,7 @@ import LatestCollectionCard from "../../components/LatestCollectionCard/LatestCo
 import jewelleryBack from "../../images/jewellery_back.jpg";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 
+
 const JewelleryPage = () => {
   const bannerDetail = {
     pic: jewelleryBack,
@@ -15,7 +16,7 @@ const JewelleryPage = () => {
 
   // to get data from server
   useEffect(() => {
-    fetch("http://localhost:4000/products")
+    fetch("http://localhost:4000/products/jewellery")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

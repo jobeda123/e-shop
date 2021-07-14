@@ -1,47 +1,56 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import "./ShipmentPaymentInformation.css";
 
-const ShipmentPaymentInformation = () => {
-  const myShipping = JSON.parse(localStorage.getItem("shippingInfo")); // json theke array te convert
-  const myPaymentInfo = JSON.parse(localStorage.getItem("paymentInfo")); // json theke array te convert
-  let { fullName, phone, address, city, postalCode, country }=0;
-  let { cardName, date } = 0;
+const ShipmentPaymentInformation = (props) => {
+  const [shipping, setshipping] = useState({});
+  const [payment, setPayment] = useState({});
 
-  if (myPaymentInfo !== null || myShipping !== null) {
-    const { fullName, phone, address, city, postalCode, country } =
-      myShipping.data;
-    const { cardName, date } = myPaymentInfo.eventPaymentInfo;
-  }
+  console.log(props);
+
+  useEffect(() => {
+    setshipping(props.shippingData.data);
+    setPayment(props.paymentInfoData);
+  }, [props.oId]);
 
   return (
     <div className="shippingPaymentArea">
       <h4>Shipping And Payment Information</h4>
-      { (myShipping !== null && myPaymentInfo !== null)  &&
-        <div>
+      <div>
         <p>
-          Name: <span>{fullName}</span>
+          Name: <span>{shipping.fullName}</span>
         </p>
         <p>
-          Contact: <span>{phone}</span>
+          Contact: <span>{shipping.phone}</span>
         </p>
         <p>
           Address:
-          <span>{" " + address + city + ", " + postalCode}</span>
+          <span>
+            {" " +
+              shipping.address +
+              shipping.city +
+              ", " +
+              shipping.postalCode}
+          </span>
         </p>
         <p>
           Country:
-          <span>{" " + country}</span>
+          <span>{" " + shipping.country}</span>
         </p>
         <p>
-          Order ID: <span>from mongoDB</span>
+          Order ID: <span>{props.oId}</span>
         </p>
         <p>
-          Order Date: <span>{date}</span>
+          Order ID: <span>{props.oId}</span>
         </p>
         <p>
-          Payment Method: <span>{cardName}</span>
+          Order Date: <span>{payment.date}</span>
         </p>
-      </div>}
+        <p>
+          Payment Method: <span>{payment.cardName}</span>
+        </p>
+      </div>
     </div>
   );
 };

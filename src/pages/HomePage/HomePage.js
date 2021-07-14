@@ -8,7 +8,7 @@ import NoName from '../../components/NoName/NoName';
 import Footer from '../../components/Footer/Footer';
 
 
-const HomePage = () => {
+const HomePage = (props) => {
     return (
         <>
             <HeaderNavBar />

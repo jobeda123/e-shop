@@ -3,8 +3,6 @@ import HeaderNavbar from "../../components/HeaderNavBar/HeaderNavBar";
 import Footer from "../../components/Footer/Footer";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 
-
-
 const SignUpPage = () => {
   return (
     <>
@@ -15,7 +13,7 @@ const SignUpPage = () => {
         style={{ marginTop: "50px", marginBottom: "50px" }}
         className="container"
       >
-          <SignUpForm />
+        <SignUpForm />
       </div>
 
       <Footer></Footer>

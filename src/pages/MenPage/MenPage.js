@@ -7,18 +7,23 @@ import menBack from "../../images/men_back.jpg";
 import "./MenPage.css";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 
+
 const MenPage = () => {
   const bannerDetail = {
     pic: menBack,
     title: "Men Collection",
   };
+
   const [products, setProducts] = useState([]);
 
   // to get data from server
   useEffect(() => {
-    fetch("http://localhost:4000/products")
+    fetch("http://localhost:4000/products/men")
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => {
+        console.log(data);
+        setProducts(data);
+      });
   }, []);
 
   return (

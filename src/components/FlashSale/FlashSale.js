@@ -3,7 +3,9 @@ import "./FlashSale.css";
 import FlashSaleCard from "../FlashSaleCard/FlashSaleCard";
 import { useState } from "react";
 
-const FlashSale = () => {
+
+
+const FlashSale = (props) => {
   const [products, setProducts] = useState([]);
 
   // to get data from server
