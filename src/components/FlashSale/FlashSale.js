@@ -12,7 +12,7 @@ const FlashSale = (props) => {
   useEffect(() => {
     fetch("http://localhost:4000/products")
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => setProducts(data)); // discount type products show
   }, []);
 
   return (

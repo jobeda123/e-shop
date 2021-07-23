@@ -22,7 +22,7 @@ const UserDrawer = () => {
   return (
     <div
       class="offcanvas offcanvas-end userCanvasWidth"
-      tabindex="-1"
+      tabIndex="-1"
       id="offcanvasUser"
       aria-labelledby="offcanvasUserLabel"
     >

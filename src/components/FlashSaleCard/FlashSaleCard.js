@@ -1,12 +1,11 @@
-import React from "react";
+import React, {useState, useContext} from "react";
 import { Card } from "react-bootstrap";
 import "./FlashSaleCard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faEye } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 import ProductModal from "../ProductModal/ProductModal";
 import { HandleAddCartContext } from "../../App";
-import { useContext } from "react";
+
 
 
 const FlashSaleCard = (props) => {

@@ -15,7 +15,7 @@ const CartDrawer = () => {
   return (
     <div
       class="offcanvas offcanvas-end cartCanvasWidth"
-      tabindex="-1"
+      tabIndex="-1"
       id="offcanvasCart"
       aria-labelledby="offcanvasCartLabel"
     >

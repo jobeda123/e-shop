@@ -74,7 +74,6 @@ const PaymentCardForm = () => {
       const newPayment = { ...paymentInformation, eventPaymentInfo };
       setPaymentInformation(newPayment);
       localStorage.setItem("paymentInfo", JSON.stringify(newPayment));
-      // localStorage.removeItem('cart');
       alert("Successfully Purchased Your Order!!! Thank You");
       // store all info in the mongodb....
 
@@ -90,9 +89,13 @@ const PaymentCardForm = () => {
       const shippingInfo = JSON.parse(x3); // json theke array te convert
       console.log(shippingInfo);
 
+      const x4 = localStorage.getItem("totalAmount");
+      const totalAmount = JSON.parse(x4); // json theke array te convert
+
       const allInfo = { shippingInfo, ...paymentInfo };
       allInfo.allItemDetail = cartInfo;
       allInfo.email = user.email;
+      allInfo.totalAmount = totalAmount; 
       setSaveToDB(allInfo);
       console.log(allInfo);
 
@@ -103,11 +106,13 @@ const PaymentCardForm = () => {
       })
         .then((res) => res.json())
         .then((id) => {
+          console.log(id, setOrderId(id));
+          console.log(typeof id);
           setOrderId(id);
           const emptyCart = [];
           localStorage.setItem("cart", JSON.stringify(emptyCart));
-          localStorage.removeItem("paymentInfo");
-          localStorage.removeItem("shippingInfo");
+          localStorage.setItem("paymentInfo", JSON.stringify({}));
+          localStorage.setItem("shippingInfo", JSON.stringify({}));
         });
       history.push("/orderSummary");
     }

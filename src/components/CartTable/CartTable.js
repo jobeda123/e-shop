@@ -8,7 +8,7 @@ import { useContext } from "react";
 
 
 const CartTable = (props) => {
-  const [addCart, setAddCart] = useContext(CartContext);
+  const [addCart] = useContext(CartContext);
   const handleRemoveCart = useContext(HandleRemoveCartContext);
 
   const buttonDisplay = props.deleteButton;

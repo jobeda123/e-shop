@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from 'react';
 import "./OrderHistory.css";
 import { Table } from "react-bootstrap";
+import { UserContext } from '../../App';
+import axios from 'axios';
+
 
 const OrderHistory = () => {
+  const [user, setUser] = useContext(UserContext);
+  const [allOrder, setAllOrder] = useState([]);
   const entry = [{
     id: "01254ahhd",
     date: "09-07-2021",
@@ -14,10 +19,20 @@ const OrderHistory = () => {
     total: 1500.98,
     deliveredStatus: "Received",
   }];
-  
+
+
+  useEffect(() => {
+    console.log("user email: " + user.email);
+    axios.get("http://localhost:4000/allOrder?email=" + user.email)
+        .then(res => {
+            console.log("Data in order status: ", res.data);
+            setAllOrder(res.data);
+        })
+}, [user.email]);
+
   return (
     <div className="userAccountDetailArea smTable">
-      <p style={{ fontWeight: "700" }}>My Orders :</p>
+      <p style={{ fontWeight: "700" }}>My Orders :{allOrder.length}</p>
       <Table bordered size="lg">
         <tbody>
           <tr>
@@ -28,27 +43,27 @@ const OrderHistory = () => {
             <td>Action</td>
           </tr>
 
-          {entry.map(data =><tr>
-            <td>{data.id}</td>
-            <td>{data.date}</td>
-            <td>${data.total}</td>
+          {allOrder.map(data =><tr>
+            <td>{data._id}</td>
+            <td>{data.eventPaymentInfo.date}</td>
+            <td>${data.totalAmount}</td>
             <td id="status">
               <div
                 style={{
                   backgroundColor:
-                    data.deliveredStatus !== "Pending" && "lightgreen",
+                    data.shippingInfo.deliveredStatus !== "Pending" && "lightgreen",
                   color:
-                    data.deliveredStatus !== "Pending" && "green",
+                    data.shippingInfo.deliveredStatus !== "Pending" && "green",
                 }}
               >
-                {data.deliveredStatus}
+                {data.shippingInfo.deliveredStatus}
               </div>
             </td>
             <td>
                 {/* ai order er id dore specific order details e niye jabe */}
               <button
                 onClick={() => {
-                  console.log("Details button for specific order: ", data.id);
+                  console.log("Details button for specific order: ", data._id);
                 }}
                 className="blackBtn smTableBtn"
               >

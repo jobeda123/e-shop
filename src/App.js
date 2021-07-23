@@ -21,6 +21,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
+
 export const UserContext = createContext();
 export const CartContext = createContext();
 export const OrderContext = createContext();
@@ -38,9 +39,10 @@ function App() {
     password: "",
   });
 
-  const [orderId, setOrderId] = useState("");
+  const [orderId, setOrderId] = useState();
   const [addCart, setAddCart] = useState([]);
   localStorage.setItem("cart", JSON.stringify(addCart));
+
 
   const handleRemoveCart = (cardDetails) => {
     console.log("remove item from cart drawer........", cardDetails);
@@ -48,6 +50,7 @@ function App() {
     setAddCart(newCart);
   };
 
+  
   const handleAddCart = (cardDetails) => {
     console.log("add to cart button click from latest collection...");
 
@@ -127,22 +130,6 @@ function App() {
                   <Route path="/signUp">
                     <SignUpPage />
                   </Route>
-
-                  {/* <Route path="/womenClothing">
-          <WomenClothingPage />
-        </Route>
-
-        <Route path="/menClothing">
-          <MenClothingPage />
-        </Route> */}
-
-                  {/* <Route path="/jewellery">
-          <JewelleryPage />
-        </Route> */}
-
-                  {/* <Route path="/electronics">
-          <ElectronicsPage />
-        </Route> */}
 
                   <Route path="/">
                     <HomePage />
