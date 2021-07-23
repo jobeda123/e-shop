@@ -14,7 +14,7 @@ const CategoryDrawer = () => {
   return (
     <div
       class="offcanvas offcanvas-start categoryCanvasWidth"
-      tabindex="-1"
+      tabIndex="-1"
       id="offcanvasCategory"
       aria-labelledby="offcanvasCategoryLabel"
     >

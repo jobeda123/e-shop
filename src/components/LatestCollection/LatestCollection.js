@@ -7,10 +7,11 @@ const LatestCollection = () => {
 
   // to get data from server
   useEffect(() => {
-    fetch("http://localhost:4000/products")
+    fetch("http://localhost:4000/products") // show some random products
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
+
 
   return (
     <section className="container">
@@ -39,7 +40,7 @@ const LatestCollection = () => {
       {/* Latest Collection Cards */}
       <div className="row cardArea">
         {products.map((product, index) => (
-          <LatestCollectionCard item={product} key={index}></LatestCollectionCard>
+          <LatestCollectionCard item={product} key={index} ></LatestCollectionCard>
         ))}
       </div>
 

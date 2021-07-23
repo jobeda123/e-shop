@@ -16,100 +16,132 @@ import AddAdminPage from "./pages/AddAdminPage/AddAdminPage";
 import AddProductPage from "./pages/AddProductPage/AddProductPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
-
-
+import firebaseConfig from "./firebase.config";
+import firebase from "firebase/app";
+import "firebase/auth";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 
 export const UserContext = createContext();
+export const CartContext = createContext();
+export const OrderContext = createContext();
+export const HandleAddCartContext = createContext();
+export const HandleRemoveCartContext = createContext();
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 function App() {
+  const [user, setUser] = useState({
+    isSignedIn: false,
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const [orderId, setOrderId] = useState();
   const [addCart, setAddCart] = useState([]);
   localStorage.setItem("cart", JSON.stringify(addCart));
 
+
+  const handleRemoveCart = (cardDetails) => {
+    console.log("remove item from cart drawer........", cardDetails);
+    const newCart = addCart.filter((pd) => pd.itemID !== cardDetails.itemID);
+    setAddCart(newCart);
+  };
+
+  
+  const handleAddCart = (cardDetails) => {
+    console.log("add to cart button click from latest collection...");
+
+    const myArray = localStorage.getItem("cart");
+    const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
+
+    console.log("From local Storage", fromLocalStorage);
+
+    const newCart = [...fromLocalStorage, cardDetails]; // all cart item copy
+    setAddCart(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+
+    // localStorage.removeItem('cart');
+  };
+
   return (
-    <UserContext.Provider value={[addCart, setAddCart]}>
-      <div className="App">
-        <Router>
-          <Switch>
-            <Route path="/home">
-              <HomePage />
-            </Route>
+    <OrderContext.Provider value={[orderId, setOrderId]}>
+    <UserContext.Provider value={[user, setUser]}>
+      <CartContext.Provider value={[addCart, setAddCart]}>
+        <HandleAddCartContext.Provider value={handleAddCart}>
+          <HandleRemoveCartContext.Provider value={handleRemoveCart}>
+            <div className="App">
+              <Router>
+                <Switch>
+                  <Route path="/home">
+                    <HomePage />
+                  </Route>
 
-            <Route path="/category/women">
-              <WomenPage />
-            </Route>
+                  <Route path="/category/women">
+                    <WomenPage />
+                  </Route>
 
-            <Route path="/category/men">
-              <MenPage />
-            </Route>
+                  <Route path="/category/men">
+                    <MenPage />
+                  </Route>
 
-            <Route path="/category/jewellery">
-              <JewelleryPage />
-            </Route>
+                  <Route path="/category/jewellery">
+                    <JewelleryPage />
+                  </Route>
 
-            <Route path="/category/electronics">
-              <ElectronicsPage />
-            </Route>
+                  <Route path="/category/electronics">
+                    <ElectronicsPage />
+                  </Route>
 
-            <Route path="/shoppingCart">
-              <ShoppingCartPage />
-            </Route>
+                  <Route path="/shoppingCart">
+                    <ShoppingCartPage />
+                  </Route>
 
-            <Route path="/shipping">
-              <ShippingPage />
-            </Route>
+                  <PrivateRoute path="/shipping">
+                    <ShippingPage />
+                  </PrivateRoute>
 
-            <Route path="/orderSummary">
-              <OrderSummaryPage />
-            </Route>
+                  <PrivateRoute path="/orderSummary">
+                    <OrderSummaryPage />
+                  </PrivateRoute>
 
-            <Route path="/dashboard/profile">
-              <ProfilePage />
-            </Route>
+                  <PrivateRoute path="/dashboard/profile">
+                    <ProfilePage />
+                  </PrivateRoute>
 
-            <Route path="/dashboard/orderHistory">
-              <OrderHistoryPage />
-            </Route>
+                  <PrivateRoute path="/dashboard/orderHistory">
+                    <OrderHistoryPage />
+                  </PrivateRoute>
 
-            <Route path="/dashboard/addAdmin">
-              <AddAdminPage />
-            </Route>
+                  <PrivateRoute path="/dashboard/addAdmin">
+                    <AddAdminPage />
+                  </PrivateRoute>
 
-            <Route path="/dashboard/addProduct">
-              <AddProductPage />
-            </Route>
+                  <PrivateRoute path="/dashboard/addProduct">
+                    <AddProductPage />
+                  </PrivateRoute>
 
-            <Route path="/login">
-              <LoginPage />
-            </Route>
+                  <Route path="/login">
+                    <LoginPage />
+                  </Route>
 
-            <Route path="/signUp">
-              <SignUpPage />
-            </Route>
+                  <Route path="/signUp">
+                    <SignUpPage />
+                  </Route>
 
-            {/* <Route path="/womenClothing">
-          <WomenClothingPage />
-        </Route>
-
-        <Route path="/menClothing">
-          <MenClothingPage />
-        </Route> */}
-
-            {/* <Route path="/jewellery">
-          <JewelleryPage />
-        </Route> */}
-
-            {/* <Route path="/electronics">
-          <ElectronicsPage />
-        </Route> */}
-
-            <Route path="/">
-              <HomePage />
-            </Route>
-          </Switch>
-        </Router>
-      </div>
+                  <Route path="/">
+                    <HomePage />
+                  </Route>
+                </Switch>
+              </Router>
+            </div>
+          </HandleRemoveCartContext.Provider>
+        </HandleAddCartContext.Provider>
+      </CartContext.Provider>
     </UserContext.Provider>
+    </OrderContext.Provider>
   );
 }
 

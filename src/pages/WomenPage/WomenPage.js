@@ -6,7 +6,7 @@ import LatestCollectionCard from "../../components/LatestCollectionCard/LatestCo
 import womenBack from "../../images/women_back.jpg";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 
-const WomenPage = () => {
+const WomenPage = (props) => {
   const bannerDetail = {
     pic: womenBack,
     title: "Women Collection",
@@ -16,7 +16,7 @@ const WomenPage = () => {
 
   // to get data from server
   useEffect(() => {
-    fetch("http://localhost:4000/products")
+    fetch("http://localhost:4000/products/women")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

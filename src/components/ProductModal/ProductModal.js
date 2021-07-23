@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Col, Container, Modal, Row } from "react-bootstrap";
 import "./ProductModal.css";
-import { UserContext } from "../../App";
+import { CartContext } from "../../App";
 
 export default function ProductModal(props) {
-  const [addCart, setAddCart] = useContext(UserContext);
+  const [addCart, setAddCart] = useContext(CartContext);
   const { itemTitle, itemDescription, oldPrice, itemPic, discount } =
     props.data;
 

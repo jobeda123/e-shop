@@ -8,6 +8,8 @@ import TotalAmountSummaryCard from "../../components/TotalAmountSummaryCard/Tota
 import ShippingAddress from "../../components/ShippingAddress/ShippingAddress";
 import PaymentMethod from "../../components/PaymentMethod/PaymentMethod";
 
+
+
 const ShippingPage = () => {
   const bannerDetail = {
     pic: shippingBack,

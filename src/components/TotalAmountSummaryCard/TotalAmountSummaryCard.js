@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./TotalAmountSummaryCard.css";
 
 
+
 const TotalAmountSummaryCard = (props) => {
 
   const displayButton = props.displayButton;
@@ -26,34 +27,43 @@ const TotalAmountSummaryCard = (props) => {
     }
 
     totalPrice = deliveryCharge + subTotalPrice;
+    
+    localStorage.setItem('totalAmount',JSON.stringify(totalPrice));
   }
 
-  
   return (
-    <div className="totalAmountSummaryCardArea" style={{height:displayHeight}}>
-      <h4>Total Amount Summary</h4>
-      <div className="d-flex justify-content-between">
-        <p>Shipping Charge:</p>
-        <p>${deliveryCharge.toFixed(2)}</p>
-      </div>
-      <div className="d-flex justify-content-between">
-        <p>Sub Total Price:</p>
-        <p>${subTotalPrice.toFixed(2)}</p>
-      </div>
-      <div className="d-flex justify-content-between ">
-        <h6>Total Price:</h6>
-        <h6>${totalPrice.toFixed(2)}</h6>
-      </div>
+    <>
+      {fromLocalStorage && (
+        <div
+          className="totalAmountSummaryCardArea"
+          style={{ height: displayHeight }}
+        >
+          <h4>Total Amount Summary</h4>
+          <div className="d-flex justify-content-between">
+            <p>Shipping Charge:</p>
+            <p>${deliveryCharge.toFixed(2)}</p>
+          </div>
+          <div className="d-flex justify-content-between">
+            <p>Sub Total Price:</p>
+            <p>${subTotalPrice.toFixed(2)}</p>
+          </div>
+          <div className="d-flex justify-content-between ">
+            <h6>Total Price:</h6>
+            <h6>${totalPrice.toFixed(2)}</h6>
+          </div>
 
-      <button style={{display:displayButton}}
-        onClick={() => {
-          console.log("Check out button click");
-          history.push("/shipping");
-        }}
-      >
-        PROCEED TO CHECKOUT
-      </button>
-    </div>
+          <button
+            style={{ display: displayButton }}
+            onClick={() => {
+              console.log("Check out button click");
+              history.push("/shipping");
+            }}
+          >
+            PROCEED TO CHECKOUT
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 

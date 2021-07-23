@@ -1,19 +1,16 @@
-import React, { useContext } from "react";
+import React, {useState, useContext} from "react";
 import { Card } from "react-bootstrap";
 import "./FlashSaleCard.css";
-import dress from "../../images/women_category.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faEye } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 import ProductModal from "../ProductModal/ProductModal";
-import { UserContext } from "../../App";
+import { HandleAddCartContext } from "../../App";
+
 
 
 const FlashSaleCard = (props) => {
-  const [addCart, setAddCart] = useContext(UserContext);
   const [modalShow, setModalShow] = useState(false);
-
-  // console.log("All data",props);
+  const handleAddCart = useContext(HandleAddCartContext);
 
   const { description, discount, _id, title, price, image} = props.item;
   const updatedPrice = (price - (price * discount) / 100).toFixed(2);
@@ -28,23 +25,6 @@ const FlashSaleCard = (props) => {
     updatedPrice: updatedPrice,
   };
 
-
-  const handleAddCart = (cardDetails) =>{
-    console.log("add to cart button click");
-
-    const myArray = localStorage.getItem('cart');
-    const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
-
-    //console.log("From local Storage", fromLocalStorage);
-    const newCart = [...fromLocalStorage, cardDetails];   // all cart item copy
-
-    setAddCart(newCart);
-    localStorage.setItem('cart',JSON.stringify(newCart));
-    
-    // localStorage.removeItem('cart');
-  }
-
-  // console.log("total cart item: ", addCart);
 
   return (
     <>

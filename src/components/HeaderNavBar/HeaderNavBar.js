@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./HeaderNavBar.css";
 import { useContext } from "react";
-import { UserContext } from "../../App";
+import { CartContext } from "../../App";
 import CategoryDrawer from "../CategoryDrawer/CategoryDrawer";
 import CartDrawer from "../CartDrawer/CartDrawer";
 import UserDrawer from "../UserDrawer/UserDrawer";
@@ -17,7 +17,7 @@ import { useHistory } from "react-router";
 const Header = () => {
   let history = useHistory();
   // for get cart item from local storage
-  const [addCart, setAddCart] = useContext(UserContext);
+  const [addCart, setAddCart] = useContext(CartContext);
   const myArray = localStorage.getItem("cart");
   const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
 

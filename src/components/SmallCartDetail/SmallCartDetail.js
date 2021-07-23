@@ -2,11 +2,13 @@ import React from "react";
 import "./SmallCartDetail.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { HandleRemoveCartContext } from "../../App";
+import { useContext } from "react";
 
 
 const SmallCartDetail = (props) => {
-  console.log(props);
-  
+  const handleRemoveCart = useContext(HandleRemoveCartContext);
+
   const { itemTitle, itemPic, oldPrice, discount } = props.cartData;
   const newPrice = oldPrice - (oldPrice * discount) / 100;
 
@@ -26,7 +28,10 @@ const SmallCartDetail = (props) => {
         ) : (
           <p className="smallNormalPrice">${oldPrice}</p>
         )}
-        <button className="smallRemoveBtn">
+        <button
+          className="smallRemoveBtn"
+          onClick={() => handleRemoveCart(props.cartData)}
+        >
           <FontAwesomeIcon icon={faTrashAlt} size="1x" />
         </button>
       </div>

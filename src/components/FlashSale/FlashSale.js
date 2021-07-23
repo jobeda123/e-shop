@@ -3,14 +3,16 @@ import "./FlashSale.css";
 import FlashSaleCard from "../FlashSaleCard/FlashSaleCard";
 import { useState } from "react";
 
-const FlashSale = () => {
+
+
+const FlashSale = (props) => {
   const [products, setProducts] = useState([]);
 
   // to get data from server
   useEffect(() => {
     fetch("http://localhost:4000/products")
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => setProducts(data)); // discount type products show
   }, []);
 
   return (

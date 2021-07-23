@@ -1,10 +1,13 @@
 import React from "react";
 import "./Category.css";
+import { useHistory } from "react-router-dom";
 import women_category from "../../images/women_category.jpg";
 import men_category from "../../images/men_category.jpg";
 import jewellery_category from "../../images/jewelley_category.jpg";
 import electronics_category from "../../images/electronics_category.jpg";
-import { useHistory } from "react-router-dom";
+
+
+
 
 const Category = () => {
   let history = useHistory();
@@ -20,7 +23,6 @@ const Category = () => {
         <h3 id="sectionName">Shop By Category</h3>
         
       </div>
-
 
 
       {/* picture by category */}
@@ -57,7 +59,6 @@ const Category = () => {
               </button>
             </div>
 
-            {/* <div className="mt-4"> */}
             <div className="">
               <img src={electronics_category} alt="" width="100%" />
               <button

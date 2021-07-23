@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext, useState, useEffect} from "react";
 import Footer from "../../components/Footer/Footer";
-import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import TotalAmountSummaryCard from "../../components/TotalAmountSummaryCard/TotalAmountSummaryCard";
 import CartTable from "../../components/CartTable/CartTable";
 import ShippingPaymentInformation from "../../components/ShipmentPaymentInformation/ShipmentPaymentInformation";
 import { useHistory } from "react-router-dom";
+import { OrderContext } from "./../../App";
+import axios from "axios";
+
+
 
 const OrderSummaryPage = () => {
+  const [orderId, setOrderId] = useContext(OrderContext);
+  const [allInfoFromDB, setAllInfoFromDB] = useState({});
+
+
   let history = useHistory();
   const btnStyle = {
     border: "none",
@@ -21,35 +28,47 @@ const OrderSummaryPage = () => {
 
   const removeAll = () => {
     console.log("back to home");
-    localStorage.removeItem("cart");
-    localStorage.removeItem("paymentInfo");
-    localStorage.removeItem("shippingInfo");
     history.push("/home");
   };
 
+  // useEffect(() => {
+  //   console.log("Sending order id from summary page", orderId);
+  //   axios.get("http://localhost:4000/order?id=" + orderId)
+  //   .then(res => {
+  //     setAllInfoFromDB(res.data);
+  //   });
+  // }, [orderId]);
+
+  
   return (
     <>
       {/* Shopping cart detail page, total amount summary, shipment information */}
 
-      <div className="container my-4">
+      {orderId && <div className="container my-4">
         <button style={btnStyle} onClick={() => removeAll()}>
           Back To Home
         </button>
+        {/* <div>{orderId}</div> */}
+
         <div className="row d-flex">
           <div className="col-md-6 mr-5 mb-5 mt-3">
             <ShippingPaymentInformation />
           </div>
-          <div className="col-md-4  mt-3">
+
+          <div className="col-md-4 mt-3">
             <TotalAmountSummaryCard
               displayButton={"none"}
               displayHeight={"200px"}
             ></TotalAmountSummaryCard>
           </div>
+
         </div>
+
         <div>
           <CartTable deleteButton={"none"}></CartTable>
         </div>
-      </div>
+
+      </div>}
       <Footer />
     </>
   );

@@ -1,48 +1,61 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./ShipmentPaymentInformation.css";
+import axios from "axios";
+import { OrderContext } from "./../../App";
+
+
 
 const ShipmentPaymentInformation = () => {
-  const myShipping = JSON.parse(localStorage.getItem("shippingInfo")); // json theke array te convert
-  const myPaymentInfo = JSON.parse(localStorage.getItem("paymentInfo")); // json theke array te convert
-  let { fullName, phone, address, city, postalCode, country }=0;
-  let { cardName, date } = 0;
+  const [info, setInfo] = useState({});
+  const [orderId] = useContext(OrderContext);
+  
 
-  if (myPaymentInfo !== null || myShipping !== null) {
-    const { fullName, phone, address, city, postalCode, country } =
-      myShipping.data;
-    const { cardName, date } = myPaymentInfo.eventPaymentInfo;
-  }
+  useEffect(() => {
+    console.log("Sending order id from summary page", orderId);
+    axios.get("http://localhost:4000/order?id=" + orderId)
+    .then((res) => {
+      console.log(res.data);
+      setInfo(res.data);
+    })
+    .catch((err) => {console.log(err)});
+    
+  }, [orderId]);
+  
 
   return (
-    <div className="shippingPaymentArea">
-      <h4>Shipping And Payment Information</h4>
-      { (myShipping !== null && myPaymentInfo !== null)  &&
-        <div>
-        <p>
-          Name: <span>{fullName}</span>
-        </p>
-        <p>
-          Contact: <span>{phone}</span>
-        </p>
-        <p>
-          Address:
-          <span>{" " + address + city + ", " + postalCode}</span>
-        </p>
-        <p>
-          Country:
-          <span>{" " + country}</span>
-        </p>
-        <p>
-          Order ID: <span>from mongoDB</span>
-        </p>
-        <p>
-          Order Date: <span>{date}</span>
-        </p>
-        <p>
-          Payment Method: <span>{cardName}</span>
-        </p>
-      </div>}
-    </div>
+    <>
+      {orderId && (info!== undefined) &&(
+        <h1>Yes connect {info.shippingInfo.fullName}</h1>
+        // <div className="shippingPaymentArea">
+        //   <h4>Shipping And Payment Information</h4>
+        //   <div>
+        //     <p>
+        //       Name: <span>{info.shippingInfo.fullName}</span>
+        //     </p>
+        //     <p>
+        //       Contact: <span>{info.shippingInfo.phone}</span>
+        //     </p>
+        //     <p>
+        //       Address:
+        //       <span> {info.shippingInfo.address + " " +info.shippingInfo.city +", " + info.shippingInfo.postalCode}</span>
+        //     </p>
+        //     <p>
+        //       Country:
+        //       <span> {info.shippingInfo.country}</span>
+        //     </p>
+        //     <p>
+        //       Order ID: <span>{orderId}</span>
+        //     </p>
+        //     <p>
+        //       Order Date: <span>{info.eventPaymentInfo.date}</span>
+        //     </p>
+        //     <p>
+        //       Payment Method: <span>{info.eventPaymentInfo.cardName}</span>
+        //     </p>
+        //   </div>
+        // </div>
+      )}
+    </>
   );
 };
 

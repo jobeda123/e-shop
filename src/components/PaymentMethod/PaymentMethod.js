@@ -8,7 +8,7 @@ const PaymentMethod = (props) => {
       <div>
         <p>Choose one of the following method</p>
         <div>
-          <input type="radio" value="visa" name="paymentMethod" checked/> Visa Card or PayPal
+          <input type="radio" value="visa" name="paymentMethod"/> Visa Card or PayPal
         </div>
       </div>
     </div>

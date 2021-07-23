@@ -10,7 +10,9 @@ import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCcVisa } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
-
+import { UserContext } from "../../App";
+import { useContext } from "react";
+import { OrderContext } from "./../../App";
 
 const useOptions = () => {
   const fontSize = "15px";
@@ -39,6 +41,9 @@ const useOptions = () => {
 
 const PaymentCardForm = () => {
   const [paymentInformation, setPaymentInformation] = useState({});
+  const [saveToDB, setSaveToDB] = useState({});
+  const [user, setUser] = useContext(UserContext);
+  const [orderId, setOrderId] = useContext(OrderContext);
 
   let history = useHistory();
   const stripe = useStripe();
@@ -60,18 +65,55 @@ const PaymentCardForm = () => {
     });
     console.log("[PaymentMethod]", payload);
 
-    
     const eventPaymentInfo = {
       cardName: payload.paymentMethod.card.brand,
       paymentId: payload.paymentMethod.id,
       date: new Date(),
-    }
+    };
     if (payload.error === undefined) {
-      const newPayment = {...paymentInformation, eventPaymentInfo}
+      const newPayment = { ...paymentInformation, eventPaymentInfo };
       setPaymentInformation(newPayment);
-      localStorage.setItem('paymentInfo',JSON.stringify(newPayment));
-      // localStorage.removeItem('cart');
+      localStorage.setItem("paymentInfo", JSON.stringify(newPayment));
       alert("Successfully Purchased Your Order!!! Thank You");
+      // store all info in the mongodb....
+
+      const x1 = localStorage.getItem("cart");
+      const cartInfo = JSON.parse(x1); // json theke array te convert
+      console.log(cartInfo);
+
+      const x2 = localStorage.getItem("paymentInfo");
+      const paymentInfo = JSON.parse(x2); // json theke array te convert
+      console.log(paymentInfo);
+
+      const x3 = localStorage.getItem("shippingInfo");
+      const shippingInfo = JSON.parse(x3); // json theke array te convert
+      console.log(shippingInfo);
+
+      const x4 = localStorage.getItem("totalAmount");
+      const totalAmount = JSON.parse(x4); // json theke array te convert
+
+      const allInfo = { shippingInfo, ...paymentInfo };
+      allInfo.allItemDetail = cartInfo;
+      allInfo.email = user.email;
+      allInfo.totalAmount = totalAmount; 
+      setSaveToDB(allInfo);
+      console.log(allInfo);
+
+      fetch("http://localhost:4000/addOrder", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(allInfo),
+      })
+        .then((res) => res.json())
+        .then((id) => {
+          console.log(id, setOrderId(id));
+          console.log(typeof id);
+          setOrderId(id);
+          const emptyCart = [];
+          localStorage.setItem("cart", JSON.stringify(emptyCart));
+          localStorage.setItem("paymentInfo", JSON.stringify({}));
+          localStorage.setItem("shippingInfo", JSON.stringify({}));
+        });
       history.push("/orderSummary");
     }
   };
@@ -110,7 +152,7 @@ const PaymentCardForm = () => {
       <br />
       <button type="submit" className="payBtn mt-3" disabled={!stripe}>
         {/* <FontAwesomeIcon className="payIcon" size="2x" icon={faCcVisa} /> */}
-         CONFIRM PURCHASED
+        CONFIRM PURCHASED
       </button>
     </form>
   );

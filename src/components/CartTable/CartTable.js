@@ -3,15 +3,15 @@ import { Table } from "react-bootstrap";
 import "./CartTable.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { CartContext, HandleRemoveCartContext} from "../../App";
+import { useContext } from "react";
 
 
 const CartTable = (props) => {
-  const buttonDisplay = props.deleteButton;
-  console.log(buttonDisplay);
-  const myArray = localStorage.getItem("cart");
-  const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
-  // console.log(fromLocalStorage);
+  const [addCart] = useContext(CartContext);
+  const handleRemoveCart = useContext(HandleRemoveCartContext);
 
+  const buttonDisplay = props.deleteButton;
 
   return (
     <div className="my-5 d-flex">
@@ -26,7 +26,7 @@ const CartTable = (props) => {
         </thead>
 
         <tbody>
-          {fromLocalStorage.map((data) => (
+          {addCart?.map((data) => (
             <tr className="cartTable">
               <td>
                 <div>
@@ -53,7 +53,7 @@ const CartTable = (props) => {
                   <button
                     style={{ backgroundColor: "white", display: buttonDisplay}}
                     className="smallRemoveBtn"
-                    onClick={() =>console.log("remove button clicked")}
+                    onClick={() => handleRemoveCart(data)}
                   >
                     <FontAwesomeIcon icon={faTrashAlt} size="1x" />
                   </button>

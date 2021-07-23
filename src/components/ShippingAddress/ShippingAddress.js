@@ -17,7 +17,16 @@ const ShippingAddress = () => {
   const onSubmit = (data) => {
     setModalShow(true);
     console.log("Data-----", data);
-    const newShipping = {...shippingInformation, data}
+    const newShipping = {...shippingInformation};
+
+    newShipping.fullName = data.fullName;
+    newShipping.address = data.address;
+    newShipping.city = data.city;
+    newShipping.country = data.country;
+    newShipping.phone = data.phone;
+    newShipping.postalCode = data.postalCode;
+    newShipping.deliveredStatus = "Pending";
+
     setShippingInformation(newShipping);
     localStorage.setItem('shippingInfo',JSON.stringify(newShipping));
   };

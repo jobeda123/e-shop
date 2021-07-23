@@ -6,6 +6,7 @@ import LatestCollectionCard from "../../components/LatestCollectionCard/LatestCo
 import electronicsBack from "../../images/electronics_back.jpg";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 
+
 const ElectronicsPage = () => {
   const bannerDetail = {
     pic: electronicsBack,
@@ -16,7 +17,7 @@ const ElectronicsPage = () => {
 
   // to get data from server
   useEffect(() => {
-    fetch("http://localhost:4000/products")
+    fetch("http://localhost:4000/products/electronics")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./UserAccountDetail.css";
 import { Table } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { UserContext } from "../../App";
 
 
 const UserAccountDetail = () => {
-  const userName = "Jobeda Nur";
-  const userEmail = "jobeda@gmail.com";
+  const [ user, setUser] = useContext(UserContext);
   const [changePassword, setChangePassword] = useState("none");
+  console.log(user);
 
   const {
     register,
@@ -31,7 +32,7 @@ const UserAccountDetail = () => {
     <div className="userAccountDetailArea">
       <div>
         <p style={{fontSize:"20px"}}>
-          Hello, <span style={{ fontWeight: "700" }}>{userName}</span>
+          Hello, <span style={{ fontWeight: "700" }}>{user.name}</span>
         </p>
       </div>
 
@@ -43,11 +44,11 @@ const UserAccountDetail = () => {
             <tbody>
               <tr>
                 <td>Name: </td>
-                <td>{userName}</td>
+                <td>{user.name}</td>
               </tr>
               <tr>
                 <td>E-mail: </td>
-                <td>{userEmail}</td>
+                <td>{user.email}</td>
               </tr>
             </tbody>
           </Table>

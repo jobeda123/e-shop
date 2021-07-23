@@ -1,11 +1,13 @@
 import React from "react";
 import "./Dashboard.css";
 import { useHistory } from "react-router";
-
+import { UserContext } from "../../App";
+import { useContext } from "react";
 
 const Dashboard = ({ whichBtn }) => {
   const whichRole = "admin";
   let history = useHistory();
+  const [user, setUser] = useContext(UserContext);
 
   return (
     <div className="container">
@@ -65,10 +67,7 @@ const Dashboard = ({ whichBtn }) => {
         )}
 
         <button
-          onClick={() => {
-            console.log("Log out....");
-            history.push("/dashboard/logout");
-          }}
+          onClick={() => setUser({})}
         >
           Log Out
         </button>
