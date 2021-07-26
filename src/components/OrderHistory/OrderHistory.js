@@ -3,16 +3,14 @@ import "./OrderHistory.css";
 import { Table } from "react-bootstrap";
 import { UserContext } from "../../App";
 import axios from "axios";
-import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-
 
 const OrderHistory = () => {
   const [user, setUser] = useContext(UserContext);
   const [allOrder, setAllOrder] = useState([]);
   const [statusChange, setStatusChange] = useState(false);
-  let history = useHistory();
-
+  const [pending, setPending] = useState(0);
+  const [delivery, setDelivery] = useState(0);
 
   useEffect(() => {
     console.log("user email: " + user.email);
@@ -27,6 +25,16 @@ const OrderHistory = () => {
         .then((res) => {
           console.log("Data in order status for admin: ", res.data);
           setAllOrder(res.data);
+
+          const resultPending = res.data.filter(
+            (order) => order.deliveredStatus === "Pending"
+          );
+          setPending(resultPending.length);
+
+          const resultDelivery = res.data.filter(
+            (order) => order.deliveredStatus === "Delivered"
+          );
+          setDelivery(resultDelivery.length);
         });
     }
 
@@ -65,31 +73,64 @@ const OrderHistory = () => {
   };
 
   return (
-    <div className="userAccountDetailArea smTable">
-      <p style={{ fontWeight: "700" }}>My Orders : {allOrder.length}</p>
-      <Table bordered size="lg">
-        <tbody>
-          <tr>
-            <td>ID </td>
-            <td>Date</td>
-            <td>Total Amount</td>
-            <td>Delivery Status</td>
-            <td>Action</td>
-          </tr>
+    <>
+      {user.role === "admin" &&
+        <div className="d-flex orderStatusCard">
+          <div className="col-md-4" style={{ backgroundColor: "blue" }}>
+            <h4>Total Orders: {allOrder.length}</h4>
+          </div>
+          <div className="col-md-4" style={{ backgroundColor: "green" }}>
+            <h4>Total Delivery: {delivery}</h4>
+          </div>
+          <div className="col-md-4" style={{ backgroundColor: "red" }}>
+            <h4>Total Pending: {pending}</h4>
+          </div>
+        </div>
+      }
 
-          {allOrder.map((data) => (
+      <div className="userAccountDetailArea smTable">
+        <p style={{ fontWeight: "700" }}>My Orders:</p>
+        <Table bordered size="lg">
+          <tbody>
             <tr>
-              <td>{data._id}</td>
-              <td>{data.eventPaymentInfo.date}</td>
-              <td>${data.totalAmount}</td>
+              <td>ID </td>
+              <td>Date</td>
+              <td>Total Amount</td>
+              <td>Delivery Status</td>
+              <td>Action</td>
+            </tr>
 
-              <td id="status">
-                {user.role === "admin" ? (
-                  <div>
-                    {/* {data.shippingInfo.deliveredStatus} */}
-                    <select
-                      value={data.deliveredStatus}
-                      onChange={(e) => handleOption(e, data._id)}
+            {allOrder.map((data) => (
+              <tr>
+                <td>{data._id}</td>
+                <td>{data.eventPaymentInfo.date}</td>
+                <td>${data.totalAmount}</td>
+
+                <td id="status">
+                  {user.role === "admin" ? (
+                    <div>
+                      {/* {data.shippingInfo.deliveredStatus} */}
+                      <select
+                        value={data.deliveredStatus}
+                        onChange={(e) => handleOption(e, data._id)}
+                        style={{
+                          backgroundColor:
+                            data.deliveredStatus !== "Pending"
+                              ? "lightgreen"
+                              : "rgb(243, 142, 153)",
+                          color:
+                            data.deliveredStatus !== "Pending"
+                              ? "green"
+                              : "red",
+                          border: "0px",
+                        }}
+                      >
+                        <option value="Pending">Pending</option>
+                        <option value="Delivered">Delivered</option>
+                      </select>
+                    </div>
+                  ) : (
+                    <div
                       style={{
                         backgroundColor:
                           data.deliveredStatus !== "Pending"
@@ -100,48 +141,33 @@ const OrderHistory = () => {
                         border: "0px",
                       }}
                     >
-                      <option value="Pending">Pending</option>
-                      <option value="Delivered">Delivered</option>
-                    </select>
-                  </div>
-                ) : (
-                  <div
-                    style={{
-                      backgroundColor:
-                        data.deliveredStatus !== "Pending"
-                          ? "lightgreen"
-                          : "rgb(243, 142, 153)",
-                      color:
-                        data.deliveredStatus !== "Pending" ? "green" : "red",
-                      border: "0px",
-                    }}
-                  >
-                    {data.deliveredStatus}
-                  </div>
-                )}
-              </td>
+                      {data.deliveredStatus}
+                    </div>
+                  )}
+                </td>
 
-              <td>
-                {/* ai order er id dore specific order details e niye jabe */}
-                <Link to={`/orderDetail/${data._id}`}>
-                  <button
-                    onClick={() => {
-                      console.log(
-                        "Details button for specific order: ",
-                        data._id
-                      );
-                    }}
-                    className="blackBtn smTableBtn"
-                  >
-                    Details
-                  </button>
-                </Link>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </div>
+                <td>
+                  {/* ai order er id dore specific order details e niye jabe */}
+                  <Link to={`/orderDetail/${data._id}`}>
+                    <button
+                      onClick={() => {
+                        console.log(
+                          "Details button for specific order: ",
+                          data._id
+                        );
+                      }}
+                      className="blackBtn smTableBtn"
+                    >
+                      Details
+                    </button>
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
+    </>
   );
 };
 

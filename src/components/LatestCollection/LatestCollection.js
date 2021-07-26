@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
 import LatestCollectionCard from "../LatestCollectionCard/LatestCollectionCard";
+import { useHistory } from "react-router";
 
 
 const LatestCollection = () => {
   const [products, setProducts] = useState([]);
+  let history = useHistory();
 
   // to get data from server
   useEffect(() => {
-    fetch("http://localhost:4000/products") // show some random products
+    fetch("http://localhost:4000/products")
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => {
+        const result = data.filter(product =>product.discount===0);
+        console.log(result.slice(0,4));
+        setProducts(result.slice(0,4))
+      });
   }, []);
 
 
@@ -40,13 +46,19 @@ const LatestCollection = () => {
       {/* Latest Collection Cards */}
       <div className="row cardArea">
         {products.map((product, index) => (
-          <LatestCollectionCard item={product} key={index} ></LatestCollectionCard>
+          <LatestCollectionCard
+            item={product}
+            key={index}
+          ></LatestCollectionCard>
         ))}
       </div>
 
       <button
         className="loadBtn mt-4"
-        onClick={() => console.log("Load More Button Is Clicking....")}
+        onClick={() => {
+          console.log("Load More Button Is Clicking....");
+          history.push("/latestCollection");
+        }}
       >
         Load More
       </button>

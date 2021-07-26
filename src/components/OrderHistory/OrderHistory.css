@@ -12,6 +12,13 @@
     font-weight: 600;
 }
 
+.orderStatusCard div{
+    border-radius: 10px;
+    margin-right: 15px;
+    padding:20px;
+    color:white;
+    margin-bottom: 30px;
+}
 
 @media (max-width: 576px) {
     .smTable {
