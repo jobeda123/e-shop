@@ -1,13 +1,30 @@
 import React from "react";
 import "./Dashboard.css";
 import { useHistory } from "react-router";
-import { UserContext } from "../../App";
-import { useContext } from "react";
+import { CartContext, UserContext } from "../../App";
+import { useContext, useEffect, useState } from "react";
+import { OrderContext } from './../../App';
+
 
 const Dashboard = ({ whichBtn }) => {
-  const whichRole = "admin";
   let history = useHistory();
   const [user, setUser] = useContext(UserContext);
+  const [addCart, setAddCart] = useContext(CartContext);
+  const [orderId, setOrderId] = useContext(OrderContext);
+
+  
+  
+  const handleLogout = () => {
+    localStorage.removeItem('cart');
+    localStorage.removeItem('shippingInfo');
+    localStorage.removeItem('paymentInfo');
+    localStorage.removeItem('totalAmount');
+    console.log("log out button click");
+    setAddCart([]);
+    setUser({});
+    setOrderId("");
+    history.push("/login");
+  };
 
   return (
     <div className="container">
@@ -35,10 +52,10 @@ const Dashboard = ({ whichBtn }) => {
             history.push("/dashboard/OrderHistory");
           }}
         >
-          {whichRole !== "admin" ? "Order History" : "Order Status"}
+          Order History
         </button>
 
-        {whichRole === "admin" && (
+        {user.role === "admin" && (
           <>
             <button
               style={{
@@ -67,7 +84,7 @@ const Dashboard = ({ whichBtn }) => {
         )}
 
         <button
-          onClick={() => setUser({})}
+          onClick={() => handleLogout()}
         >
           Log Out
         </button>

@@ -20,6 +20,7 @@ import firebaseConfig from "./firebase.config";
 import firebase from "firebase/app";
 import "firebase/auth";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import SingleOrderDetailPage from './pages/SingleOrderDetailPage/SingleOrderDetailPage';
 
 
 export const UserContext = createContext();
@@ -95,9 +96,9 @@ function App() {
                     <ElectronicsPage />
                   </Route>
 
-                  <Route path="/shoppingCart">
+                  <PrivateRoute path="/shoppingCart">
                     <ShoppingCartPage />
-                  </Route>
+                  </PrivateRoute>
 
                   <PrivateRoute path="/shipping">
                     <ShippingPage />
@@ -105,6 +106,10 @@ function App() {
 
                   <PrivateRoute path="/orderSummary">
                     <OrderSummaryPage />
+                  </PrivateRoute>
+
+                  <PrivateRoute path="/orderDetail/:id">
+                    <SingleOrderDetailPage />
                   </PrivateRoute>
 
                   <PrivateRoute path="/dashboard/profile">

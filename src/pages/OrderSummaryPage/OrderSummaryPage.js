@@ -5,16 +5,13 @@ import CartTable from "../../components/CartTable/CartTable";
 import ShippingPaymentInformation from "../../components/ShipmentPaymentInformation/ShipmentPaymentInformation";
 import { useHistory } from "react-router-dom";
 import { OrderContext } from "./../../App";
-import axios from "axios";
-
 
 
 const OrderSummaryPage = () => {
   const [orderId, setOrderId] = useContext(OrderContext);
-  const [allInfoFromDB, setAllInfoFromDB] = useState({});
-
-
   let history = useHistory();
+
+
   const btnStyle = {
     border: "none",
     backgroundColor: "black",
@@ -31,20 +28,13 @@ const OrderSummaryPage = () => {
     history.push("/home");
   };
 
-  // useEffect(() => {
-  //   console.log("Sending order id from summary page", orderId);
-  //   axios.get("http://localhost:4000/order?id=" + orderId)
-  //   .then(res => {
-  //     setAllInfoFromDB(res.data);
-  //   });
-  // }, [orderId]);
-
   
   return (
     <>
       {/* Shopping cart detail page, total amount summary, shipment information */}
 
       {orderId && <div className="container my-4">
+        <h1>{orderId}</h1>
         <button style={btnStyle} onClick={() => removeAll()}>
           Back To Home
         </button>
@@ -52,7 +42,7 @@ const OrderSummaryPage = () => {
 
         <div className="row d-flex">
           <div className="col-md-6 mr-5 mb-5 mt-3">
-            <ShippingPaymentInformation />
+            <ShippingPaymentInformation id={orderId}/>
           </div>
 
           <div className="col-md-4 mt-3">

@@ -25,7 +25,6 @@ const ShippingAddress = () => {
     newShipping.country = data.country;
     newShipping.phone = data.phone;
     newShipping.postalCode = data.postalCode;
-    newShipping.deliveredStatus = "Pending";
 
     setShippingInformation(newShipping);
     localStorage.setItem('shippingInfo',JSON.stringify(newShipping));

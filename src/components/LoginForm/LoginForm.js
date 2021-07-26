@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import "./LoginForm.css";
 import firebase from "firebase/app";
 import "firebase/auth";
 import { UserContext } from "../../App";
 import { Link, useHistory, useLocation } from "react-router-dom";
-
+import axios from "axios";
 
 
 const LoginForm = () => {
@@ -13,6 +13,16 @@ const LoginForm = () => {
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
   const [user, setUser] = useContext(UserContext);
+  const [allAdmin, setAllAdmin] = useState([]);
+
+
+  useEffect(() => {
+    axios.get("http://localhost:4000/allAdmin").then((res) => {
+      console.log("all admin: ", res.data);
+      setAllAdmin(res.data);
+    });
+  }, []);
+
 
   const handleBlur = (e) => {
     console.log(e.target.value);
@@ -33,7 +43,15 @@ const LoginForm = () => {
           newUserInfo.error = "";
           newUserInfo.isSignedIn= true
           newUserInfo.success = true;
+
+          // check whether the user is admin or not
+          const checkAdmin = allAdmin.find(
+            (singleAdmin) => singleAdmin.adminEmail === user.email
+          );
+          checkAdmin!== undefined? newUserInfo.role="admin": newUserInfo.role="user";
+  
           setUser(newUserInfo);
+          storeToken();
           history.replace(from);
         })
         .catch(function (error) {
@@ -46,6 +64,16 @@ const LoginForm = () => {
 
     e.preventDefault();
   };
+
+  const storeToken = ()=>{
+    firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
+    .then(function(idToken) {
+      console.log("ID Token",idToken);
+      sessionStorage.setItem("token",idToken);
+    }).catch(function(error) {
+      // Handle error
+    });
+  }
 
   return (
     <div className="loginArea">

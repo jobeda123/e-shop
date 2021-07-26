@@ -1,39 +1,58 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import "./TotalAmountSummaryCard.css";
 
 
-
 const TotalAmountSummaryCard = (props) => {
-
+  let history = useHistory();
+  const deliveryCharge = 7;
   const displayButton = props.displayButton;
   const displayHeight = props.displayHeight;
-  let history = useHistory();
+
   const myArray = localStorage.getItem("cart");
   const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
 
-  const deliveryCharge = 7;
-  let totalPrice = 0;
+  const [price, setPrice] = useState({});
+  const [cart, setCart] = useState([]);
+  const [loading, setLoading] = useState(true);
+  console.log(cart.length);
+  console.log(price);
 
-  // calculate total price
-  let subTotalPrice = 0;
-  for (let i = 0; i < fromLocalStorage.length; i++) {
-    if (fromLocalStorage[i].discount !== 0) {
-      subTotalPrice +=
-        fromLocalStorage[i].oldPrice -
-        (fromLocalStorage[i].oldPrice * fromLocalStorage[i].discount) / 100;
-    } else {
-      subTotalPrice += fromLocalStorage[i].oldPrice;
+
+  useEffect(() => {
+    const newItem = [...fromLocalStorage];
+    console.log(newItem);
+    setCart(newItem);
+    let subTotalPrice = 0;
+    let totalPrice = 0;
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].discount !== 0) {
+        subTotalPrice +=
+        cart[i].oldPrice -
+          (cart[i].oldPrice * cart[i].discount) / 100;
+      } else {
+        subTotalPrice += cart[i].oldPrice;
+      }
+
+      totalPrice = deliveryCharge + subTotalPrice;
     }
 
-    totalPrice = deliveryCharge + subTotalPrice;
-    
-    localStorage.setItem('totalAmount',JSON.stringify(totalPrice));
-  }
+    localStorage.setItem("totalAmount", JSON.stringify(totalPrice));
+    localStorage.setItem("subAmount", JSON.stringify(subTotalPrice));
+    const newPrice = {
+      totalAmount: totalPrice,
+      subAmount: subTotalPrice,
+    };
+    setPrice(newPrice);
+    setLoading(false);
+  }, [loading]);
+
+
 
   return (
     <>
-      {fromLocalStorage && (
+      {loading===false ? (
+
         <div
           className="totalAmountSummaryCardArea"
           style={{ height: displayHeight }}
@@ -41,15 +60,15 @@ const TotalAmountSummaryCard = (props) => {
           <h4>Total Amount Summary</h4>
           <div className="d-flex justify-content-between">
             <p>Shipping Charge:</p>
-            <p>${deliveryCharge.toFixed(2)}</p>
+            <p>${deliveryCharge}</p>
           </div>
           <div className="d-flex justify-content-between">
             <p>Sub Total Price:</p>
-            <p>${subTotalPrice.toFixed(2)}</p>
+            <p>${price.subAmount}</p>
           </div>
           <div className="d-flex justify-content-between ">
             <h6>Total Price:</h6>
-            <h6>${totalPrice.toFixed(2)}</h6>
+            <h6>${price.totalAmount}</h6>
           </div>
 
           <button
@@ -62,7 +81,10 @@ const TotalAmountSummaryCard = (props) => {
             PROCEED TO CHECKOUT
           </button>
         </div>
-      )}
+      )
+    :
+    <h1>Loading</h1>
+    }
     </>
   );
 };
