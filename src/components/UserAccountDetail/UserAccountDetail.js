@@ -3,35 +3,63 @@ import "./UserAccountDetail.css";
 import { Table } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../App";
-
+import firebase from "firebase/app";
+import "firebase/auth";
 
 const UserAccountDetail = () => {
-  const [ user, setUser] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
   const [changePassword, setChangePassword] = useState("none");
-  console.log(user);
+  console.log("Current User Info--->>", user);
 
-  const {
-    register,
-    handleSubmit,
-  } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+
+
+  const reauthenticate = (currentPassword) => {
+    var user = firebase.auth().currentUser;
+    var cred = firebase.auth.EmailAuthProvider.credential(
+      user.email,
+      currentPassword
+    );
+    return user.reauthenticateWithCredential(cred);
+  };
 
   const onSubmit = (data) => {
     console.log("Password-----", data);
-    if(data.newPassword === data.confirmPassword){
-        // update password in the mongoDB
-        alert("Your Password Has Been Updated Successfully");
-        setChangePassword("none");
-    }
-    else{
-        alert("Not Match");
-        // field will be reset....
-    }
+    const currentPass = data.currentPassword;
+
+    reauthenticate(currentPass)
+      .then(() => {
+        var user = firebase.auth().currentUser;
+        if (data.newPassword === data.confirmPassword) {
+          const newPassword = data.newPassword;
+          user
+            .updatePassword(newPassword)
+            .then(() => {
+              alert("Your Password Has Been Updated Successfully");
+              reset();
+              setChangePassword("none");
+            })
+            .catch((error) => {
+              alert(error.message);
+              reset();
+            });
+        }
+         else {
+          alert("New Password and Confirmed Password Are Not Matched With Each Other");
+          reset();
+        }
+      })
+
+      .catch((error) => {
+        alert(error.message);
+        reset();
+      });
   };
 
   return (
     <div className="userAccountDetailArea">
       <div>
-        <p style={{fontSize:"20px"}}>
+        <p style={{ fontSize: "20px" }}>
           Hello, <span style={{ fontWeight: "700" }}>{user.name}</span>
         </p>
       </div>
@@ -70,16 +98,24 @@ const UserAccountDetail = () => {
       <div style={{ display: changePassword }} className="passwordUpdate">
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
+            type="password"
+            {...register("currentPassword", { required: true })}
+            placeholder="Current Password"
+          />
+
+          <input
+            type="password"
             {...register("newPassword", { required: true })}
             placeholder="New Password"
           />
-          
+
           <br />
           <input
+            type="password"
             {...register("confirmPassword", { required: true })}
             placeholder="Confirm Password"
           />
-          
+
           <br />
           <button
             className="blackBtn ml-2 my-3"

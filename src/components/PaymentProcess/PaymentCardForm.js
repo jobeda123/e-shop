@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useContext } from "react";
 import {
   useStripe,
   useElements,
@@ -11,8 +11,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCcVisa } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import { UserContext } from "../../App";
-import { useContext } from "react";
 import { OrderContext } from "./../../App";
+import { useParams, Link } from "react-router-dom";
 
 const useOptions = () => {
   const fontSize = "15px";
@@ -45,6 +45,7 @@ const PaymentCardForm = () => {
   const [user, setUser] = useContext(UserContext);
   const [orderId, setOrderId] = useContext(OrderContext);
 
+  console.log(orderId);
   let history = useHistory();
   const stripe = useStripe();
   const elements = useElements();
@@ -74,7 +75,6 @@ const PaymentCardForm = () => {
       const newPayment = { ...paymentInformation, eventPaymentInfo };
       setPaymentInformation(newPayment);
       localStorage.setItem("paymentInfo", JSON.stringify(newPayment));
-      alert("Successfully Purchased Your Order!!! Thank You");
       // store all info in the mongodb....
 
       const x1 = localStorage.getItem("cart");
@@ -92,10 +92,14 @@ const PaymentCardForm = () => {
       const x4 = localStorage.getItem("totalAmount");
       const totalAmount = JSON.parse(x4); // json theke array te convert
 
+      const x5 = localStorage.getItem("subAmount");
+      const subAmount = JSON.parse(x5); // json theke array te convert
+
       const allInfo = { shippingInfo, ...paymentInfo };
       allInfo.allItemDetail = cartInfo;
       allInfo.email = user.email;
-      allInfo.totalAmount = totalAmount; 
+      allInfo.deliveredStatus = "Pending";
+      allInfo.totalAmount = totalAmount.toFixed(2);
       setSaveToDB(allInfo);
       console.log(allInfo);
 
@@ -106,14 +110,18 @@ const PaymentCardForm = () => {
       })
         .then((res) => res.json())
         .then((id) => {
-          console.log(id, setOrderId(id));
-          console.log(typeof id);
-          setOrderId(id);
-          const emptyCart = [];
-          localStorage.setItem("cart", JSON.stringify(emptyCart));
-          localStorage.setItem("paymentInfo", JSON.stringify({}));
-          localStorage.setItem("shippingInfo", JSON.stringify({}));
+          if (id) {
+            console.log(id, setOrderId(id));
+            setOrderId(id);
+            const emptyCart = [];
+            localStorage.setItem("cart", JSON.stringify(emptyCart));
+            localStorage.setItem("paymentInfo", JSON.stringify({}));
+            localStorage.setItem("shippingInfo", JSON.stringify({}));
+            localStorage.setItem("totalAmount", JSON.stringify(""));
+            localStorage.setItem("subAmount", JSON.stringify(""));
+          }
         });
+      alert("Successfully Purchased Your Order!!! Thank You");
       history.push("/orderSummary");
     }
   };

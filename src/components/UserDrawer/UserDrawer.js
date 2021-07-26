@@ -6,18 +6,41 @@ import {
   faUserPlus,
   faSignOutAlt,
   faAddressCard,
-  faColumns,
 } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router";
 import { useContext } from "react";
 import { CartContext, UserContext } from "../../App";
+import { OrderContext } from "./../../App";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const UserDrawer = () => {
   const [user, setUser] = useContext(UserContext);
   const [addCart, setAddCart] = useContext(CartContext);
+  const [orderId, setOrderId] = useContext(OrderContext);
+  const [logout, setLogout] = useState(false);
 
   let history = useHistory();
   console.log("User info in the userDrawer", user);
+
+  useEffect(() => {
+    if (user?.isSignedIn === true) {
+      setLogout(true);
+    }
+  });
+
+  const handleLogout = () => {
+    localStorage.removeItem("cart");
+    localStorage.removeItem("shippingInfo");
+    localStorage.removeItem("paymentInfo");
+    localStorage.removeItem("totalAmount");
+    console.log("log out button click");
+    setLogout(false);
+    setAddCart([]);
+    setUser({});
+    setOrderId("");
+    history.push("/login");
+  };
 
   return (
     <div
@@ -40,7 +63,7 @@ const UserDrawer = () => {
       </div>
       <div class="offcanvas-body">
         <div style={{ borderTop: "1px solid gray", paddingTop: "10px" }}>
-          {user.isSignedIn === false ? (
+          {logout === false ? (
             <div>
               {/* Log in button */}
               <button
@@ -90,21 +113,12 @@ const UserDrawer = () => {
               </button>
 
               {/* Log out button */}
-              <button
-                className="userIcon d-block d-flex justify-content-start"
-                onClick={() => console.log("log out icon click")}
-              >
+              <button className="userIcon d-block d-flex justify-content-start">
                 <FontAwesomeIcon
                   className="d-flex align-self-center"
                   icon={faSignOutAlt}
                 />
-                <span
-                  className="px-2"
-                  onClick={() => {
-                    setAddCart([]);
-                    setUser({});
-                  }}
-                >
+                <span className="px-2" onClick={() => handleLogout()}>
                   Log Out
                 </span>
               </button>

@@ -1,45 +1,73 @@
 import React from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import allData from '../../fakeData/fakeData';
+import allData from "../../fakeData/fakeData";
+import axios from "axios";
 
 const AddNewProduct = () => {
-  const { register, handleSubmit } = useForm();
-  console.log(allData);
+  const { register, handleSubmit, reset } = useForm();
+  // console.log(allData);
+  const [productData, setProductData] = useState({});
+  const [description, setDescription] = useState("");
+  const [imageURL, setImageURL] = useState(null);
 
-  const onSubmit = (data) => {
+  const onSubmit = (data, e) => {
     console.log("product info-----", data);
-    alert("New Product Added Successfully....");
-    // store data in the mongoDB
-    // form input will be empty
+    if (imageURL !== null) {
+      const newProduct = {
+        title: data.productTitle,
+        description: description,
+        price: data.productPrice,
+        discount: data.productDiscount,
+        category: data.productCategory,
+        image: imageURL,
+      };
+      console.log(description);
+      setProductData(newProduct);
 
-    fetch('http://localhost:4000/addProduct', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(allData)
-    })
+      console.log(newProduct);
+      // store data in the mongoDB
+      // form input will be empty
+
+      fetch("http://localhost:4000/addProduct", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(productData),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result) {
+            alert("New Product Added Successfully....");
+            reset();
+            e.preventDefault();
+          }
+        });
+    }
   };
 
-  const handleImageUpload = event => {
+  const handleImageUpload = (event) => {
     console.log("image uploading..........", event.target.files);
-    // const imageData = new FormData();
-    // imageData.set('key', '651cd2d556176d579184fce70268ab3a');
-    // imageData.append('image', event.target.files[0]);
+    const imageData = new FormData();
+    imageData.set("key", "ff829b8e1a8b41470dbcf696361a1530");
+    imageData.append("image", event.target.files[0]);
 
+    axios
+      .post("https://api.imgbb.com/1/upload", imageData)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          setImageURL(response.data.data.display_url);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-    // axios.post('https://api.imgbb.com/1/upload',
-    //     imageData)
-    //     .then(function (response) {
-    //         console.log(response);
-    //         setImageURL(response.data.data.display_url);
-    //     })
-    //     .catch(function (error) {
-    //         console.log(error);
-    //     });
-}
-
-const handleProductDescription=(event) =>{
+  const handleProductDescription = (event) => {
     console.log("text area..........", event.target.value);
-  }
+    setDescription(event.target.value);
+  };
 
   return (
     <div className="userAccountDetailArea">
@@ -52,7 +80,10 @@ const handleProductDescription=(event) =>{
             placeholder="Title"
           />
           <br />
-          <textarea placeholder="Description" onBlur={handleProductDescription} />
+          <textarea
+            placeholder="Description"
+            onBlur={handleProductDescription}
+          />
           <br />
           <input
             {...register("productPrice", { required: true })}
@@ -74,7 +105,7 @@ const handleProductDescription=(event) =>{
           <button
             className="blackBtn ml-2 my-3"
             onClick={() => {
-              console.log("Add new admin button submit click.....");
+              console.log("Add new product button submit click.....");
             }}
           >
             Submit
