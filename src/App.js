@@ -21,6 +21,8 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import SingleOrderDetailPage from './pages/SingleOrderDetailPage/SingleOrderDetailPage';
+import FlashSalePage from './pages/FlashSalePage/FlashSalePage';
+import LatestCollectionPage from "./pages/LatestCollectionPage/LatestCollectionPage";
 
 
 export const UserContext = createContext();
@@ -94,6 +96,14 @@ function App() {
 
                   <Route path="/category/electronics">
                     <ElectronicsPage />
+                  </Route>
+
+                  <Route path="/flashSale">
+                    <FlashSalePage />
+                  </Route>
+
+                  <Route path="/latestCollection">
+                    <LatestCollectionPage />
                   </Route>
 
                   <PrivateRoute path="/shoppingCart">

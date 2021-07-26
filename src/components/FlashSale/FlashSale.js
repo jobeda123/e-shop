@@ -2,17 +2,23 @@ import React, { useEffect } from "react";
 import "./FlashSale.css";
 import FlashSaleCard from "../FlashSaleCard/FlashSaleCard";
 import { useState } from "react";
-
+import { useHistory } from "react-router";
 
 
 const FlashSale = (props) => {
   const [products, setProducts] = useState([]);
+  let history = useHistory();
 
   // to get data from server
   useEffect(() => {
     fetch("http://localhost:4000/products")
       .then((res) => res.json())
-      .then((data) => setProducts(data)); // discount type products show
+      .then((data) => {
+        console.log(data);
+        const result = data.filter(product =>product.discount>0);
+        console.log(result.slice(0,4));
+        setProducts(result.slice(0,4))
+      });
   }, []);
 
   return (
@@ -39,7 +45,6 @@ const FlashSale = (props) => {
         <p>Offer sale in this month</p>
       </div>
 
-
       {/* Flash Sale Cards */}
       <div className="row cardArea">
         {products.map((product, index) => (
@@ -49,7 +54,10 @@ const FlashSale = (props) => {
 
       <button
         className="loadBtn mt-4"
-        onClick={() => console.log("Load More Button Is Clicking....")}
+        onClick={() => {
+          console.log("Load More Button Is Clicking....");
+          history.push("/flashSale")
+        }}
       >
         Load More
       </button>
