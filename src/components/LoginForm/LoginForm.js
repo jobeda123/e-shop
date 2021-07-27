@@ -7,7 +7,6 @@ import { UserContext } from "../../App";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import axios from "axios";
 
-
 const LoginForm = () => {
   let history = useHistory();
   let location = useLocation();
@@ -15,17 +14,17 @@ const LoginForm = () => {
   const [user, setUser] = useContext(UserContext);
   const [allAdmin, setAllAdmin] = useState([]);
 
-
   useEffect(() => {
-    axios.get("https://boiling-headland-36176.herokuapp.com/allAdmin").then((res) => {
-      console.log("all admin: ", res.data);
-      setAllAdmin(res.data);
-    });
+    axios
+      .get("https://boiling-headland-36176.herokuapp.com/allAdmin")
+      .then((res) => {
+        console.log("all admin: ", res.data);
+        setAllAdmin(res.data);
+      });
   }, []);
 
-
   const handleBlur = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     const newUserInfo = { ...user };
     newUserInfo[e.target.name] = e.target.value;
     setUser(newUserInfo);
@@ -37,19 +36,21 @@ const LoginForm = () => {
         .auth()
         .signInWithEmailAndPassword(user.email, user.password)
         .then((res) => {
-          console.log("sign in user info", res.user);
+          // console.log("sign in user info", res.user);
           const newUserInfo = { ...user };
-          newUserInfo.name= res.user.displayName;
+          newUserInfo.name = res.user.displayName;
           newUserInfo.error = "";
-          newUserInfo.isSignedIn= true
+          newUserInfo.isSignedIn = true;
           newUserInfo.success = true;
 
           // check whether the user is admin or not
           const checkAdmin = allAdmin.find(
             (singleAdmin) => singleAdmin.adminEmail === user.email
           );
-          checkAdmin!== undefined? newUserInfo.role="admin": newUserInfo.role="user";
-  
+          checkAdmin !== undefined
+            ? (newUserInfo.role = "admin")
+            : (newUserInfo.role = "user");
+
           setUser(newUserInfo);
           storeToken();
           history.replace(from);
@@ -59,21 +60,26 @@ const LoginForm = () => {
           newUserInfo.error = error.message;
           newUserInfo.success = false;
           setUser(newUserInfo);
+          alert(error.message);
+          document.getElementById("pass").value="";
+          document.getElementById("email").value="";
         });
     }
-
     e.preventDefault();
   };
 
-  const storeToken = ()=>{
-    firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
-    .then(function(idToken) {
-      console.log("ID Token",idToken);
-      window.sessionStorage.setItem("token",idToken);
-    }).catch(function(error) {
-      // Handle error
-    });
-  }
+  const storeToken = () => {
+    firebase
+      .auth()
+      .currentUser.getIdToken(/* forceRefresh */ true)
+      .then(function (idToken) {
+        // console.log("ID Token",idToken);
+        window.sessionStorage.setItem("token", idToken);
+      })
+      .catch(function (error) {
+        // Handle error
+      });
+  };
 
   return (
     <div className="loginArea">
@@ -86,6 +92,7 @@ const LoginForm = () => {
         <div>
           <form onSubmit={handleSubmit}>
             <input
+              id="email"
               type="text"
               name="email"
               onBlur={handleBlur}
@@ -94,6 +101,7 @@ const LoginForm = () => {
             />
             <br />
             <input
+              id="pass"
               type="password"
               name="password"
               onBlur={handleBlur}
@@ -113,7 +121,6 @@ const LoginForm = () => {
               Don't Have An Account?<Link to="/signUp"> Creat An Account</Link>
             </p>
           </form>
-          {user.error && <p style={{ color: "red" }}>{user.error}</p>}
         </div>
       </div>
     </div>

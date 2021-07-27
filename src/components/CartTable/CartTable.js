@@ -12,11 +12,11 @@ const CartTable = (props) => {
   const handleRemoveCart = useContext(HandleRemoveCartContext);
   const buttonDisplay = props.deleteButton;
   const [cart, setCart] = useState([]);
-  console.log(cart.length);
+  // console.log(cart.length);
 
 
   useEffect(() => {
-    console.log("Sending order id from single order detail", props.id);
+    // console.log("Sending order id from single order detail", props.id);
     axios
       .get("https://boiling-headland-36176.herokuapp.com/order?id=" + props.id, {
         headers: {
@@ -24,12 +24,12 @@ const CartTable = (props) => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         const newItem=[...res.data.allItemDetail]
         setCart(newItem);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   }, [props.id]);
 

@@ -8,7 +8,7 @@ import { OrderContext } from "./../../App";
 
 
 const OrderSummaryPage = () => {
-  const [orderId, setOrderId] = useContext(OrderContext);
+  const [orderId] = useContext(OrderContext);
   let history = useHistory();
 
 
@@ -24,7 +24,7 @@ const OrderSummaryPage = () => {
   };
 
   const removeAll = () => {
-    console.log("back to home");
+    // console.log("back to home");
     history.push("/home");
   };
 
@@ -34,7 +34,6 @@ const OrderSummaryPage = () => {
       {/* Shopping cart detail page, total amount summary, shipment information */}
 
       {orderId && <div className="container my-4">
-        <h1>{orderId}</h1>
         <button style={btnStyle} onClick={() => removeAll()}>
           Back To Home
         </button>

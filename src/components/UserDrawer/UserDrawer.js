@@ -21,20 +21,21 @@ const UserDrawer = () => {
   const [logout, setLogout] = useState(false);
 
   let history = useHistory();
-  console.log("User info in the userDrawer", user);
+  // console.log("User info in the userDrawer", user);
 
   useEffect(() => {
     if (user?.isSignedIn === true) {
       setLogout(true);
     }
-  });
+  },[]);
 
   const handleLogout = () => {
-    localStorage.removeItem("cart");
-    localStorage.removeItem("shippingInfo");
-    localStorage.removeItem("paymentInfo");
-    localStorage.removeItem("totalAmount");
-    console.log("log out button click");
+    window.localStorage.removeItem("cart");
+    window.localStorage.removeItem("shippingInfo");
+    window.localStorage.removeItem("paymentInfo");
+    window.localStorage.removeItem("totalAmount");
+    window.localStorage.removeItem("subAmount");
+    // console.log("log out button click");
     setLogout(false);
     setAddCart([]);
     setUser({});

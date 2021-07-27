@@ -3,26 +3,26 @@ import firebase from "firebase/app";
 import { useState } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 
-
 const SignUpForm = () => {
   let history = useHistory();
   let location = useLocation();
-  let { from } = location.state || {from: { pathname: "/login" } } ||{ from: { pathname: "/" } };
+  let { from } = location.state || { from: { pathname: "/login" } } || {
+      from: { pathname: "/" },
+    };
   const [addUser, setAddUser] = useState({});
 
-
   const handleBlur = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     let isFieldValid = true;
     if (e.target.name === "email") {
       isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
-      console.log(isFieldValid);
+      // console.log(isFieldValid);
     }
     if (e.target.name === "password") {
       const isPasswordValid = e.target.value.length > 6;
       const passwordHasNumber = /\d{1}/.test(e.target.value);
       isFieldValid = isPasswordValid && passwordHasNumber;
-      console.log(isFieldValid);
+      // console.log(isFieldValid);
     }
     if (e.target.name === "userName") {
       const newUserInfo = { ...addUser };
@@ -47,7 +47,7 @@ const SignUpForm = () => {
           newUserInfo.success = true;
           setAddUser(newUserInfo);
           updateUserName(addUser.userName);
-          console.log(newUserInfo)
+          // console.log(newUserInfo)
           history.replace(from);
         })
         .catch((error) => {
@@ -61,18 +61,21 @@ const SignUpForm = () => {
     e.preventDefault();
   };
 
-  const updateUserName = name =>{
+  const updateUserName = (name) => {
     const user = firebase.auth().currentUser;
-    console.log("user name", name);
+    // console.log("user name", name);
 
-    user.updateProfile({
-      displayName: name
-    }).then(function() {
-      console.log('user name updated successfully')
-    }).catch(function(error) {
-      console.log(error)
-    });
-  }
+    user
+      .updateProfile({
+        displayName: name,
+      })
+      .then(() => {
+        // console.log('user name updated successfully')
+      })
+      .catch((error) => {
+        // console.log(error)
+      });
+  };
 
   return (
     <div className="loginArea">

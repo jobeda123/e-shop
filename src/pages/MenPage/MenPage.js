@@ -6,6 +6,7 @@ import LatestCollectionCard from "../../components/LatestCollectionCard/LatestCo
 import menBack from "../../images/men_back.jpg";
 import "./MenPage.css";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 
 const MenPage = () => {
@@ -34,7 +35,8 @@ const MenPage = () => {
 
       {/* Product Cards */}
 
-      <div
+
+     {products.length!==0? <div
         style={{ marginTop: "50px", marginBottom: "100px" }}
         className="container row d-flex justify-content-center cardArea"
       >
@@ -47,7 +49,8 @@ const MenPage = () => {
             ></LatestCollectionCard>
           ))}
         </div>
-      </div>
+      </div> : <LoadingSpinner />}
+
       <Footer></Footer>
     </>
   );
