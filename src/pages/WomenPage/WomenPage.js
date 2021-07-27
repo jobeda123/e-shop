@@ -6,6 +6,8 @@ import LatestCollectionCard from "../../components/LatestCollectionCard/LatestCo
 import womenBack from "../../images/women_back.jpg";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 
+
+
 const WomenPage = (props) => {
   const bannerDetail = {
     pic: womenBack,
