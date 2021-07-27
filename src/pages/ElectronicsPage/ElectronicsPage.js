@@ -5,6 +5,7 @@ import CategoryBanner from "../../components/CategoryBanner/CategoryBanner";
 import LatestCollectionCard from "../../components/LatestCollectionCard/LatestCollectionCard";
 import electronicsBack from "../../images/electronics_back.jpg";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 
 const ElectronicsPage = () => {
@@ -29,7 +30,7 @@ const ElectronicsPage = () => {
       <LocationTrack data={"Electronics"}></LocationTrack>
       {/* Product Cards */}
 
-      <div
+     {products.length!==0? <div
         style={{ marginTop: "50px", marginBottom: "100px" }}
         className="container row d-flex justify-content-center cardArea"
       >
@@ -42,7 +43,8 @@ const ElectronicsPage = () => {
             ></LatestCollectionCard>
           ))}
         </div>
-      </div>
+      </div>: <LoadingSpinner />}
+
       <Footer></Footer>
     </>
   );

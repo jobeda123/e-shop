@@ -18,7 +18,6 @@ import { useState } from "react";
 const Header = () => {
   let history = useHistory();
   // for get cart item from local storage
-  const [addCart, setAddCart] = useContext(CartContext);
   const myArray = window.localStorage.getItem("cart");
   const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
   const [searchText, setSearchText] = useState("");

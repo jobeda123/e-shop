@@ -53,7 +53,7 @@ const CartDrawer = () => {
             <button
               className="cartViewBtn my-2 col-md-12"
               onClick={() => {
-                console.log("View Button");
+                // console.log("View Button");
                 history.push("/shoppingCart");
               }}
             >
@@ -62,7 +62,7 @@ const CartDrawer = () => {
             <button
               className="cartCheckOutBtn mb-2 col-md-12"
               onClick={() => {
-                console.log("Check out Button");
+                // console.log("Check out Button");
                 history.push("/shipping");
               }}
             >

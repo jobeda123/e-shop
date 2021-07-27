@@ -5,6 +5,7 @@ import CategoryBanner from "../../components/CategoryBanner/CategoryBanner";
 import LatestCollectionCard from "../../components/LatestCollectionCard/LatestCollectionCard";
 import womenBack from "../../images/women_back.jpg";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 
 
@@ -30,20 +31,24 @@ const WomenPage = (props) => {
       <LocationTrack data={"Women"}></LocationTrack>
       {/* Product Cards */}
 
-      <div
-        style={{ marginTop: "50px", marginBottom: "100px" }}
-        className="container row d-flex justify-content-center cardArea"
-      >
-        {/* Latest Collection Cards */}
-        <div className="row cardArea">
-          {products.map((product, index) => (
-            <LatestCollectionCard
-              item={product}
-              key={index}
-            ></LatestCollectionCard>
-          ))}
+      {products.length !== 0 ? (
+        <div
+          style={{ marginTop: "50px", marginBottom: "100px" }}
+          className="container row d-flex justify-content-center cardArea"
+        >
+          {/* Latest Collection Cards */}
+          <div className="row cardArea">
+            {products.map((product, index) => (
+              <LatestCollectionCard
+                item={product}
+                key={index}
+              ></LatestCollectionCard>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <LoadingSpinner />
+      )}
       <Footer></Footer>
     </>
   );

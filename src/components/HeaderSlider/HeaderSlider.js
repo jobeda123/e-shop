@@ -4,9 +4,11 @@ import "./HeaderSlider.css";
 import slider_1 from "../../images/slider_1.jpg";
 import slider_2 from "../../images/slider_2.jpg";
 import slider_3 from "../../images/slider_3.jpg";
-
+import { useHistory } from "react-router-dom";
 
 const HeaderSlider = () => {
+  let history = useHistory();
+
   return (
     <section>
       <div
@@ -45,7 +47,9 @@ const HeaderSlider = () => {
               <h5>New Arrival Collection</h5>
 
               <div>
-                <button>Explore Now</button>
+                <button onClick={() => history.push("/latestCollection")}>
+                  Explore Now
+                </button>
               </div>
             </div>
           </div>
@@ -56,7 +60,9 @@ const HeaderSlider = () => {
               <p>NEW SEASON</p>
               <h5>Lookbook Collection</h5>
               <div>
-                <button>Explore Now</button>
+                <button onClick={() => history.push("/latestCollection")}>
+                  Explore Now
+                </button>
               </div>
             </div>
           </div>
@@ -67,11 +73,15 @@ const HeaderSlider = () => {
               <p>SUMMER SALE</p>
               <h5>Save up to 70%</h5>
               <div>
-                <button class="sliderBtnLeft">Explore Now</button>
+                <button
+                  onClick={() => history.push("/flashSale")}
+                  class="sliderBtnLeft"
+                >
+                  Explore Now
+                </button>
               </div>
             </div>
           </div>
-          
         </div>
 
         <button

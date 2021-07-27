@@ -83,13 +83,20 @@ function App() {
                     <HomePage />
                   </Route>
 
-                  <Route path="/category/women">
-                    <WomenPage />
+                  <Route path="/login">
+                    <LoginPage />
                   </Route>
 
+                  <Route path="/signUp">
+                    <SignUpPage />
+                  </Route>
 
                   <Route path="/productBySearch/:searchText">
                     <SearchPage />
+                  </Route>
+
+                  <Route path="/category/women">
+                    <WomenPage />
                   </Route>
 
                   <Route path="/category/men">
@@ -144,20 +151,14 @@ function App() {
                     <AddProductPage />
                   </PrivateRoute>
 
-                  <Route path="/login">
-                    <LoginPage />
-                  </Route>
-
-                  <Route path="/signUp">
-                    <SignUpPage />
-                  </Route>
-
                   <Route path="/">
                     <HomePage />
                   </Route>
+                  
                 </Switch>
               </Router>
             </div>
+            
           </HandleRemoveCartContext.Provider>
         </HandleAddCartContext.Provider>
       </CartContext.Provider>

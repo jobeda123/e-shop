@@ -5,9 +5,7 @@ import CategoryBanner from "../../components/CategoryBanner/CategoryBanner";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import menBack from "../../images/men_back.jpg";
 import Dashboard from "../../components/Dashboard/Dashboard";
-import UserAccountDetail from "../../components/UserAccountDetail/UserAccountDetail";
 import OrderHistory from "../../components/OrderHistory/OrderHistory";
-
 
 
 const OrderHistoryPage = () => {
@@ -43,7 +41,7 @@ const OrderHistoryPage = () => {
             className="col-md-8 col-sm-12"
             // style={{ border: "1px solid black" }}
           >
-            <OrderHistory></OrderHistory>
+            <OrderHistory />
           </div>
         </div>
       </div>

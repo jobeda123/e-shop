@@ -8,7 +8,6 @@ import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import { useParams } from "react-router-dom";
 import productNotFound from "../../images/productNotFound.png";
 
-
 const SearchPage = () => {
   let { searchText } = useParams();
   const [searchProduct, setSearchProduct] = useState([]);
@@ -21,21 +20,21 @@ const SearchPage = () => {
 
   useEffect(() => {
     console.log("Search Word: ", searchText);
-    fetch(`https://boiling-headland-36176.herokuapp.com/productBySearch/${searchText}`)
+    fetch(
+      `https://boiling-headland-36176.herokuapp.com/productBySearch/${searchText}`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         if (data.length > 0) {
           setSearchProduct(data);
           setEmpty(false);
-        }
-        else{
-            setEmpty(true);
+        } else {
+          setEmpty(true);
         }
       })
       .catch((err) => console.log(err));
   }, [searchText]);
-
 
   return (
     <>
@@ -60,7 +59,7 @@ const SearchPage = () => {
           </div>
         </div>
       ) : (
-        <div className="my-5" style={{ paddingBottom:"0px"}}>
+        <div className="my-5" style={{ paddingBottom: "0px" }}>
           <img src={productNotFound} alt="" />
         </div>
       )}

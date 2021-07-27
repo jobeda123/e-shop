@@ -6,6 +6,7 @@ import LatestCollectionCard from "../../components/LatestCollectionCard/LatestCo
 import jewelleryBack from "../../images/jewellery_back.jpg";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import FlashSaleCard from "../../components/FlashSaleCard/FlashSaleCard";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const FlashSalePage = () => {
   const bannerDetail = {
@@ -14,16 +15,15 @@ const FlashSalePage = () => {
   };
   const [products, setProducts] = useState([]);
 
-
   // to get data from server
   useEffect(() => {
     fetch("https://boiling-headland-36176.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        const result = data.filter(product =>product.discount>0);
-        console.log(result);
-        setProducts(result)
+        // console.log(data);
+        const result = data.filter((product) => product.discount > 0);
+        // console.log(result);
+        setProducts(result);
       });
   }, []);
 
@@ -34,17 +34,22 @@ const FlashSalePage = () => {
       <LocationTrack data={"Flash Sale"}></LocationTrack>
       {/* Product Cards */}
 
-      <div
-        style={{ marginTop: "50px", marginBottom: "100px" }}
-        className="container row d-flex justify-content-center cardArea"
-      >
-        {/* Flash Sale Collection Cards */}
-        <div className="row cardArea">
-          {products.map((product, index) => (
-            <FlashSaleCard item={product} key={index}></FlashSaleCard>
-          ))}
+      {products.length !== 0 ? (
+        <div
+          style={{ marginTop: "50px", marginBottom: "100px" }}
+          className="container row d-flex justify-content-center cardArea"
+        >
+          {/* Flash Sale Collection Cards */}
+          <div className="row cardArea">
+            {products.map((product, index) => (
+              <FlashSaleCard item={product} key={index}></FlashSaleCard>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <LoadingSpinner />
+      )}
+
       <Footer></Footer>
     </>
   );

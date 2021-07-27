@@ -35,7 +35,7 @@ const CategoryDrawer = () => {
           <button
             className="categoryIcon d-block d-flex justify-content-start"
             onClick={() => {
-              console.log("Women category icon click");
+              // console.log("Women category icon click");
               history.push("/category/women") 
             }}
           >
@@ -45,7 +45,7 @@ const CategoryDrawer = () => {
           <button
             className="categoryIcon d-block d-flex justify-content-start"
             onClick={() => {
-              console.log("Men category icon click");
+              // console.log("Men category icon click");
               history.push("/category/men") 
             }}
           >
@@ -55,7 +55,7 @@ const CategoryDrawer = () => {
           <button
             className="categoryIcon d-block d-flex justify-content-start"
             onClick={() => {
-              console.log("Jewellery category icon click");
+              // console.log("Jewellery category icon click");
               history.push("/category/jewellery") 
             }}
           >
@@ -66,7 +66,7 @@ const CategoryDrawer = () => {
           <button
             className="categoryIcon d-block d-flex justify-content-start"
             onClick={() => {
-              console.log("Electronics category icon click");
+              // console.log("Electronics category icon click");
               history.push("/category/electronics") 
             }}
           >
