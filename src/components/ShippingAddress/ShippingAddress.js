@@ -27,7 +27,7 @@ const ShippingAddress = () => {
     newShipping.postalCode = data.postalCode;
 
     setShippingInformation(newShipping);
-    localStorage.setItem('shippingInfo',JSON.stringify(newShipping));
+    window.localStorage.setItem('shippingInfo',JSON.stringify(newShipping));
   };
 
   const [modalShow, setModalShow] = useState(false);

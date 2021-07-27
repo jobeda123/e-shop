@@ -17,7 +17,7 @@ const ElectronicsPage = () => {
 
   // to get data from server
   useEffect(() => {
-    fetch("http://localhost:4000/products/electronics")
+    fetch("https://boiling-headland-36176.herokuapp.com/products/electronics")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

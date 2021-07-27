@@ -23,6 +23,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import SingleOrderDetailPage from './pages/SingleOrderDetailPage/SingleOrderDetailPage';
 import FlashSalePage from './pages/FlashSalePage/FlashSalePage';
 import LatestCollectionPage from "./pages/LatestCollectionPage/LatestCollectionPage";
+import SearchPage from "./pages/SearchPage/SearchPage";
 
 
 export const UserContext = createContext();
@@ -44,7 +45,7 @@ function App() {
 
   const [orderId, setOrderId] = useState();
   const [addCart, setAddCart] = useState([]);
-  localStorage.setItem("cart", JSON.stringify(addCart));
+  window.localStorage.setItem("cart", JSON.stringify(addCart));
 
 
   const handleRemoveCart = (cardDetails) => {
@@ -57,16 +58,16 @@ function App() {
   const handleAddCart = (cardDetails) => {
     console.log("add to cart button click from latest collection...");
 
-    const myArray = localStorage.getItem("cart");
+    const myArray = window.localStorage.getItem("cart");
     const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
 
     console.log("From local Storage", fromLocalStorage);
 
     const newCart = [...fromLocalStorage, cardDetails]; // all cart item copy
     setAddCart(newCart);
-    localStorage.setItem("cart", JSON.stringify(newCart));
+    window.localStorage.setItem("cart", JSON.stringify(newCart));
 
-    // localStorage.removeItem('cart');
+    // window.localStorage.removeItem('cart');
   };
 
   return (
@@ -84,6 +85,11 @@ function App() {
 
                   <Route path="/category/women">
                     <WomenPage />
+                  </Route>
+
+
+                  <Route path="/productBySearch/:searchText">
+                    <SearchPage />
                   </Route>
 
                   <Route path="/category/men">

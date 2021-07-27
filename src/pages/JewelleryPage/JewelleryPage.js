@@ -16,7 +16,7 @@ const JewelleryPage = () => {
 
   // to get data from server
   useEffect(() => {
-    fetch("http://localhost:4000/products/jewellery")
+    fetch("https://boiling-headland-36176.herokuapp.com/products/jewellery")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
