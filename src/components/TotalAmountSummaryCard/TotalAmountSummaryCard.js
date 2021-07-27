@@ -9,7 +9,7 @@ const TotalAmountSummaryCard = (props) => {
   const displayButton = props.displayButton;
   const displayHeight = props.displayHeight;
 
-  const myArray = localStorage.getItem("cart");
+  const myArray = window.localStorage.getItem("cart");
   const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
 
   const [price, setPrice] = useState({});
@@ -37,8 +37,8 @@ const TotalAmountSummaryCard = (props) => {
       totalPrice = deliveryCharge + subTotalPrice;
     }
 
-    localStorage.setItem("totalAmount", JSON.stringify(totalPrice));
-    localStorage.setItem("subAmount", JSON.stringify(subTotalPrice));
+    window.localStorage.setItem("totalAmount", JSON.stringify(totalPrice));
+    window.localStorage.setItem("subAmount", JSON.stringify(subTotalPrice));
     const newPrice = {
       totalAmount: totalPrice,
       subAmount: subTotalPrice,

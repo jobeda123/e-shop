@@ -9,14 +9,17 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import PriceSummary from "../../components/PriceSummary/PriceSummary";
 
+
 const SingleOrderDetailPage = () => {
   const [oId, setOId] = useState();
   const [allInfoFromDB, setAllInfoFromDB] = useState({});
   const [bag, setBag] = useState([]);
 
+
   let history = useHistory();
   let { id } = useParams();
   console.log("from single order detail", id);
+
 
   const btnStyle = {
     border: "none",

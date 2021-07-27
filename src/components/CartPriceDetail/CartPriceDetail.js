@@ -2,7 +2,7 @@ import React from "react";
 
 
 const CartPriceDetail = () => {
-  const myArray = localStorage.getItem("cart");
+  const myArray = window.localStorage.getItem("cart");
   const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
   // console.log(fromLocalStorage);
 

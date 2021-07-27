@@ -18,7 +18,7 @@ const MenPage = () => {
 
   // to get data from server
   useEffect(() => {
-    fetch("http://localhost:4000/products/men")
+    fetch("https://boiling-headland-36176.herokuapp.com/products/men")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

@@ -11,7 +11,7 @@ const AddNewAdmin = () => {
     // store data in the mongoDB
     // form input will be empty
 
-    fetch("http://localhost:4000/addAdmin", {
+    fetch("https://boiling-headland-36176.herokuapp.com/addAdmin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

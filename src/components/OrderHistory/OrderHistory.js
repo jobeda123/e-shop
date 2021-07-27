@@ -17,9 +17,9 @@ const OrderHistory = () => {
     // admin
     if (user.role === "admin") {
       axios
-        .get("http://localhost:4000/allOrderAdmin", {
+        .get("https://boiling-headland-36176.herokuapp.com/allOrderAdmin", {
           headers: {
-            authorization: `Bearer ${sessionStorage.getItem("token")}`,
+            authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
           },
         })
         .then((res) => {
@@ -41,9 +41,9 @@ const OrderHistory = () => {
     // user
     else {
       axios
-        .get("http://localhost:4000/allOrder?email=" + user.email, {
+        .get("https://boiling-headland-36176.herokuapp.com/allOrder?email=" + user.email, {
           headers: {
-            authorization: `Bearer ${sessionStorage.getItem("token")}`,
+            authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
           },
         })
         .then((res) => {
@@ -58,7 +58,7 @@ const OrderHistory = () => {
     const status = e.target.value;
     const orderStatus = { id, status };
 
-    fetch(`http://localhost:4000/updateOrderStatus/${id}`, {
+    fetch(`https://boiling-headland-36176.herokuapp.com/updateOrderStatus/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(orderStatus),

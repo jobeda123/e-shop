@@ -9,7 +9,7 @@ function PrivateRoute({ children, ...rest }) {
       <Route
         {...rest}
         render={({ location }) =>
-          (user.email || sessionStorage.get("token")) ? (
+          (user.email || window.sessionStorage.get("token")) ? (
             children
           ) : (
             <Redirect

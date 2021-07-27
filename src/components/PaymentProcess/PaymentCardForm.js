@@ -74,25 +74,25 @@ const PaymentCardForm = () => {
     if (payload.error === undefined) {
       const newPayment = { ...paymentInformation, eventPaymentInfo };
       setPaymentInformation(newPayment);
-      localStorage.setItem("paymentInfo", JSON.stringify(newPayment));
+      window.localStorage.setItem("paymentInfo", JSON.stringify(newPayment));
       // store all info in the mongodb....
 
-      const x1 = localStorage.getItem("cart");
+      const x1 = window.localStorage.getItem("cart");
       const cartInfo = JSON.parse(x1); // json theke array te convert
       console.log(cartInfo);
 
-      const x2 = localStorage.getItem("paymentInfo");
+      const x2 = window.localStorage.getItem("paymentInfo");
       const paymentInfo = JSON.parse(x2); // json theke array te convert
       console.log(paymentInfo);
 
-      const x3 = localStorage.getItem("shippingInfo");
+      const x3 = window.localStorage.getItem("shippingInfo");
       const shippingInfo = JSON.parse(x3); // json theke array te convert
       console.log(shippingInfo);
 
-      const x4 = localStorage.getItem("totalAmount");
+      const x4 = window.localStorage.getItem("totalAmount");
       const totalAmount = JSON.parse(x4); // json theke array te convert
 
-      const x5 = localStorage.getItem("subAmount");
+      const x5 = window.localStorage.getItem("subAmount");
       const subAmount = JSON.parse(x5); // json theke array te convert
 
       const allInfo = { shippingInfo, ...paymentInfo };
@@ -103,7 +103,7 @@ const PaymentCardForm = () => {
       setSaveToDB(allInfo);
       console.log(allInfo);
 
-      fetch("http://localhost:4000/addOrder", {
+      fetch("https://boiling-headland-36176.herokuapp.com/addOrder", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(allInfo),
@@ -114,11 +114,11 @@ const PaymentCardForm = () => {
             console.log(id, setOrderId(id));
             setOrderId(id);
             const emptyCart = [];
-            localStorage.setItem("cart", JSON.stringify(emptyCart));
-            localStorage.setItem("paymentInfo", JSON.stringify({}));
-            localStorage.setItem("shippingInfo", JSON.stringify({}));
-            localStorage.setItem("totalAmount", JSON.stringify(""));
-            localStorage.setItem("subAmount", JSON.stringify(""));
+            window.localStorage.setItem("cart", JSON.stringify(emptyCart));
+            window.localStorage.setItem("paymentInfo", JSON.stringify({}));
+            window.localStorage.setItem("shippingInfo", JSON.stringify({}));
+            window.localStorage.setItem("totalAmount", JSON.stringify(""));
+            window.localStorage.setItem("subAmount", JSON.stringify(""));
           }
         });
       alert("Successfully Purchased Your Order!!! Thank You");

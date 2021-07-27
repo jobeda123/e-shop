@@ -18,9 +18,9 @@ const CartTable = (props) => {
   useEffect(() => {
     console.log("Sending order id from single order detail", props.id);
     axios
-      .get("http://localhost:4000/order?id=" + props.id, {
+      .get("https://boiling-headland-36176.herokuapp.com/order?id=" + props.id, {
         headers: {
-          authorization: `Bearer ${sessionStorage.getItem("token")}`,
+          authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
         },
       })
       .then((res) => {

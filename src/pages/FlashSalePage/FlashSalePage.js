@@ -17,7 +17,7 @@ const FlashSalePage = () => {
 
   // to get data from server
   useEffect(() => {
-    fetch("http://localhost:4000/products")
+    fetch("https://boiling-headland-36176.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

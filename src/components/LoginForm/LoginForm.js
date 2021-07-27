@@ -17,7 +17,7 @@ const LoginForm = () => {
 
 
   useEffect(() => {
-    axios.get("http://localhost:4000/allAdmin").then((res) => {
+    axios.get("https://boiling-headland-36176.herokuapp.com/allAdmin").then((res) => {
       console.log("all admin: ", res.data);
       setAllAdmin(res.data);
     });
@@ -69,7 +69,7 @@ const LoginForm = () => {
     firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
     .then(function(idToken) {
       console.log("ID Token",idToken);
-      sessionStorage.setItem("token",idToken);
+      window.sessionStorage.setItem("token",idToken);
     }).catch(function(error) {
       // Handle error
     });

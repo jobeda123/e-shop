@@ -19,16 +19,16 @@ export default function ProductModal(props) {
   const handleAddCart = (cardDetails) => {
     console.log("add to cart button click from latest offer");
 
-    const myArray = localStorage.getItem("cart");
+    const myArray = window.localStorage.getItem("cart");
     const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
 
     //console.log("From local Storage", fromLocalStorage);
     const newCart = [...fromLocalStorage, cardDetails]; // all cart item copy
 
     setAddCart(newCart);
-    localStorage.setItem("cart", JSON.stringify(newCart));
+    window.localStorage.setItem("cart", JSON.stringify(newCart));
 
-    // localStorage.removeItem('cart');
+    // window.localStorage.removeItem('cart');
   };
 
   const newPrice = (oldPrice - (oldPrice * discount) / 100).toFixed(2);

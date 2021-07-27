@@ -16,7 +16,7 @@ const WomenPage = (props) => {
 
   // to get data from server
   useEffect(() => {
-    fetch("http://localhost:4000/products/women")
+    fetch("https://boiling-headland-36176.herokuapp.com/products/women")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

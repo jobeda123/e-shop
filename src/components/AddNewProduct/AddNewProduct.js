@@ -29,7 +29,7 @@ const AddNewProduct = () => {
       // store data in the mongoDB
       // form input will be empty
 
-      fetch("http://localhost:4000/addProduct", {
+      fetch("https://boiling-headland-36176.herokuapp.com/addProduct", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(productData),
