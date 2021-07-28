@@ -13,29 +13,28 @@ const CartTable = (props) => {
   const handleRemoveCart = useContext(HandleRemoveCartContext);
   const buttonDisplay = props.deleteButton;
   const [cart, setCart] = useState([]);
-  // console.log(cart.length);
+
 
   useEffect(() => {
-    // console.log("Sending order id from single order detail", props.id);
-    axios
-      .get(
-        "https://boiling-headland-36176.herokuapp.com/order?id=" + props.id,
-        {
-          headers: {
-            authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-          },
-        }
-      )
-      .then((res) => {
-        // console.log(res.data);
-        const newItem = [...res.data.allItemDetail];
-        setCart(newItem);
-      })
-      .catch((err) => {
-        // console.log(err);
-      });
+    if (props.id) {
+      axios
+        .get(
+          "https://boiling-headland-36176.herokuapp.com/order?id=" + props.id,
+          {
+            headers: {
+              authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
+            },
+          }
+        )
+        .then((res) => {
+          const newItem = [...res.data.allItemDetail];
+          setCart(newItem);
+        })
+        .catch((err) => {});
+    }
   }, [props.id]);
 
+  
   return (
     <div className="my-5 d-flex">
       <Table bordered size="sm">

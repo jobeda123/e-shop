@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext,useEffect,useState } from "react";
 import "./UserDrawer.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,26 +8,24 @@ import {
   faAddressCard,
 } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router";
-import { useContext } from "react";
 import { CartContext, UserContext } from "../../App";
 import { OrderContext } from "./../../App";
-import { useEffect } from "react";
-import { useState } from "react";
+
 
 const UserDrawer = () => {
   const [user, setUser] = useContext(UserContext);
-  const [addCart, setAddCart] = useContext(CartContext);
-  const [orderId, setOrderId] = useContext(OrderContext);
+  const [setAddCart] = useContext(CartContext);
+  const [setOrderId] = useContext(OrderContext);
   const [logout, setLogout] = useState(false);
 
+
   let history = useHistory();
-  // console.log("User info in the userDrawer", user);
 
   useEffect(() => {
     if (user?.isSignedIn === true) {
       setLogout(true);
     }
-  },[]);
+  },[user.isSignedIn]);
 
   const handleLogout = () => {
     window.localStorage.removeItem("cart");
@@ -35,7 +33,6 @@ const UserDrawer = () => {
     window.localStorage.removeItem("paymentInfo");
     window.localStorage.removeItem("totalAmount");
     window.localStorage.removeItem("subAmount");
-    // console.log("log out button click");
     setLogout(false);
     setAddCart([]);
     setUser({});
@@ -56,7 +53,6 @@ const UserDrawer = () => {
         <h4 class="offcanvas-title" id="offcanvasUserLabel">
           Account
         </h4>
-
         <button
           type="button"
           class="btn-close text-reset"
@@ -64,15 +60,15 @@ const UserDrawer = () => {
           aria-label="Close"
         ></button>
       </div>
+      
       <div class="offcanvas-body">
-        <div>
+        <>
           {logout === false ? (
             <div>
               {/* Log in button */}
               <button
                 className="userIcon d-block d-flex justify-content-start"
                 onClick={() => {
-                  console.log("log in icon click");
                   history.push("/login");
                 }}
               >
@@ -104,7 +100,6 @@ const UserDrawer = () => {
               <button
                 className="userIcon d-block d-flex justify-content-start"
                 onClick={() => {
-                  console.log("dashboard icon click");
                   history.push("/dashboard/profile");
                 }}
               >
@@ -127,7 +122,7 @@ const UserDrawer = () => {
               </button>
             </div>
           )}
-        </div>
+        </>
       </div>
     </div>
   );

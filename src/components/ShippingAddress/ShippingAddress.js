@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import PaymentModal from "../PaymentModal/PaymentModal";
 
-
 const ShippingAddress = () => {
   const [shippingInformation, setShippingInformation] = useState({});
 
@@ -15,19 +14,16 @@ const ShippingAddress = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    setModalShow(true);
-    console.log("Data-----", data);
-    const newShipping = {...shippingInformation};
-
+    const newShipping = { ...shippingInformation };
     newShipping.fullName = data.fullName;
     newShipping.address = data.address;
     newShipping.city = data.city;
     newShipping.country = data.country;
     newShipping.phone = data.phone;
     newShipping.postalCode = data.postalCode;
-
     setShippingInformation(newShipping);
-    window.localStorage.setItem('shippingInfo',JSON.stringify(newShipping));
+    window.localStorage.setItem("shippingInfo", JSON.stringify(newShipping));
+    setModalShow(true);
   };
 
   const [modalShow, setModalShow] = useState(false);
@@ -69,13 +65,7 @@ const ShippingAddress = () => {
         />
         {errors.country && <span>This field is required</span>}
 
-        <button
-          onClick={() => {
-            console.log("continue click.....");
-          }}
-        >
-          CONTINUE TO PAYMENT
-        </button>
+        <button>CONTINUE TO PAYMENT</button>
       </form>
 
       <PaymentModal show={modalShow} onHide={() => setModalShow(false)} />

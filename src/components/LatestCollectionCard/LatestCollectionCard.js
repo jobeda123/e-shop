@@ -57,7 +57,7 @@ const LatestCollectionCard = (props) => {
             </button>
           </span>
         </div>
-        {/* style={{ height: "16rem" }} */}
+      
         <Card.Body className="text-left">
           <Card.Title>{title}</Card.Title>
           <StarRatings

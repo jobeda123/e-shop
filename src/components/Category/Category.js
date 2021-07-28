@@ -7,23 +7,19 @@ import jewellery_category from "../../images/jewelley_category.jpg";
 import electronics_category from "../../images/electronics_category.jpg";
 
 
-
-
 const Category = () => {
   let history = useHistory();
 
   return (
     <section className="container">
+      
       {/* title */}
       <div
         className="d-flex justify-content-center"
-        style={{ margin: "50px 0px 30px 0px"}}
+        style={{ margin: "50px 0px 30px 0px" }}
       >
-        
         <h3 id="sectionName">Shop By Category</h3>
-        
       </div>
-
 
       {/* picture by category */}
       <div className="row category">
@@ -33,7 +29,6 @@ const Category = () => {
             <img src={men_category} alt="" width="100%" height="100%" />
             <button
               onClick={() => {
-                console.log("Men Category Click");
                 history.push("/category/men");
               }}
               className="women-men-btn"
@@ -49,7 +44,6 @@ const Category = () => {
               <img src={jewellery_category} alt="" width="100%" />
               <button
                 onClick={() => {
-                  console.log("jewellery Category Click");
                   history.push("/category/jewellery");
                 }}
                 className="jewellery-btn"
@@ -63,7 +57,6 @@ const Category = () => {
               <img src={electronics_category} alt="" width="100%" />
               <button
                 onClick={() => {
-                  console.log("electronics Category Click");
                   history.push("/category/electronics");
                 }}
                 className="electronics-btn"
@@ -85,7 +78,6 @@ const Category = () => {
           />
           <button
             onClick={() => {
-              console.log("women Category Click");
               history.push("/category/women");
             }}
             className="women-men-btn"

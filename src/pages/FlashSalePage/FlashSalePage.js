@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import HeaderNavbar from "../../components/HeaderNavBar/HeaderNavBar";
 import Footer from "../../components/Footer/Footer";
 import CategoryBanner from "../../components/CategoryBanner/CategoryBanner";
-import LatestCollectionCard from "../../components/LatestCollectionCard/LatestCollectionCard";
 import jewelleryBack from "../../images/jewellery_back.jpg";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import FlashSaleCard from "../../components/FlashSaleCard/FlashSaleCard";
@@ -20,9 +19,7 @@ const FlashSalePage = () => {
     fetch("https://boiling-headland-36176.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         const result = data.filter((product) => product.discount > 0);
-        // console.log(result);
         setProducts(result);
       });
   }, []);

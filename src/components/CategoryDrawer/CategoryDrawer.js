@@ -1,5 +1,4 @@
 import React from "react";
-// for category icon
 import men from "../../images/men.png";
 import women from "../../images/women.png";
 import jewellery from "../../images/jewellery.png";
@@ -9,7 +8,6 @@ import { useHistory } from "react-router-dom";
 
 const CategoryDrawer = () => {
   let history = useHistory();
-
   return (
     <div
       class="offcanvas offcanvas-start categoryCanvasWidth"
@@ -36,7 +34,6 @@ const CategoryDrawer = () => {
           <button
             className="categoryIcon d-block d-flex justify-content-start"
             onClick={() => {
-              // console.log("Women category icon click");
               history.push("/category/women");
             }}
           >
@@ -46,7 +43,6 @@ const CategoryDrawer = () => {
           <button
             className="categoryIcon d-block d-flex justify-content-start"
             onClick={() => {
-              // console.log("Men category icon click");
               history.push("/category/men");
             }}
           >
@@ -56,7 +52,6 @@ const CategoryDrawer = () => {
           <button
             className="categoryIcon d-block d-flex justify-content-start"
             onClick={() => {
-              // console.log("Jewellery category icon click");
               history.push("/category/jewellery");
             }}
           >
@@ -67,7 +62,6 @@ const CategoryDrawer = () => {
           <button
             className="categoryIcon d-block d-flex justify-content-start"
             onClick={() => {
-              // console.log("Electronics category icon click");
               history.push("/category/electronics");
             }}
           >

@@ -26,11 +26,13 @@ import LatestCollectionPage from "./pages/LatestCollectionPage/LatestCollectionP
 import SearchPage from "./pages/SearchPage/SearchPage";
 
 
+//context declare
 export const UserContext = createContext();
 export const CartContext = createContext();
 export const OrderContext = createContext();
 export const HandleAddCartContext = createContext();
 export const HandleRemoveCartContext = createContext();
+
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -40,9 +42,7 @@ function App() {
     isSignedIn: false,
     name: "",
     email: "",
-    password: "",
   });
-
 
   const [orderId, setOrderId] = useState();
   const [addCart, setAddCart] = useState([]);
@@ -50,25 +50,17 @@ function App() {
 
 
   const handleRemoveCart = (cardDetails) => {
-    //console.log("remove item from cart drawer........", cardDetails);
     const newCart = addCart.filter((pd) => pd.itemID !== cardDetails.itemID);
     setAddCart(newCart);
   };
 
-  
   const handleAddCart = (cardDetails) => {
-    console.log("add to cart button click from latest collection...");
-
     const myArray = window.localStorage.getItem("cart");
     const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
-
-    //console.log("From local Storage", fromLocalStorage);
 
     const newCart = [...fromLocalStorage, cardDetails]; // all cart item copy
     setAddCart(newCart);
     window.localStorage.setItem("cart", JSON.stringify(newCart));
-
-    // window.localStorage.removeItem('cart');
   };
 
   return (
@@ -120,9 +112,9 @@ function App() {
                     <LatestCollectionPage />
                   </Route>
 
-                  <PrivateRoute path="/shoppingCart">
+                  <Route path="/shoppingCart">
                     <ShoppingCartPage />
-                  </PrivateRoute>
+                  </Route>
 
                   <PrivateRoute path="/shipping">
                     <ShippingPage />

@@ -1,5 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
-import Footer from "../../components/Footer/Footer";
+import React, { useState } from "react";
 import CartTable from "../../components/CartTable/CartTable";
 import ShippingPaymentInformation from "../../components/ShipmentPaymentInformation/ShipmentPaymentInformation";
 import { useHistory } from "react-router-dom";
@@ -9,11 +8,10 @@ import PriceSummary from "../../components/PriceSummary/PriceSummary";
 
 
 const SingleOrderDetailPage = () => {
-  const [allInfoFromDB, setAllInfoFromDB] = useState({});
+  const [allInfoFromDB] = useState({});
 
   let history = useHistory();
   let { id } = useParams();
-  // console.log("from single order detail", id);
 
   const btnStyle = {
     border: "none",
@@ -34,7 +32,6 @@ const SingleOrderDetailPage = () => {
         <button
           style={btnStyle}
           onClick={() => {
-            console.log("back btn click...");
             history.push("/dashboard/orderHistory");
           }}
         >
@@ -43,7 +40,7 @@ const SingleOrderDetailPage = () => {
 
           <div className="row d-flex">
             <div className="col-md-6 mr-5 mb-5 mt-3">
-              <ShippingPaymentInformation id={id} />
+              <ShippingPaymentInformation id={id} key={id}/>
             </div>
 
             <div className="col-md-4 mt-3">

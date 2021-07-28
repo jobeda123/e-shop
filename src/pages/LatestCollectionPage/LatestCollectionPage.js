@@ -20,7 +20,6 @@ const LatestCollectionPage = () => {
       .then((res) => res.json())
       .then((data) => {
         const result = data.filter((product) => product.discount === 0);
-        // console.log(result);
         setProducts(result);
       });
   }, []);

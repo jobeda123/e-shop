@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Col, Container, Modal, Row } from "react-bootstrap";
+import {  Container, Modal, Row } from "react-bootstrap";
 import "./PaymentModal.css";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -10,7 +10,7 @@ const stripePromise = loadStripe(
 );
 
 export default function ProductModal(props) {
-  const [modalShow, setModalShow] = useState(false);
+  const [setModalShow] = useState(false);
   
   return (
     <Modal

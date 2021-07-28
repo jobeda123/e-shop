@@ -1,5 +1,4 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeadphones,
   faShieldAlt,
@@ -7,6 +6,7 @@ import {
   faUndoAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import NoNameCard from "../NoNameCard/NoNameCard";
+
 
 const iconData = [
   {
@@ -38,8 +38,8 @@ const NoName = () => {
       style={{ marginTop: "70px"}}
     >
       <div className="row">
-        {iconData.map((data) => (
-          <NoNameCard details={data}></NoNameCard>
+        {iconData.map((data,index) => (
+          <NoNameCard details={data} key={index}></NoNameCard>
         ))}
       </div>
     </section>

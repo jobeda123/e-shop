@@ -1,30 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Dashboard.css";
 import { useHistory } from "react-router";
 import { CartContext, UserContext } from "../../App";
-import { useContext, useEffect, useState } from "react";
-import { OrderContext } from './../../App';
-
+import { OrderContext } from "./../../App";
 
 const Dashboard = ({ whichBtn }) => {
   let history = useHistory();
   const [user, setUser] = useContext(UserContext);
-  const [addCart, setAddCart] = useContext(CartContext);
-  const [orderId, setOrderId] = useContext(OrderContext);
+  const [setAddCart] = useContext(CartContext);
+  const [setOrderId] = useContext(OrderContext);
 
-  
-  
   const handleLogout = () => {
-    window.localStorage.removeItem('cart');
-    window.localStorage.removeItem('shippingInfo');
-    window.localStorage.removeItem('paymentInfo');
-    window.localStorage.removeItem('totalAmount');
-    console.log("log out button click");
+    window.localStorage?.removeItem("cart");
+    window.localStorage?.removeItem("shippingInfo");
+    window.localStorage?.removeItem("paymentInfo");
+    window.localStorage?.removeItem("totalAmount");
+    window.localStorage?.removeItem("subAmount");
     setAddCart([]);
     setUser({});
     setOrderId("");
     history.push("/login");
   };
+  
 
   return (
     <div className="container">
@@ -83,11 +80,7 @@ const Dashboard = ({ whichBtn }) => {
           </>
         )}
 
-        <button
-          onClick={() => handleLogout()}
-        >
-          Log Out
-        </button>
+        <button onClick={() => handleLogout()}>Log Out</button>
       </div>
     </div>
   );

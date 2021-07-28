@@ -70,6 +70,7 @@ const FlashSaleCard = (props) => {
           </div>
         </Card.Body>
       </Card>
+
       <ProductModal
         show={modalShow}
         data={cardDetails}

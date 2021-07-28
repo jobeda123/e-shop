@@ -7,12 +7,10 @@ import firebase from "firebase/app";
 import "firebase/auth";
 
 const UserAccountDetail = () => {
-  const [user, setUser] = useContext(UserContext);
+  const [user] = useContext(UserContext);
   const [changePassword, setChangePassword] = useState("none");
-  // console.log("Current User Info--->>", user);
 
   const { register, handleSubmit, reset } = useForm();
-
 
   const reauthenticate = (currentPassword) => {
     var user = firebase.auth().currentUser;
@@ -24,7 +22,6 @@ const UserAccountDetail = () => {
   };
 
   const onSubmit = (data) => {
-    console.log("Password-----", data);
     const currentPass = data.currentPassword;
 
     reauthenticate(currentPass)
@@ -43,9 +40,10 @@ const UserAccountDetail = () => {
               alert(error.message);
               reset();
             });
-        }
-         else {
-          alert("New Password and Confirmed Password Are Not Matched With Each Other");
+        } else {
+          alert(
+            "New Password and Confirmed Password Are Not Matched With Each Other"
+          );
           reset();
         }
       })

@@ -12,17 +12,14 @@ const SignUpForm = () => {
   const [addUser, setAddUser] = useState({});
 
   const handleBlur = (e) => {
-    // console.log(e.target.value);
     let isFieldValid = true;
     if (e.target.name === "email") {
       isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
-      // console.log(isFieldValid);
     }
     if (e.target.name === "password") {
       const isPasswordValid = e.target.value.length > 6;
       const passwordHasNumber = /\d{1}/.test(e.target.value);
       isFieldValid = isPasswordValid && passwordHasNumber;
-      // console.log(isFieldValid);
     }
     if (e.target.name === "userName") {
       const newUserInfo = { ...addUser };
@@ -47,7 +44,7 @@ const SignUpForm = () => {
           newUserInfo.success = true;
           setAddUser(newUserInfo);
           updateUserName(addUser.userName);
-          // console.log(newUserInfo)
+          alert("You Are Registered Successfully");
           history.replace(from);
         })
         .catch((error) => {
@@ -55,25 +52,24 @@ const SignUpForm = () => {
           newUserInfo.error = error.message;
           newUserInfo.success = false;
           setAddUser(newUserInfo);
+          alert(error.message);
+          document.getElementById("pass").value = "";
+          document.getElementById("email").value = "";
         });
     }
-
     e.preventDefault();
   };
 
   const updateUserName = (name) => {
     const user = firebase.auth().currentUser;
-    // console.log("user name", name);
 
     user
       .updateProfile({
         displayName: name,
       })
-      .then(() => {
-        // console.log('user name updated successfully')
-      })
+      .then(() => {})
       .catch((error) => {
-        // console.log(error)
+        alert(error.message);
       });
   };
 
@@ -110,19 +106,11 @@ const SignUpForm = () => {
               required
             />
             <br />
-            <button
-              className="loginBtn my-3 align-self-start"
-              onClick={() => {
-                console.log("Sign up for new the account.....");
-              }}
-            >
-              Sign Up
-            </button>
+            <button className="loginBtn my-3 align-self-start">Sign Up</button>
             <p>
               Already Have an Account?<Link to="/login"> Login</Link>
             </p>
           </form>
-          {addUser.error && <p style={{ color: "red" }}>{addUser.error}</p>}
         </div>
       </div>
     </div>

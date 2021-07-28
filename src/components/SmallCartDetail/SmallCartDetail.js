@@ -5,7 +5,6 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { HandleRemoveCartContext } from "../../App";
 import { useContext } from "react";
 
-
 const SmallCartDetail = (props) => {
   const handleRemoveCart = useContext(HandleRemoveCartContext);
 
@@ -15,7 +14,7 @@ const SmallCartDetail = (props) => {
   return (
     <div className="d-flex pb-3">
       <div className="col-md-4">
-        <img src={itemPic} alt="" width="90%" height="100%"/>
+        <img src={itemPic} alt="" width="90%" height="100%" />
       </div>
 
       <div className="col-md-8 text-left lh-1">
