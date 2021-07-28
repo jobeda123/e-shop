@@ -1,17 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./CartDrawer.css";
 import SmallCartDetail from "../SmallCartDetail/SmallCartDetail";
 import CartPriceDetail from "../CartPriceDetail/CartPriceDetail";
 import EmptyCart from "../EmptyCart/EmptyCart";
 import { useHistory } from "react-router";
-import { CartContext, HandleRemoveCartContext } from "../../App";
+import { CartContext } from "../../App";
 import { useContext } from "react";
-
-
 
 const CartDrawer = () => {
   let history = useHistory();
-  const [addCart, setAddCart] =useContext(CartContext);
+  const [addCart] = useContext(CartContext);
 
   return (
     <div
@@ -19,6 +17,8 @@ const CartDrawer = () => {
       tabIndex="-1"
       id="offcanvasCart"
       aria-labelledby="offcanvasCartLabel"
+      data-bs-backdrop="false"
+      data-bs-scroll="true"
     >
       <div class="offcanvas-header">
         <h4 class="offcanvas-title" id="offcanvasCartLabel">
@@ -42,10 +42,7 @@ const CartDrawer = () => {
             {/* Total Cart Details */}
             <div className="cartScroll py-2">
               {addCart?.map((data, index) => (
-                <SmallCartDetail
-                  key={index}
-                  cartData={data}
-                ></SmallCartDetail>
+                <SmallCartDetail key={index} cartData={data}></SmallCartDetail>
               ))}
             </div>
             {/* Total Price Details */}
@@ -53,7 +50,6 @@ const CartDrawer = () => {
             <button
               className="cartViewBtn my-2 col-md-12"
               onClick={() => {
-                // console.log("View Button");
                 history.push("/shoppingCart");
               }}
             >
@@ -62,7 +58,6 @@ const CartDrawer = () => {
             <button
               className="cartCheckOutBtn mb-2 col-md-12"
               onClick={() => {
-                // console.log("Check out Button");
                 history.push("/shipping");
               }}
             >

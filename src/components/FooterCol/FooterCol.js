@@ -2,15 +2,13 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./FooterCol.css";
 
-
 const FooterCol = (props) => {
-  // console.log(props);
   return (
     <div id="footerAlign" className="col-md-3 area">
       {props.menuTitle === "eShop" ? (
         <h2 className="text-white">{props.menuTitle}</h2>
       ) : (
-        <p style={{color:"white", fontSize:"20px"}}>{props.menuTitle}</p>
+        <p style={{ color: "white", fontSize: "20px" }}>{props.menuTitle}</p>
       )}
       <div className="left textArea pt-3">
         {props.menuItems.map((item, index) => (
@@ -21,16 +19,13 @@ const FooterCol = (props) => {
                   <FontAwesomeIcon className="addressIcon" icon={item.icon} />
                 </div>
                 <div>
-                  <p style={{color:"#808080"}}>
-                    {item.name}
-                  </p>
+                  <p style={{ color: "#808080" }}>{item.name}</p>
                 </div>
               </div>
+            ) : props.menuTitle !== "Payment Method" ? (
+              <p className="normalText">{item.name}</p>
             ) : (
-                props.menuTitle !=="Payment Method"? <p className="normalText" key={index}>
-                {item.name}
-              </p>
-              : <p style={{color:"#808080"}}>{item.name}</p>
+              <p style={{ color: "#808080" }}>{item.name}</p>
             )}
           </div>
         ))}

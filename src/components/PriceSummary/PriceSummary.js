@@ -1,59 +1,32 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const PriceSummary = (props) => {
-  let history = useHistory();
-  //   const displayButton = props.displayButton;
   const displayHeight = props.displayHeight;
 
   const deliveryCharge = 7;
-  let subTotalPrice = 0;
-  let totalPrice = 0;
 
   const [price, setPrice] = useState({});
-  const [cart, setCart] = useState([]);
-  console.log(cart.length);
-  console.log(price);
-
-//   const calculateTotalPrice = (cartItem) => {
-//     // calculate total price
-//     let subTotalPrice = 0;
-//     let totalPrice = 0;
-//     for (let i = 0; i < cartItem.length; i++) {
-//       if (cartItem[i].discount !== 0) {
-//         subTotalPrice +=
-//           cartItem[i].oldPrice -
-//           (cartItem[i].oldPrice * cartItem[i].discount) / 100;
-//       } else {
-//         subTotalPrice += cartItem[i].oldPrice;
-//       }
-
-//       totalPrice = deliveryCharge + subTotalPrice;
-//     }
-//     return [totalPrice, subTotalPrice];
-//   };
 
   useEffect(() => {
-    console.log("Sending order id from single order detail", props.id);
     axios
-      .get("https://boiling-headland-36176.herokuapp.com/order?id=" + props.id, {
-        headers: {
-          authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
-        },
-      })
+      .get(
+        "https://boiling-headland-36176.herokuapp.com/order?id=" + props.id,
+        {
+          headers: {
+            authorization: `Bearer ${window.sessionStorage.getItem("token")}`,
+          },
+        }
+      )
       .then((res) => {
-        console.log(res.data);
-        const newPrice= {
+        const newPrice = {
           totalAmount: res.data.totalAmount,
           subAmount: res.subAmount,
         };
         setPrice(newPrice);
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [props.id]); 
+      .catch((err) => {});
+  }, [props.id]);
 
   return (
     <>
@@ -69,7 +42,7 @@ const PriceSummary = (props) => {
           </div>
           <div className="d-flex justify-content-between">
             <p>Sub Total Price:</p>
-            <p>${price.totalAmount}</p>
+            <p>${price.subAmount}</p>
           </div>
           <div className="d-flex justify-content-between ">
             <h6>Total Price:</h6>

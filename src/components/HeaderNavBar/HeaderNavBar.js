@@ -17,17 +17,13 @@ import { useState } from "react";
 
 const Header = () => {
   let history = useHistory();
-  // for get cart item from local storage
-  const myArray = window.localStorage.getItem("cart");
-  const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
-  const [searchText, setSearchText] = useState("");
 
+  const [searchText, setSearchText] = useState("");
+  const [addCart, setAddCart] = useContext(CartContext);
 
   const textHandle = (e) => {
-    console.log(e.target.value);
     setSearchText(e.target.value);
-    document.getElementById("searchField").value="";
-    // e.preventDefault();
+    document.getElementById("searchField").value = "";
   };
 
   return (
@@ -49,7 +45,7 @@ const Header = () => {
               >
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <h4 className="logo" onClick={() => history.push("/home")}>
+              <h4 className="logo" onClick={() => history.push("/")}>
                 eShop
               </h4>
             </div>
@@ -67,18 +63,12 @@ const Header = () => {
               style={{ color: "white" }}
               to={`/productBySearch/${searchText}`}
             >
-              <FontAwesomeIcon
-                className="icon"
-                icon={faSearch}
-              />
+              <FontAwesomeIcon className="icon" icon={faSearch} />
             </Link>
           </li>
 
           <li class="col-md-2 col-sm-12 py-2 user-cart-icon d-flex justify-content-evenly">
             <button
-              onClick={() => {
-                console.log("Account button clicked....");
-              }}
               type="button"
               class="position-relative"
               data-bs-toggle="offcanvas"
@@ -89,9 +79,6 @@ const Header = () => {
             </button>
 
             <button
-              onClick={() => {
-                console.log("from cart");
-              }}
               type="button"
               class="position-relative"
               data-bs-toggle="offcanvas"
@@ -108,9 +95,7 @@ const Header = () => {
                   marginTop: "7px",
                 }}
               >
-                {fromLocalStorage?.length === undefined
-                  ? 0
-                  : fromLocalStorage.length}
+                {addCart?.length === 0 ? 0 : addCart.length}
               </span>
             </button>
           </li>
@@ -118,10 +103,8 @@ const Header = () => {
       </nav>
 
       <CategoryDrawer />
-
-      <CartDrawer />
-
       <UserDrawer />
+      <CartDrawer />
     </>
   );
 };

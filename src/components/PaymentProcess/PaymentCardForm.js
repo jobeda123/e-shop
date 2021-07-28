@@ -7,12 +7,9 @@ import {
   CardExpiryElement,
 } from "@stripe/react-stripe-js";
 import { useHistory } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCcVisa } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import { UserContext } from "../../App";
 import { OrderContext } from "./../../App";
-import { useParams, Link } from "react-router-dom";
 
 const useOptions = () => {
   const fontSize = "15px";
@@ -42,10 +39,9 @@ const useOptions = () => {
 const PaymentCardForm = () => {
   const [paymentInformation, setPaymentInformation] = useState({});
   const [saveToDB, setSaveToDB] = useState({});
-  const [user, setUser] = useContext(UserContext);
-  const [orderId, setOrderId] = useContext(OrderContext);
+  const [user] = useContext(UserContext);
+  const [orderId,setOrderId] = useContext(OrderContext);
 
-  console.log(orderId);
   let history = useHistory();
   const stripe = useStripe();
   const elements = useElements();
@@ -53,7 +49,6 @@ const PaymentCardForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     if (!stripe || !elements) {
       // Stripe.js has not loaded yet. Make sure to disable
       // form submission until Stripe.js has loaded.
@@ -64,30 +59,26 @@ const PaymentCardForm = () => {
       type: "card",
       card: elements.getElement(CardNumberElement),
     });
-    console.log("[PaymentMethod]", payload);
-
+    const time = new Date().toDateString("DD MMM, YYYY");
     const eventPaymentInfo = {
       cardName: payload.paymentMethod.card.brand,
       paymentId: payload.paymentMethod.id,
-      date: new Date(),
+      date: time,
     };
     if (payload.error === undefined) {
       const newPayment = { ...paymentInformation, eventPaymentInfo };
       setPaymentInformation(newPayment);
       window.localStorage.setItem("paymentInfo", JSON.stringify(newPayment));
-      // store all info in the mongodb....
 
+      // store all info in the mongodb....
       const x1 = window.localStorage.getItem("cart");
       const cartInfo = JSON.parse(x1); // json theke array te convert
-      console.log(cartInfo);
 
       const x2 = window.localStorage.getItem("paymentInfo");
       const paymentInfo = JSON.parse(x2); // json theke array te convert
-      console.log(paymentInfo);
 
       const x3 = window.localStorage.getItem("shippingInfo");
       const shippingInfo = JSON.parse(x3); // json theke array te convert
-      console.log(shippingInfo);
 
       const x4 = window.localStorage.getItem("totalAmount");
       const totalAmount = JSON.parse(x4); // json theke array te convert
@@ -100,29 +91,30 @@ const PaymentCardForm = () => {
       allInfo.email = user.email;
       allInfo.deliveredStatus = "Pending";
       allInfo.totalAmount = totalAmount.toFixed(2);
+      allInfo.subAmount = subAmount.toFixed(2);
       setSaveToDB(allInfo);
-      console.log(allInfo);
 
-      fetch("https://boiling-headland-36176.herokuapp.com/addOrder", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(allInfo),
-      })
-        .then((res) => res.json())
-        .then((id) => {
-          if (id) {
-            console.log(id, setOrderId(id));
-            setOrderId(id);
-            const emptyCart = [];
-            window.localStorage.setItem("cart", JSON.stringify(emptyCart));
-            window.localStorage.setItem("paymentInfo", JSON.stringify({}));
-            window.localStorage.setItem("shippingInfo", JSON.stringify({}));
-            window.localStorage.setItem("totalAmount", JSON.stringify(""));
-            window.localStorage.setItem("subAmount", JSON.stringify(""));
-          }
-        });
-      alert("Successfully Purchased Your Order!!! Thank You");
-      history.push("/orderSummary");
+      if (saveToDB) {
+        fetch("https://boiling-headland-36176.herokuapp.com/addOrder", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(allInfo),
+        })
+          .then((res) => res.json())
+          .then((id) => {
+            if (id) {
+              setOrderId(id);
+              const emptyCart = [];
+              window.localStorage.setItem("cart", JSON.stringify(emptyCart));
+              window.localStorage.setItem("paymentInfo", JSON.stringify({}));
+              window.localStorage.setItem("shippingInfo", JSON.stringify({}));
+              window.localStorage.setItem("totalAmount", JSON.stringify(""));
+              window.localStorage.setItem("subAmount", JSON.stringify(""));
+            }
+          });
+        alert("Successfully Purchased Your Order!!! Thank You");
+        history.push("/orderSummary");
+      }
     }
   };
 
@@ -130,36 +122,20 @@ const PaymentCardForm = () => {
     <form onSubmit={handleSubmit}>
       <label>
         Card number
-        <CardNumberElement
-          options={options}
-          onChange={(event) => {
-            console.log("CardNumberElement [change]", event);
-          }}
-        />
+        <CardNumberElement options={options} />
       </label>
       <br />
       <label>
         Expiration date
-        <CardExpiryElement
-          options={options}
-          onChange={(event) => {
-            console.log("CardNumberElement [change]", event);
-          }}
-        />
+        <CardExpiryElement options={options} />
       </label>
       <br />
       <label>
         CVC
-        <CardCvcElement
-          options={options}
-          onChange={(event) => {
-            console.log("CardNumberElement [change]", event);
-          }}
-        />
+        <CardCvcElement options={options} />
       </label>
       <br />
       <button type="submit" className="payBtn mt-3" disabled={!stripe}>
-        {/* <FontAwesomeIcon className="payIcon" size="2x" icon={faCcVisa} /> */}
         CONFIRM PURCHASED
       </button>
     </form>

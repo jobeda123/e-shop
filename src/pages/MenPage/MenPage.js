@@ -7,7 +7,7 @@ import menBack from "../../images/men_back.jpg";
 import "./MenPage.css";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
-
+import FlashSaleCard from "../../components/FlashSaleCard/FlashSaleCard";
 
 const MenPage = () => {
   const bannerDetail = {
@@ -22,7 +22,7 @@ const MenPage = () => {
     fetch("https://boiling-headland-36176.herokuapp.com/products/men")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setProducts(data);
       });
   }, []);
@@ -35,21 +35,32 @@ const MenPage = () => {
 
       {/* Product Cards */}
 
-
-     {products.length!==0? <div
-        style={{ marginTop: "50px", marginBottom: "100px" }}
-        className="container row d-flex justify-content-center cardArea"
-      >
-        {/* Latest Collection Cards */}
-        <div className="row cardArea">
-          {products.map((product, index) => (
-            <LatestCollectionCard
-              item={product}
-              key={index}
-            ></LatestCollectionCard>
-          ))}
+      {products.length !== 0 ? (
+        <div
+          style={{ marginTop: "50px", marginBottom: "100px" }}
+          className="container row d-flex justify-content-center cardArea"
+        >
+          {/* Latest Collection Cards */}
+          <div className="row cardArea">
+            {products.map((product, index) => {
+              if (product.discount === 0) {
+                return (
+                  <LatestCollectionCard
+                    item={product}
+                    key={index}
+                  ></LatestCollectionCard>
+                );
+              } else {
+                return (
+                  <FlashSaleCard item={product} key={index}></FlashSaleCard>
+                );
+              }
+            })}
+          </div>
         </div>
-      </div> : <LoadingSpinner />}
+      ) : (
+        <LoadingSpinner />
+      )}
 
       <Footer></Footer>
     </>

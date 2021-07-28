@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import allData from "../../fakeData/fakeData";
 import axios from "axios";
+
 
 const AddNewProduct = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -10,6 +10,7 @@ const AddNewProduct = () => {
   const [productData, setProductData] = useState({});
   const [description, setDescription] = useState("");
   const [imageURL, setImageURL] = useState(null);
+
 
   const onSubmit = (data, e) => {
     console.log("product info-----", data);
@@ -21,6 +22,7 @@ const AddNewProduct = () => {
         discount: data.productDiscount,
         category: data.productCategory,
         image: imageURL,
+        rating: data.productRating,
       };
       console.log(description);
       setProductData(newProduct);
@@ -37,6 +39,7 @@ const AddNewProduct = () => {
         .then((res) => res.json())
         .then((result) => {
           if (result) {
+            console.log(result);
             alert("New Product Added Successfully....");
             reset();
             e.preventDefault();
@@ -98,6 +101,11 @@ const AddNewProduct = () => {
           <input
             {...register("productCategory", { required: true })}
             placeholder="Category"
+          />
+          <br />
+          <input
+            {...register("productRating", { required: true })}
+            placeholder="Rating"
           />
           <br />
           <input type="file" onChange={handleImageUpload} />

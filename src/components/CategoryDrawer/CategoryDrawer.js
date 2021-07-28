@@ -1,22 +1,21 @@
 import React from "react";
-// for category icon
 import men from "../../images/men.png";
 import women from "../../images/women.png";
 import jewellery from "../../images/jewellery.png";
 import electronics from "../../images/electronics.png";
-import './CategoryDrawer.css';
+import "./CategoryDrawer.css";
 import { useHistory } from "react-router-dom";
-
 
 const CategoryDrawer = () => {
   let history = useHistory();
-
   return (
     <div
       class="offcanvas offcanvas-start categoryCanvasWidth"
       tabIndex="-1"
       id="offcanvasCategory"
       aria-labelledby="offcanvasCategoryLabel"
+      data-bs-backdrop="false"
+      data-bs-scroll="true"
     >
       <div class="offcanvas-header">
         <h4 class="offcanvas-title" id="offcanvasCategoryLabel">
@@ -35,8 +34,7 @@ const CategoryDrawer = () => {
           <button
             className="categoryIcon d-block d-flex justify-content-start"
             onClick={() => {
-              // console.log("Women category icon click");
-              history.push("/category/women") 
+              history.push("/category/women");
             }}
           >
             <img src={women} alt="" /> <span className="px-2">Women</span>
@@ -45,8 +43,7 @@ const CategoryDrawer = () => {
           <button
             className="categoryIcon d-block d-flex justify-content-start"
             onClick={() => {
-              // console.log("Men category icon click");
-              history.push("/category/men") 
+              history.push("/category/men");
             }}
           >
             <img src={men} alt="" /> <span className="px-2">Men</span>
@@ -55,8 +52,7 @@ const CategoryDrawer = () => {
           <button
             className="categoryIcon d-block d-flex justify-content-start"
             onClick={() => {
-              // console.log("Jewellery category icon click");
-              history.push("/category/jewellery") 
+              history.push("/category/jewellery");
             }}
           >
             <img src={jewellery} alt="" />
@@ -66,8 +62,7 @@ const CategoryDrawer = () => {
           <button
             className="categoryIcon d-block d-flex justify-content-start"
             onClick={() => {
-              // console.log("Electronics category icon click");
-              history.push("/category/electronics") 
+              history.push("/category/electronics");
             }}
           >
             <img src={electronics} alt="" />

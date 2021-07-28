@@ -2,8 +2,6 @@ import React from "react";
 import "./NoNameCard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
-
 const NoNameCard = (props) => {
   const { icon, title, description } = props.details;
   return (

@@ -1,35 +1,40 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
+import { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import { CartContext } from "../../App";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import "./TotalAmountSummaryCard.css";
-
 
 const TotalAmountSummaryCard = (props) => {
   let history = useHistory();
   const deliveryCharge = 7;
-  const displayButton = props.displayButton;
-  const displayHeight = props.displayHeight;
 
-  const myArray = window.localStorage.getItem("cart");
-  const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
+  const [btnHeight, setBtnHeight] = useState({});
 
   const [price, setPrice] = useState({});
   const [cart, setCart] = useState([]);
-  const [loading, setLoading] = useState(true);
-  console.log(cart.length);
-  console.log(price);
+  const [addCart, setAddCart] = useContext(CartContext);
+  const [loadData, setLoadData] = useState(false);
 
-
+  
   useEffect(() => {
-    const newItem = [...fromLocalStorage];
-    console.log(newItem);
+    if (props) {
+      setLoadData(true);
+    }
+    const newBtnHeight = {
+      btn: props.displayButton,
+      height: props.displayHeight,
+    };
+    setBtnHeight(newBtnHeight);
+
+    const newItem = [...addCart];
     setCart(newItem);
     let subTotalPrice = 0;
     let totalPrice = 0;
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].discount !== 0) {
         subTotalPrice +=
-        cart[i].oldPrice -
-          (cart[i].oldPrice * cart[i].discount) / 100;
+          cart[i].oldPrice - (cart[i].oldPrice * cart[i].discount) / 100;
       } else {
         subTotalPrice += cart[i].oldPrice;
       }
@@ -44,18 +49,14 @@ const TotalAmountSummaryCard = (props) => {
       subAmount: subTotalPrice,
     };
     setPrice(newPrice);
-    setLoading(false);
-  }, [loading]);
-
-
+  }, [loadData]);
 
   return (
     <>
-      {loading===false ? (
-
+      {loadData?
         <div
           className="totalAmountSummaryCardArea"
-          style={{ height: displayHeight }}
+          style={{ height: btnHeight.height }}
         >
           <h4>Total Amount Summary</h4>
           <div className="d-flex justify-content-between">
@@ -72,19 +73,17 @@ const TotalAmountSummaryCard = (props) => {
           </div>
 
           <button
-            style={{ display: displayButton }}
+            style={{ display: btnHeight.btn }}
             onClick={() => {
-              console.log("Check out button click");
               history.push("/shipping");
             }}
           >
             PROCEED TO CHECKOUT
           </button>
         </div>
-      )
-    :
-    <h1>Loading</h1>
-    }
+        :
+        <LoadingSpinner />
+      }
     </>
   );
 };

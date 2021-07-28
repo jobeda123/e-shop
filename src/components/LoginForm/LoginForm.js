@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
 import "./LoginForm.css";
 import firebase from "firebase/app";
 import "firebase/auth";
 import { UserContext } from "../../App";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import axios from "axios";
+
 
 const LoginForm = () => {
   let history = useHistory();
@@ -18,13 +18,11 @@ const LoginForm = () => {
     axios
       .get("https://boiling-headland-36176.herokuapp.com/allAdmin")
       .then((res) => {
-        console.log("all admin: ", res.data);
         setAllAdmin(res.data);
       });
   }, []);
 
   const handleBlur = (e) => {
-    // console.log(e.target.value);
     const newUserInfo = { ...user };
     newUserInfo[e.target.name] = e.target.value;
     setUser(newUserInfo);
@@ -36,7 +34,6 @@ const LoginForm = () => {
         .auth()
         .signInWithEmailAndPassword(user.email, user.password)
         .then((res) => {
-          // console.log("sign in user info", res.user);
           const newUserInfo = { ...user };
           newUserInfo.name = res.user.displayName;
           newUserInfo.error = "";
@@ -55,14 +52,14 @@ const LoginForm = () => {
           storeToken();
           history.replace(from);
         })
-        .catch(function (error) {
+        .catch((error) => {
           const newUserInfo = { ...user };
           newUserInfo.error = error.message;
           newUserInfo.success = false;
           setUser(newUserInfo);
           alert(error.message);
-          document.getElementById("pass").value="";
-          document.getElementById("email").value="";
+          document.getElementById("pass").value = "";
+          document.getElementById("email").value = "";
         });
     }
     e.preventDefault();
@@ -72,12 +69,11 @@ const LoginForm = () => {
     firebase
       .auth()
       .currentUser.getIdToken(/* forceRefresh */ true)
-      .then(function (idToken) {
-        // console.log("ID Token",idToken);
+      .then((idToken) => {
         window.sessionStorage.setItem("token", idToken);
       })
-      .catch(function (error) {
-        // Handle error
+      .catch((error) => {
+        alert(error.message);
       });
   };
 
@@ -109,14 +105,7 @@ const LoginForm = () => {
               required
             />
             <br />
-            <button
-              className="loginBtn my-3 align-self-start"
-              onClick={() => {
-                console.log("log into the account.....");
-              }}
-            >
-              Login
-            </button>
+            <button className="loginBtn my-3 align-self-start">Login</button>
             <p>
               Don't Have An Account?<Link to="/signUp"> Creat An Account</Link>
             </p>
