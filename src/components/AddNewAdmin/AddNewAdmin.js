@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import "./AddNewAdmin.css";
 
 const AddNewAdmin = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
     console.log("admin info-----", data);
@@ -20,6 +20,7 @@ const AddNewAdmin = () => {
       .then((result) => {
         if (result) {
           alert("New Admin Added Successfully....");
+          reset();
         }
       });
   };

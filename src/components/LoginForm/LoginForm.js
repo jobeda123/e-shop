@@ -18,7 +18,7 @@ const LoginForm = () => {
     axios
       .get("https://boiling-headland-36176.herokuapp.com/allAdmin")
       .then((res) => {
-        console.log("all admin: ", res.data);
+        // console.log("all admin: ", res.data);
         setAllAdmin(res.data);
       });
   }, []);

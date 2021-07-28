@@ -43,13 +43,14 @@ function App() {
     password: "",
   });
 
+
   const [orderId, setOrderId] = useState();
   const [addCart, setAddCart] = useState([]);
   window.localStorage.setItem("cart", JSON.stringify(addCart));
 
 
   const handleRemoveCart = (cardDetails) => {
-    console.log("remove item from cart drawer........", cardDetails);
+    //console.log("remove item from cart drawer........", cardDetails);
     const newCart = addCart.filter((pd) => pd.itemID !== cardDetails.itemID);
     setAddCart(newCart);
   };
@@ -61,7 +62,7 @@ function App() {
     const myArray = window.localStorage.getItem("cart");
     const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
 
-    console.log("From local Storage", fromLocalStorage);
+    //console.log("From local Storage", fromLocalStorage);
 
     const newCart = [...fromLocalStorage, cardDetails]; // all cart item copy
     setAddCart(newCart);

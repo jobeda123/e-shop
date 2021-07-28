@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import { Col, Container, Modal, Row } from "react-bootstrap";
 import "./ProductModal.css";
 import { CartContext } from "../../App";
+import StarRatings from "react-star-ratings";
 
 export default function ProductModal(props) {
   const [addCart, setAddCart] = useContext(CartContext);
-  const { itemTitle, itemDescription, oldPrice, itemPic, discount } =
+  const { itemTitle, itemDescription, oldPrice, itemPic, discount, rating } =
     props.data;
 
   const cardDetails = {
@@ -14,6 +15,7 @@ export default function ProductModal(props) {
     itemDescription: itemDescription,
     oldPrice: oldPrice,
     discount: discount,
+    rating: rating,
   };
 
   const handleAddCart = (cardDetails) => {
@@ -49,7 +51,14 @@ export default function ProductModal(props) {
               <div className="">
                 <p className="modalCartTitle">{itemTitle}</p>
                 <p>{itemDescription}</p>
-                <div className="pb-3">
+                <StarRatings
+                  rating={rating}
+                  starRatedColor="#FE8530"
+                  numberOfStars={5}
+                  starDimension="35px"
+                  starSpacing="1px"
+                />
+                <div className="py-3">
                   {discount !== 0 ? (
                     <div className="d-flex">
                       <p className="oldPrice">${oldPrice}</p>

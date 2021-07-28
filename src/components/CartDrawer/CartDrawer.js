@@ -19,6 +19,8 @@ const CartDrawer = () => {
       tabIndex="-1"
       id="offcanvasCart"
       aria-labelledby="offcanvasCartLabel"
+      data-bs-backdrop="false"
+      data-bs-scroll="true"
     >
       <div class="offcanvas-header">
         <h4 class="offcanvas-title" id="offcanvasCartLabel">

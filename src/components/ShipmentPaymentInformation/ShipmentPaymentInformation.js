@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import "./ShipmentPaymentInformation.css";
 import axios from "axios";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 
 
@@ -10,7 +11,7 @@ const ShipmentPaymentInformation = (props) => {
 
 
   useEffect(() => {
-    console.log("Sending order id from summary page", props.id);
+    // console.log("Sending order id from summary page", props.id);
     axios
       .get("https://boiling-headland-36176.herokuapp.com/order?id=" + props.id, {
         headers: {
@@ -18,7 +19,7 @@ const ShipmentPaymentInformation = (props) => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         const newInfo={
           fullName: res.data.shippingInfo.fullName,
           address: res.data.shippingInfo.address,
@@ -31,7 +32,7 @@ const ShipmentPaymentInformation = (props) => {
           cardName:res.data.eventPaymentInfo.cardName,
         };
         setInfo(newInfo);
-        console.log(newInfo);
+        // console.log(newInfo);
         setLoading(false);
       })
       .catch((err) => {
@@ -72,7 +73,7 @@ const ShipmentPaymentInformation = (props) => {
           </div>
         </div>
       ):
-      <h1>Loading</h1>
+      <LoadingSpinner />
       }
     </>
   );

@@ -37,7 +37,7 @@
 
 .cartScroll{
     height: 400px;
-    border-top: 1px solid gray;
+    /* border-top: 1px solid gray; */
     border-bottom: 1px solid gray;
     overflow-y: scroll;
 }

@@ -71,7 +71,7 @@ const HeaderSlider = () => {
             <img src={slider_3} class="d-block w-100 fluid" alt="..." />
             <div class="carousel-caption d-md-block sliderCaptionLeft">
               <p>SUMMER SALE</p>
-              <h5>Save up to 70%</h5>
+              <h5>Save up to 30%</h5>
               <div>
                 <button
                   onClick={() => history.push("/flashSale")}

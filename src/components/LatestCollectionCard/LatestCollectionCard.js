@@ -7,30 +7,34 @@ import { useState } from "react";
 import ProductModal from "../ProductModal/ProductModal";
 import { HandleAddCartContext } from "../../App";
 import { useContext } from "react";
+import StarRatings from "react-star-ratings";
 
 
 const LatestCollectionCard = (props) => {
   const handleAddCart = useContext(HandleAddCartContext);
 
-  const { description, discount, _id, title, price, image} = props.item;
+  const { description, discount, _id, title, price, image, rating } =
+    props.item;
   const updatedPrice = (price - (price * discount) / 100).toFixed(2);
 
-
- const cardDetails = {
-    itemID:_id,
+  const cardDetails = {
+    itemID: _id,
     itemPic: image,
     itemTitle: title,
-    itemDescription:description,
+    itemDescription: description,
     oldPrice: price,
     discount: 0,
     updatedPrice: updatedPrice,
+    rating: rating,
   };
 
   const [modalShow, setModalShow] = useState(false);
 
   return (
     <>
-      <Card style={{ width: "16rem", padding: "0px", margin: "0px auto 30px auto" }}>
+      <Card
+        style={{ width: "16rem", padding: "0px", margin: "0px auto 30px auto" }}
+      >
         <div className="imageArea">
           <Card.Img
             variant="top"
@@ -53,8 +57,16 @@ const LatestCollectionCard = (props) => {
             </button>
           </span>
         </div>
-        <Card.Body style={{ height: "16rem" }} className="text-left">
+        {/* style={{ height: "16rem" }} */}
+        <Card.Body className="text-left">
           <Card.Title>{title}</Card.Title>
+          <StarRatings
+            rating={rating}
+            starRatedColor="#FE8530"
+            numberOfStars={5}
+            starDimension="25px"
+            starSpacing="1px"
+          />
           <div className="d-flex">
             <Card.Text className="price">${price}</Card.Text>
           </div>

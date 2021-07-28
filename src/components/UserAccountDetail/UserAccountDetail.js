@@ -9,7 +9,7 @@ import "firebase/auth";
 const UserAccountDetail = () => {
   const [user, setUser] = useContext(UserContext);
   const [changePassword, setChangePassword] = useState("none");
-  console.log("Current User Info--->>", user);
+  // console.log("Current User Info--->>", user);
 
   const { register, handleSubmit, reset } = useForm();
 

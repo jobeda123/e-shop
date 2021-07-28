@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import "./TotalAmountSummaryCard.css";
+
 
 
 const TotalAmountSummaryCard = (props) => {
@@ -15,13 +17,13 @@ const TotalAmountSummaryCard = (props) => {
   const [price, setPrice] = useState({});
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
-  console.log(cart.length);
-  console.log(price);
+  // console.log(cart.length);
+  // console.log(price);
 
 
   useEffect(() => {
     const newItem = [...fromLocalStorage];
-    console.log(newItem);
+    // console.log(newItem);
     setCart(newItem);
     let subTotalPrice = 0;
     let totalPrice = 0;
@@ -46,7 +48,6 @@ const TotalAmountSummaryCard = (props) => {
     setPrice(newPrice);
     setLoading(false);
   }, [loading]);
-
 
 
   return (
@@ -83,7 +84,7 @@ const TotalAmountSummaryCard = (props) => {
         </div>
       )
     :
-    <h1>Loading</h1>
+    <LoadingSpinner />
     }
     </>
   );

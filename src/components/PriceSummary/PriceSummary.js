@@ -1,41 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 
+
 const PriceSummary = (props) => {
-  let history = useHistory();
   //   const displayButton = props.displayButton;
   const displayHeight = props.displayHeight;
 
   const deliveryCharge = 7;
-  let subTotalPrice = 0;
-  let totalPrice = 0;
 
   const [price, setPrice] = useState({});
-  const [cart, setCart] = useState([]);
-  console.log(cart.length);
-  console.log(price);
+  // console.log(cart.length);
+  // console.log(price);
 
-//   const calculateTotalPrice = (cartItem) => {
-//     // calculate total price
-//     let subTotalPrice = 0;
-//     let totalPrice = 0;
-//     for (let i = 0; i < cartItem.length; i++) {
-//       if (cartItem[i].discount !== 0) {
-//         subTotalPrice +=
-//           cartItem[i].oldPrice -
-//           (cartItem[i].oldPrice * cartItem[i].discount) / 100;
-//       } else {
-//         subTotalPrice += cartItem[i].oldPrice;
-//       }
-
-//       totalPrice = deliveryCharge + subTotalPrice;
-//     }
-//     return [totalPrice, subTotalPrice];
-//   };
 
   useEffect(() => {
-    console.log("Sending order id from single order detail", props.id);
+    // console.log("Sending order id from single order detail", props.id);
     axios
       .get("https://boiling-headland-36176.herokuapp.com/order?id=" + props.id, {
         headers: {
@@ -43,7 +22,7 @@ const PriceSummary = (props) => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         const newPrice= {
           totalAmount: res.data.totalAmount,
           subAmount: res.subAmount,
@@ -51,7 +30,7 @@ const PriceSummary = (props) => {
         setPrice(newPrice);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   }, [props.id]); 
 

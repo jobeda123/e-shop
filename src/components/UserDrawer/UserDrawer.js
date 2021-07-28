@@ -49,6 +49,8 @@ const UserDrawer = () => {
       tabIndex="-1"
       id="offcanvasUser"
       aria-labelledby="offcanvasUserLabel"
+      data-bs-backdrop="false"
+      data-bs-scroll="true"
     >
       <div class="offcanvas-header">
         <h4 class="offcanvas-title" id="offcanvasUserLabel">
@@ -63,7 +65,7 @@ const UserDrawer = () => {
         ></button>
       </div>
       <div class="offcanvas-body">
-        <div style={{ borderTop: "1px solid gray", paddingTop: "10px" }}>
+        <div>
           {logout === false ? (
             <div>
               {/* Log in button */}

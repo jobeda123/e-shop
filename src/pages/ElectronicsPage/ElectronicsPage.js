@@ -6,6 +6,7 @@ import LatestCollectionCard from "../../components/LatestCollectionCard/LatestCo
 import electronicsBack from "../../images/electronics_back.jpg";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import FlashSaleCard from "../../components/FlashSaleCard/FlashSaleCard";
 
 
 const ElectronicsPage = () => {
@@ -36,12 +37,20 @@ const ElectronicsPage = () => {
       >
         {/* Latest Collection Cards */}
         <div className="row cardArea">
-          {products.map((product, index) => (
-            <LatestCollectionCard
-              item={product}
-              key={index}
-            ></LatestCollectionCard>
-          ))}
+          {products.map((product, index) => {
+              if (product.discount === 0) {
+                return (
+                  <LatestCollectionCard
+                    item={product}
+                    key={index}
+                  ></LatestCollectionCard>
+                );
+              } else {
+                return (
+                  <FlashSaleCard item={product} key={index}></FlashSaleCard>
+                );
+              }
+            })}
         </div>
       </div>: <LoadingSpinner />}
 
