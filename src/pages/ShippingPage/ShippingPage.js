@@ -14,7 +14,7 @@ const ShippingPage = () => {
     title: "Shipping Details",
   };
 
-  const [setPaymentMethod] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("");
 
   const submitMethod = (data) => {
     setPaymentMethod(data);

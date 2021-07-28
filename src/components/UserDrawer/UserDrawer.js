@@ -14,8 +14,8 @@ import { OrderContext } from "./../../App";
 
 const UserDrawer = () => {
   const [user, setUser] = useContext(UserContext);
-  const [setAddCart] = useContext(CartContext);
-  const [setOrderId] = useContext(OrderContext);
+  const [addCart,setAddCart] = useContext(CartContext);
+  const [orderId,setOrderId] = useContext(OrderContext);
   const [logout, setLogout] = useState(false);
 
 
@@ -33,6 +33,7 @@ const UserDrawer = () => {
     window.localStorage.removeItem("paymentInfo");
     window.localStorage.removeItem("totalAmount");
     window.localStorage.removeItem("subAmount");
+    window.localStorage?.removeItem("token");
     setLogout(false);
     setAddCart([]);
     setUser({});

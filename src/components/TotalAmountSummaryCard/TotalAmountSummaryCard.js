@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { CartContext } from "../../App";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import "./TotalAmountSummaryCard.css";
 
 const TotalAmountSummaryCard = (props) => {
@@ -12,9 +13,14 @@ const TotalAmountSummaryCard = (props) => {
 
   const [price, setPrice] = useState({});
   const [cart, setCart] = useState([]);
-  const [addCart] = useContext(CartContext);
+  const [addCart, setAddCart] = useContext(CartContext);
+  const [loadData, setLoadData] = useState(false);
 
+  
   useEffect(() => {
+    if (props) {
+      setLoadData(true);
+    }
     const newBtnHeight = {
       btn: props.displayButton,
       height: props.displayHeight,
@@ -43,37 +49,41 @@ const TotalAmountSummaryCard = (props) => {
       subAmount: subTotalPrice,
     };
     setPrice(newPrice);
-  }, [props.displayButton, props.displayHeight]);
+  }, [loadData]);
 
   return (
     <>
-      <div
-        className="totalAmountSummaryCardArea"
-        style={{ height: btnHeight.height }}
-      >
-        <h4>Total Amount Summary</h4>
-        <div className="d-flex justify-content-between">
-          <p>Shipping Charge:</p>
-          <p>${deliveryCharge}</p>
-        </div>
-        <div className="d-flex justify-content-between">
-          <p>Sub Total Price:</p>
-          <p>${price.subAmount}</p>
-        </div>
-        <div className="d-flex justify-content-between ">
-          <h6>Total Price:</h6>
-          <h6>${price.totalAmount}</h6>
-        </div>
-
-        <button
-          style={{ display: btnHeight.btn }}
-          onClick={() => {
-            history.push("/shipping");
-          }}
+      {loadData?
+        <div
+          className="totalAmountSummaryCardArea"
+          style={{ height: btnHeight.height }}
         >
-          PROCEED TO CHECKOUT
-        </button>
-      </div>
+          <h4>Total Amount Summary</h4>
+          <div className="d-flex justify-content-between">
+            <p>Shipping Charge:</p>
+            <p>${deliveryCharge}</p>
+          </div>
+          <div className="d-flex justify-content-between">
+            <p>Sub Total Price:</p>
+            <p>${price.subAmount}</p>
+          </div>
+          <div className="d-flex justify-content-between ">
+            <h6>Total Price:</h6>
+            <h6>${price.totalAmount}</h6>
+          </div>
+
+          <button
+            style={{ display: btnHeight.btn }}
+            onClick={() => {
+              history.push("/shipping");
+            }}
+          >
+            PROCEED TO CHECKOUT
+          </button>
+        </div>
+        :
+        <LoadingSpinner />
+      }
     </>
   );
 };

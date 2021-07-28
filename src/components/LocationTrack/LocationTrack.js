@@ -34,7 +34,7 @@ export default function LocationTrack(props) {
         >
           Home
         </a>
-        <a className="locationStyleActive" href>
+        <a className="locationStyleActive">
           {props.data}
         </a>
       </Breadcrumbs>

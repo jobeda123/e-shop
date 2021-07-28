@@ -7,8 +7,8 @@ import { OrderContext } from "./../../App";
 const Dashboard = ({ whichBtn }) => {
   let history = useHistory();
   const [user, setUser] = useContext(UserContext);
-  const [setAddCart] = useContext(CartContext);
-  const [setOrderId] = useContext(OrderContext);
+  const [addCart, setAddCart] = useContext(CartContext);
+  const [orderId, setOrderId] = useContext(OrderContext);
 
   const handleLogout = () => {
     window.localStorage?.removeItem("cart");
@@ -16,12 +16,12 @@ const Dashboard = ({ whichBtn }) => {
     window.localStorage?.removeItem("paymentInfo");
     window.localStorage?.removeItem("totalAmount");
     window.localStorage?.removeItem("subAmount");
+    window.localStorage?.removeItem("token");
     setAddCart([]);
     setUser({});
     setOrderId("");
     history.push("/login");
   };
-  
 
   return (
     <div className="container">

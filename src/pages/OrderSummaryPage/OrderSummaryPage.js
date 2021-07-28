@@ -8,8 +8,8 @@ import { CartContext, OrderContext } from "./../../App";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const OrderSummaryPage = () => {
-  const [orderId] = useContext(OrderContext);
-  const [setAddCart] = useContext(CartContext);
+  const [orderId, setOrderId] = useContext(OrderContext);
+  const [addCart, setAddCart] = useContext(CartContext);
   let history = useHistory();
 
   const btnStyle = {

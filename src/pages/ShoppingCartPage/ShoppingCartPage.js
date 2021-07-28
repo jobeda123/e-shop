@@ -7,23 +7,20 @@ import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import CartTable from "../../components/CartTable/CartTable";
 import TotalAmountSummaryCard from "../../components/TotalAmountSummaryCard/TotalAmountSummaryCard";
 import { CartContext } from "../../App";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
-
-const ShoppingCartPage = (props) => {
+const ShoppingCartPage = () => {
   let history = useHistory();
-
-  const [addCart] =useContext(CartContext);
+  const [addCart, setAddCart] = useContext(CartContext);
 
   const bannerDetail = {
     pic: shoppingCartBack,
     title: "Shopping Cart",
   };
 
-  if(addCart.length===0){
+  if (addCart.length === 0) {
     history.push("/home");
   }
-
 
   return (
     <>
@@ -32,18 +29,12 @@ const ShoppingCartPage = (props) => {
       <LocationTrack data={"Shopping Cart"}></LocationTrack>
 
       {/* Shopping cart detail page and total amount summary*/}
-      <div
-        className="container"
-      >
+      <div className="container">
         <div className="row d-flex">
-          <div
-            className="col-md-8 col-sm-12"
-          >
-            <CartTable deleteButton={"block"} ></CartTable>
+          <div className="col-md-8 col-sm-12">
+            <CartTable deleteButton={"block"}></CartTable>
           </div>
-          <div
-            className="col-md-4 my-5 col-sm-12"
-          >
+          <div className="col-md-4 my-5 col-sm-12">
             <TotalAmountSummaryCard
               displayButton={"block"}
               displayHeight={"280px"}

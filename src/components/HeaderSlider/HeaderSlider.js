@@ -8,7 +8,6 @@ import { useHistory } from "react-router-dom";
 
 const HeaderSlider = () => {
   let history = useHistory();
-
   return (
     <section>
       <div

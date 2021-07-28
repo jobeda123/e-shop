@@ -38,11 +38,10 @@ const useOptions = () => {
 
 const PaymentCardForm = () => {
   const [paymentInformation, setPaymentInformation] = useState({});
-  const [setSaveToDB] = useState({});
+  const [saveToDB, setSaveToDB] = useState({});
   const [user] = useContext(UserContext);
-  const [setOrderId] = useContext(OrderContext);
+  const [orderId,setOrderId] = useContext(OrderContext);
 
-  
   let history = useHistory();
   const stripe = useStripe();
   const elements = useElements();
@@ -50,7 +49,6 @@ const PaymentCardForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     if (!stripe || !elements) {
       // Stripe.js has not loaded yet. Make sure to disable
       // form submission until Stripe.js has loaded.
@@ -61,11 +59,11 @@ const PaymentCardForm = () => {
       type: "card",
       card: elements.getElement(CardNumberElement),
     });
-
+    const time = new Date().toDateString("DD MMM, YYYY");
     const eventPaymentInfo = {
       cardName: payload.paymentMethod.card.brand,
       paymentId: payload.paymentMethod.id,
-      date: new Date(),
+      date: time,
     };
     if (payload.error === undefined) {
       const newPayment = { ...paymentInformation, eventPaymentInfo };
@@ -96,25 +94,27 @@ const PaymentCardForm = () => {
       allInfo.subAmount = subAmount.toFixed(2);
       setSaveToDB(allInfo);
 
-      fetch("https://boiling-headland-36176.herokuapp.com/addOrder", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(allInfo),
-      })
-        .then((res) => res.json())
-        .then((id) => {
-          if (id) {
-            setOrderId(id);
-            const emptyCart = [];
-            window.localStorage.setItem("cart", JSON.stringify(emptyCart));
-            window.localStorage.setItem("paymentInfo", JSON.stringify({}));
-            window.localStorage.setItem("shippingInfo", JSON.stringify({}));
-            window.localStorage.setItem("totalAmount", JSON.stringify(""));
-            window.localStorage.setItem("subAmount", JSON.stringify(""));
-          }
-        });
-      alert("Successfully Purchased Your Order!!! Thank You");
-      history.push("/orderSummary");
+      if (saveToDB) {
+        fetch("https://boiling-headland-36176.herokuapp.com/addOrder", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(allInfo),
+        })
+          .then((res) => res.json())
+          .then((id) => {
+            if (id) {
+              setOrderId(id);
+              const emptyCart = [];
+              window.localStorage.setItem("cart", JSON.stringify(emptyCart));
+              window.localStorage.setItem("paymentInfo", JSON.stringify({}));
+              window.localStorage.setItem("shippingInfo", JSON.stringify({}));
+              window.localStorage.setItem("totalAmount", JSON.stringify(""));
+              window.localStorage.setItem("subAmount", JSON.stringify(""));
+            }
+          });
+        alert("Successfully Purchased Your Order!!! Thank You");
+        history.push("/orderSummary");
+      }
     }
   };
 

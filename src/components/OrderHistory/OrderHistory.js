@@ -8,16 +8,13 @@ import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 
 const OrderHistory = () => {
-  const [user] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
   const [allOrder, setAllOrder] = useState([]);
   const [statusChange, setStatusChange] = useState(false);
   const [pending, setPending] = useState(0);
   const [delivery, setDelivery] = useState(0);
 
-
-
   useEffect(() => {
-    // console.log("user email: " + user.email);
     // admin
     if (user.role === "admin") {
       axios
@@ -27,7 +24,6 @@ const OrderHistory = () => {
           },
         })
         .then((res) => {
-          // console.log("Data in order status for admin: ", res.data);
           setAllOrder(res.data);
 
           const resultPending = res.data.filter(
@@ -55,12 +51,10 @@ const OrderHistory = () => {
           }
         )
         .then((res) => {
-          // console.log("Data in order status for user: ", res.data);
           setAllOrder(res.data);
         });
     }
   }, [user.email, statusChange, user.role]);
-  
 
   const handleOption = (e, id) => {
     console.log(e.target.value, id);
@@ -77,7 +71,6 @@ const OrderHistory = () => {
     )
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
         if (result.modifiedCount > 0) {
           setStatusChange(true);
         }

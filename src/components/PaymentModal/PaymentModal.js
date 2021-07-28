@@ -10,7 +10,7 @@ const stripePromise = loadStripe(
 );
 
 export default function ProductModal(props) {
-  const [setModalShow] = useState(false);
+  const [modalShow,setModalShow] = useState(false);
   
   return (
     <Modal

@@ -9,7 +9,7 @@ import StarRatings from "react-star-ratings";
 
 
 const CartTable = (props) => {
-  const [addCart] = useContext(CartContext);
+  const [addCart, setAddCart] = useContext(CartContext);
   const handleRemoveCart = useContext(HandleRemoveCartContext);
   const buttonDisplay = props.deleteButton;
   const [cart, setCart] = useState([]);

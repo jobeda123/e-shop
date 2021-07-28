@@ -15,16 +15,11 @@ import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-
 const Header = () => {
   let history = useHistory();
-  // for get cart item from local storage
-  //const myArray = window.localStorage.getItem("cart");
-  //const fromLocalStorage = JSON.parse(myArray); // json theke array te convert
 
   const [searchText, setSearchText] = useState("");
-  const [addCart] = useContext(CartContext);
-
+  const [addCart, setAddCart] = useContext(CartContext);
 
   const textHandle = (e) => {
     setSearchText(e.target.value);
@@ -100,9 +95,7 @@ const Header = () => {
                   marginTop: "7px",
                 }}
               >
-                {addCart?.length === 0
-                  ? 0
-                  : addCart.length}
+                {addCart?.length === 0 ? 0 : addCart.length}
               </span>
             </button>
           </li>

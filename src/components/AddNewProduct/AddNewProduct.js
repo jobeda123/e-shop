@@ -12,7 +12,6 @@ const AddNewProduct = () => {
   const [imageURL, setImageURL] = useState(null);
 
 
-
   const onSubmit = (data, e) => {
     console.log("product info-----", data);
     if (imageURL !== null) {

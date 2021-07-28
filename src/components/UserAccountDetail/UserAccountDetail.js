@@ -7,7 +7,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 
 const UserAccountDetail = () => {
-  const [user] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
   const [changePassword, setChangePassword] = useState("none");
 
   const { register, handleSubmit, reset } = useForm();

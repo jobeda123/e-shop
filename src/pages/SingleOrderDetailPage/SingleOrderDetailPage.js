@@ -8,7 +8,7 @@ import PriceSummary from "../../components/PriceSummary/PriceSummary";
 
 
 const SingleOrderDetailPage = () => {
-  const [allInfoFromDB] = useState({});
+  const [allInfoFromDB, setAllInfoFromDB] = useState({});
 
   let history = useHistory();
   let { id } = useParams();
@@ -47,7 +47,6 @@ const SingleOrderDetailPage = () => {
               <PriceSummary
                 displayHeight={"200px"}
                 id={id}
-                key={allInfoFromDB._id}
               ></PriceSummary>
             </div>
           </div>
