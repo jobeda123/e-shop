@@ -3,13 +3,13 @@ import HeaderNavbar from "../../components/HeaderNavBar/HeaderNavBar";
 import Footer from "../../components/Footer/Footer";
 import CategoryBanner from "../../components/CategoryBanner/CategoryBanner";
 import LatestCollectionCard from "../../components/LatestCollectionCard/LatestCollectionCard";
-import jewelleryBack from "../../images/jewellery_back.jpg";
+import latestBanner from "../../images/latestBanner.jpg";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const LatestCollectionPage = () => {
   const bannerDetail = {
-    pic: jewelleryBack,
+    pic: latestBanner,
     title: "Latest Collection",
   };
   const [products, setProducts] = useState([]);

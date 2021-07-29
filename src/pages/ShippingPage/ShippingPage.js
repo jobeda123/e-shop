@@ -7,6 +7,7 @@ import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import TotalAmountSummaryCard from "../../components/TotalAmountSummaryCard/TotalAmountSummaryCard";
 import ShippingAddress from "../../components/ShippingAddress/ShippingAddress";
 import PaymentMethod from "../../components/PaymentMethod/PaymentMethod";
+import shippingBanner from "../../images/shippinerBanner.jpg";
 
 const ShippingPage = () => {
   const bannerDetail = {
@@ -26,7 +27,6 @@ const ShippingPage = () => {
       <CategoryBanner bannerDetail={bannerDetail}></CategoryBanner>
       <LocationTrack data={"Shipping"}></LocationTrack>
 
-      {/* Shopping cart detail page  and total amount summary*/}
       <div className="container">
         <div className="row d-flex">
           <div className="col-md-6 my-5 mr-5">
@@ -41,7 +41,6 @@ const ShippingPage = () => {
           </div>
         </div>
       </div>
-
       <Footer></Footer>
     </>
   );

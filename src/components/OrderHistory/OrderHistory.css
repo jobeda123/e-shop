@@ -31,4 +31,7 @@
         font-size: 8px;
         padding:5px;
     }
+    .orderStatusCard h4{
+        font-size:10px;
+    }
 }

@@ -3,43 +3,37 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
-
 const AddNewProduct = () => {
   const { register, handleSubmit, reset } = useForm();
-  // console.log(allData);
   const [productData, setProductData] = useState({});
   const [description, setDescription] = useState("");
   const [imageURL, setImageURL] = useState(null);
 
-
   const onSubmit = (data, e) => {
-    console.log("product info-----", data);
+    
+    //console.log("product info-----", data);
     if (imageURL !== null) {
       const newProduct = {
         title: data.productTitle,
         description: description,
-        price: data.productPrice,
-        discount: data.productDiscount,
+        price: parseInt(data.productPrice),
+        discount: parseInt(data.productDiscount),
         category: data.productCategory,
         image: imageURL,
-        rating: data.productRating,
+        rating: parseFloat(data.productRating),
       };
-      console.log(description);
       setProductData(newProduct);
-
-      console.log(newProduct);
       // store data in the mongoDB
       // form input will be empty
 
       fetch("https://boiling-headland-36176.herokuapp.com/addProduct", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(productData),
+        body: JSON.stringify(newProduct),
       })
         .then((res) => res.json())
         .then((result) => {
           if (result) {
-            console.log(result);
             alert("New Product Added Successfully....");
             reset();
             e.preventDefault();
@@ -49,7 +43,7 @@ const AddNewProduct = () => {
   };
 
   const handleImageUpload = (event) => {
-    console.log("image uploading..........", event.target.files);
+    //console.log("image uploading..........", event.target.files);
     const imageData = new FormData();
     imageData.set("key", "ff829b8e1a8b41470dbcf696361a1530");
     imageData.append("image", event.target.files[0]);
@@ -57,18 +51,14 @@ const AddNewProduct = () => {
     axios
       .post("https://api.imgbb.com/1/upload", imageData)
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           setImageURL(response.data.data.display_url);
         }
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   };
 
   const handleProductDescription = (event) => {
-    console.log("text area..........", event.target.value);
     setDescription(event.target.value);
   };
 

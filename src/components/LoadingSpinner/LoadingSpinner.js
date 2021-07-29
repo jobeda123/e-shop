@@ -4,7 +4,7 @@ import loadingSpinner from '../../images/loadindSpinner.gif';
 const LoadingSpinner = () => {
     return (
         <div className="mb-5">
-            <img src={loadingSpinner} alt="" />
+            <img className="fluid" src={loadingSpinner} alt="" />
         </div>
     );
 };

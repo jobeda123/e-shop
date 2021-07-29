@@ -51,7 +51,7 @@ const Footer = () => {
           <FooterCol key={"1"} menuTitle="eShop" menuItems={contact}>
             <ul className="list-inline">
               <li className="list-inline-item">
-                <a href="//facebook.com">
+                <a href="https://www.facebook.com/login">
                   <FontAwesomeIcon
                     className="socialIcon"
                     size="1x"
@@ -60,7 +60,7 @@ const Footer = () => {
                 </a>
               </li>
               <li className="list-inline-item">
-                <a href="//google.com">
+                <a href="https://twitter.com/login">
                   <FontAwesomeIcon
                     className="socialIcon"
                     size="1x"
@@ -69,7 +69,7 @@ const Footer = () => {
                 </a>
               </li>
               <li className="list-inline-item">
-                <a href="//instagram.com">
+                <a href="https://www.instagram.com/accounts/login/">
                   <FontAwesomeIcon
                     className="socialIcon"
                     size="1x"
@@ -78,7 +78,7 @@ const Footer = () => {
                 </a>
               </li>
               <li className="list-inline-item">
-                <a href="//instagram.com">
+                <a href="https://www.linkedin.com/in/jobeda-nur/">
                   <FontAwesomeIcon
                     className="socialIcon"
                     size="1x"

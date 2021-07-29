@@ -3,14 +3,15 @@ import HeaderNavbar from "../../components/HeaderNavBar/HeaderNavBar";
 import Footer from "../../components/Footer/Footer";
 import CategoryBanner from "../../components/CategoryBanner/CategoryBanner";
 import LatestCollectionCard from "../../components/LatestCollectionCard/LatestCollectionCard";
-import womenBack from "../../images/women_back.jpg";
+import womenBanner from "../../images/womenBanner.jpeg"
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import FlashSaleCard from "../../components/FlashSaleCard/FlashSaleCard";
 
+
 const WomenPage = (props) => {
   const bannerDetail = {
-    pic: womenBack,
+    pic: womenBanner,
     title: "Women Collection",
   };
 

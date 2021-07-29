@@ -4,13 +4,14 @@ import Footer from "../../components/Footer/Footer";
 import CategoryBanner from "../../components/CategoryBanner/CategoryBanner";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import menBack from "../../images/men_back.jpg";
+import orderHistoryBanner from "../../images/orderHistoryBanner.jpg";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import OrderHistory from "../../components/OrderHistory/OrderHistory";
 
 
 const OrderHistoryPage = () => {
   const bannerDetail = {
-    pic: menBack,
+    pic: orderHistoryBanner,
     title: "View Order History",
   };
   return (
