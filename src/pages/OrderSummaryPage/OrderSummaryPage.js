@@ -24,6 +24,8 @@ const OrderSummaryPage = () => {
   };
 
   const removeAll = () => {
+    window.localStorage.removeItem("totalAmount");
+    window.localStorage.removeItem("subAmount");
     const empty = [];
     setAddCart(empty);
     history.push("/home");

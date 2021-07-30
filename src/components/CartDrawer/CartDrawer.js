@@ -10,7 +10,7 @@ import { useContext } from "react";
 
 const CartDrawer = () => {
   let history = useHistory();
-  const [addCart] = useContext(CartContext);
+  const [addCart, setAddCart] = useContext(CartContext);
 
   return (
     <div
