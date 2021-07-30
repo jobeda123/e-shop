@@ -1,5 +1,7 @@
 # Live Site Link: https://e-shop-40f88.web.app/
 
+# This project is on going phase, coming soon will end.
+
 # Functionalities:   
         1. User can buy products, see his order status, previous orders history, see each order details individually, see his profile details and can change his password
         2. To any products, user has to log in with email and password which is verified by firebase and pay the bill via card
