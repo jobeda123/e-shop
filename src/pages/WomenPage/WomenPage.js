@@ -8,7 +8,6 @@ import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import FlashSaleCard from "../../components/FlashSaleCard/FlashSaleCard";
 
-
 const WomenPage = (props) => {
   const bannerDetail = {
     pic: womenBanner,
