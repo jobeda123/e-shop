@@ -7,7 +7,6 @@ const PriceSummary = (props) => {
   const deliveryCharge = 7;
 
   const [price, setPrice] = useState({});
-
   useEffect(() => {
     axios
       .get(
@@ -21,7 +20,7 @@ const PriceSummary = (props) => {
       .then((res) => {
         const newPrice = {
           totalAmount: res.data.totalAmount,
-          subAmount: res.subAmount,
+          subAmount: res.data.subAmount,
         };
         setPrice(newPrice);
       })

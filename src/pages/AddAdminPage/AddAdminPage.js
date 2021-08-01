@@ -3,14 +3,14 @@ import HeaderNavbar from "../../components/HeaderNavBar/HeaderNavBar";
 import Footer from "../../components/Footer/Footer";
 import CategoryBanner from "../../components/CategoryBanner/CategoryBanner";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
-import menBack from "../../images/men_back.jpg";
+import adminBanner from "../../images/adminBanner.jpg";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import AddNewAdmin from "../../components/AddNewAdmin/AddNewAdmin";
 
 
 const AddAdminPage = () => {
   const bannerDetail = {
-    pic: menBack,
+    pic: adminBanner,
     title: "Add New Admin",
   };
   return (

@@ -6,24 +6,12 @@
 }
 
 @media (max-width: 576px) {
-  #jewellery-btn {
-    left: 25%;
-    top: 20%;
-    font-size: 15px;
-    padding: 10px;
+  .picResponsive {
+    width: 200px;
+    height: 220px;
+    margin-bottom:20px;
   }
 
-  #electronics-btn {
-    left: 25%;
-    font-size: 15px;
-    padding: 10px;
-    bottom: 10%;
-  }
-
-  #women-men-btn{
-    font-size: 15px;
-    padding: 10px;
-  }
 }
 
 /* body{
@@ -31,17 +19,17 @@
     overflow-y: auto;
   } */
 
-.category {
-  /* border: 1px solid red;  */
-  /* margin-top: 50px; 
-    margin-bottom: 40px; */
-}
+/* .category {
+  border: 1px solid red;
+  margin-top: 50px;
+  margin-bottom: 40px;
+} */
 
 .category img {
   position: relative;
   background: #000;
-  /* border: 1px solid orange;  */
-  border-radius: 10px;
+  /* border: 1px solid orange; */
+  border-radius: 20px;
   transition: 0.5s ease-in-out;
 }
 
@@ -49,59 +37,41 @@
   box-shadow: 10px 10px 10px gray;
 }
 
-.women-men-btn {
+
+.common-btn {
   position: absolute;
-  top: 50%;
-  left: 35%;
+  top: 40%;
+  left: 25%;
   color: black;
   padding: 15px 20px;
   border: none;
   cursor: pointer;
-  text-align: center;
   font-size: 25px;
   font-weight: 800px;
   background-color: rgba(114, 91, 91, 0.8);
 }
 
-.category .women-men-btn:hover {
+
+
+.men-btn {
+  position: absolute;
+  top: 40%;
+  left: 36%;
+  color: black;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 800px;
+  background-color: rgba(114, 91, 91, 0.8);
+}
+
+.common-btn:hover {
   background-color: #000;
   color: white;
 }
 
-.jewellery-btn {
-  position: absolute;
-  top: 25%;
-  left: 30%;
-  color: black;
-  padding: 15px 20px;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  font-size: 25px;
-  font-weight: 800px;
-  background-color: rgba(114, 91, 91, 0.8);
-}
-
-.jewellery-btn:hover {
-  background-color: #000;
-  color: white;
-}
-
-.electronics-btn {
-  position: absolute;
-  top: 75%;
-  left: 30%;
-  color: black;
-  padding: 15px 20px;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  font-size: 25px;
-  font-weight: 800px;
-  background-color: rgba(114, 91, 91, 0.8);
-}
-
-.electronics-btn:hover {
+.men-btn:hover {
   background-color: #000;
   color: white;
 }

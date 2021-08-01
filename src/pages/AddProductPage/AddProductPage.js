@@ -3,14 +3,14 @@ import HeaderNavbar from "../../components/HeaderNavBar/HeaderNavBar";
 import Footer from "../../components/Footer/Footer";
 import CategoryBanner from "../../components/CategoryBanner/CategoryBanner";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
-import menBack from "../../images/men_back.jpg";
+import productBanner from "../../images/productBanner.jpg";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import AddNewProduct from "../../components/AddNewProduct/AddNewProduct";
 
 
 const AddProductPage = () => {
   const bannerDetail = {
-    pic: menBack,
+    pic: productBanner,
     title: "Add New Product",
   };
   return (
@@ -19,7 +19,7 @@ const AddProductPage = () => {
       <CategoryBanner bannerDetail={bannerDetail}></CategoryBanner>
       <LocationTrack data={"Add Product"}></LocationTrack>
 
-      {/* Add Admin Area */}
+      {/* Add product Area */}
       <div
         style={{ marginTop: "50px", marginBottom: "50px" }}
         className="container"

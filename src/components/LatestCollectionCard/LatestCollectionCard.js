@@ -9,7 +9,6 @@ import { HandleAddCartContext } from "../../App";
 import { useContext } from "react";
 import StarRatings from "react-star-ratings";
 
-
 const LatestCollectionCard = (props) => {
   const handleAddCart = useContext(HandleAddCartContext);
 
@@ -23,7 +22,7 @@ const LatestCollectionCard = (props) => {
     itemTitle: title,
     itemDescription: description,
     oldPrice: price,
-    discount: 0,
+    discount: discount,
     updatedPrice: updatedPrice,
     rating: rating,
   };
@@ -57,7 +56,7 @@ const LatestCollectionCard = (props) => {
             </button>
           </span>
         </div>
-      
+
         <Card.Body className="text-left">
           <Card.Title>{title}</Card.Title>
           <StarRatings

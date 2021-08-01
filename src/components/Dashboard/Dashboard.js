@@ -16,7 +16,7 @@ const Dashboard = ({ whichBtn }) => {
     window.localStorage?.removeItem("paymentInfo");
     window.localStorage?.removeItem("totalAmount");
     window.localStorage?.removeItem("subAmount");
-    window.localStorage?.removeItem("token");
+    window.sessionStorage?.removeItem("token");
     setAddCart([]);
     setUser({});
     setOrderId("");

@@ -33,7 +33,7 @@ const UserDrawer = () => {
     window.localStorage.removeItem("paymentInfo");
     window.localStorage.removeItem("totalAmount");
     window.localStorage.removeItem("subAmount");
-    window.localStorage?.removeItem("token");
+    window.sessionStorage?.removeItem("token");
     setLogout(false);
     setAddCart([]);
     setUser({});

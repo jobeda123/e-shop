@@ -1,10 +1,11 @@
 import React from "react";
 import "./HeaderSlider.css";
 // static pictures
-import slider_1 from "../../images/slider_1.jpg";
-import slider_2 from "../../images/slider_2.jpg";
 import slider_3 from "../../images/slider_3.jpg";
 import { useHistory } from "react-router-dom";
+import slider_2 from "../../images/slider_back.jpg";
+import slider_1 from "../../images/1.jpg";
+
 
 const HeaderSlider = () => {
   let history = useHistory();
@@ -39,12 +40,12 @@ const HeaderSlider = () => {
         </div>
 
         <div class="carousel-inner">
+
           <div class="carousel-item active">
             <img src={slider_1} class="d-block w-100 fluid" alt="..." />
-            <div class="carousel-caption d-md-block sliderCaptionRight">
-              <p>SUMMER 2021</p>
-              <h5>New Arrival Collection</h5>
-
+            <div class="carousel-caption d-md-block sliderCaptionLeft">
+              <p>NEW SEASON</p>
+              <h5>Lookbook Collection</h5>
               <div>
                 <button onClick={() => history.push("/latestCollection")}>
                   Explore Now
@@ -55,9 +56,10 @@ const HeaderSlider = () => {
 
           <div class="carousel-item">
             <img src={slider_2} class="d-block w-100 fluid" alt="..." />
-            <div class="carousel-caption d-md-block sliderCaptionLeft">
-              <p>NEW SEASON</p>
-              <h5>Lookbook Collection</h5>
+            <div class="carousel-caption d-md-block sliderCaptionRight">
+              <p>SUMMER 2021</p>
+              <h5>New Arrival Collection</h5>
+
               <div>
                 <button onClick={() => history.push("/latestCollection")}>
                   Explore Now

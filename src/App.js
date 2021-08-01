@@ -7,7 +7,6 @@ import WomenPage from "./pages/WomenPage/WomenPage";
 import MenPage from "./pages/MenPage/MenPage";
 import JewelleryPage from "./pages/JewelleryPage/JewelleryPage";
 import ElectronicsPage from "./pages/ElectronicsPage/ElectronicsPage";
-import ShoppingCartPage from "./pages/ShoppingCartPage/ShoppingCartPage";
 import ShippingPage from "./pages/ShippingPage/ShippingPage";
 import OrderSummaryPage from "./pages/OrderSummaryPage/OrderSummaryPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
@@ -110,10 +109,6 @@ function App() {
 
                   <Route path="/latestCollection">
                     <LatestCollectionPage />
-                  </Route>
-
-                  <Route path="/shoppingCart">
-                    <ShoppingCartPage />
                   </Route>
 
                   <PrivateRoute path="/shipping">

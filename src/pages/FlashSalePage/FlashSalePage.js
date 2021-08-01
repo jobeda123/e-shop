@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import HeaderNavbar from "../../components/HeaderNavBar/HeaderNavBar";
 import Footer from "../../components/Footer/Footer";
 import CategoryBanner from "../../components/CategoryBanner/CategoryBanner";
-import jewelleryBack from "../../images/jewellery_back.jpg";
+import flashSaleBanner from "../../images/flashSaleBanner.jpg";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import FlashSaleCard from "../../components/FlashSaleCard/FlashSaleCard";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
+
 const FlashSalePage = () => {
   const bannerDetail = {
-    pic: jewelleryBack,
+    pic: flashSaleBanner,
     title: "Flash Sale Collection",
   };
   const [products, setProducts] = useState([]);

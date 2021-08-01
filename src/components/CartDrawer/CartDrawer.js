@@ -7,9 +7,10 @@ import { useHistory } from "react-router";
 import { CartContext } from "../../App";
 import { useContext } from "react";
 
+
 const CartDrawer = () => {
   let history = useHistory();
-  const [addCart] = useContext(CartContext);
+  const [addCart, setAddCart] = useContext(CartContext);
 
   return (
     <div
@@ -48,15 +49,7 @@ const CartDrawer = () => {
             {/* Total Price Details */}
             <CartPriceDetail />
             <button
-              className="cartViewBtn my-2 col-md-12"
-              onClick={() => {
-                history.push("/shoppingCart");
-              }}
-            >
-              VIEW CART
-            </button>
-            <button
-              className="cartCheckOutBtn mb-2 col-md-12"
+              className="cartCheckOutBtn col-md-12"
               onClick={() => {
                 history.push("/shipping");
               }}

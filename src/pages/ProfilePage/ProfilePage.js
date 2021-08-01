@@ -3,15 +3,14 @@ import HeaderNavbar from "../../components/HeaderNavBar/HeaderNavBar";
 import Footer from "../../components/Footer/Footer";
 import CategoryBanner from "../../components/CategoryBanner/CategoryBanner";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
-import menBack from "../../images/men_back.jpg";
+import profileBanner from "../../images/profileBanner.jpg";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import UserAccountDetail from "../../components/UserAccountDetail/UserAccountDetail";
 
 
-
 const ProfilePage = () => {
   const bannerDetail = {
-    pic: menBack,
+    pic: profileBanner,
     title: "My Profile Details",
   };
   return (

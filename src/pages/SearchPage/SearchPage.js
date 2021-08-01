@@ -4,11 +4,10 @@ import HeaderNavbar from "../../components/HeaderNavBar/HeaderNavBar";
 import Footer from "../../components/Footer/Footer";
 import CategoryBanner from "../../components/CategoryBanner/CategoryBanner";
 import LatestCollectionCard from "../../components/LatestCollectionCard/LatestCollectionCard";
-import womenBack from "../../images/women_back.jpg";
+import womenBack from "../../images/womenBanner.jpeg";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import productNotFound from "../../images/productNotFound.png";
 import FlashSaleCard from "../../components/FlashSaleCard/FlashSaleCard";
-
 
 const SearchPage = () => {
   let { searchText } = useParams();
@@ -69,8 +68,8 @@ const SearchPage = () => {
           </div>
         </div>
       ) : (
-        <div className="my-5" style={{ paddingBottom: "0px" }}>
-          <img src={productNotFound} alt="" />
+        <div className="my-5 row" style={{ paddingBottom: "0px" }}>
+          <img className="fluid" src={productNotFound} alt="" />
         </div>
       )}
       <Footer></Footer>

@@ -80,7 +80,7 @@ const OrderHistory = () => {
   return (
     <>
       {allOrder.length !== 0 ? (
-        <section>
+        <>
           {user.role === "admin" && (
             <div className="d-flex orderStatusCard">
               <div className="col-md-4" style={{ backgroundColor: "blue" }}>
@@ -100,7 +100,7 @@ const OrderHistory = () => {
             <Table bordered size="lg">
               <tbody>
                 <tr>
-                  <td>ID </td>
+                  <td>Email</td>
                   <td>Date</td>
                   <td>Total Amount</td>
                   <td>Delivery Status</td>
@@ -109,7 +109,7 @@ const OrderHistory = () => {
 
                 {allOrder.map((data) => (
                   <tr>
-                    <td>{data._id}</td>
+                    <td>{data.email}</td>
                     <td>{data.eventPaymentInfo.date}</td>
                     <td>${data.totalAmount}</td>
 
@@ -176,7 +176,7 @@ const OrderHistory = () => {
               </tbody>
             </Table>
           </div>
-        </section>
+        </>
       ) : (
         <LoadingSpinner />
       )}

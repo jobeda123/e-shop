@@ -3,7 +3,7 @@ import HeaderNavbar from "../../components/HeaderNavBar/HeaderNavBar";
 import Footer from "../../components/Footer/Footer";
 import CategoryBanner from "../../components/CategoryBanner/CategoryBanner";
 import LatestCollectionCard from "../../components/LatestCollectionCard/LatestCollectionCard";
-import menBack from "../../images/men_back.jpg";
+import menBanner from "../../images/menBanner.jpg";
 import "./MenPage.css";
 import LocationTrack from "../../components/LocationTrack/LocationTrack";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
@@ -11,7 +11,7 @@ import FlashSaleCard from "../../components/FlashSaleCard/FlashSaleCard";
 
 const MenPage = () => {
   const bannerDetail = {
-    pic: menBack,
+    pic: menBanner,
     title: "Men Collection",
   };
 
@@ -22,8 +22,8 @@ const MenPage = () => {
     fetch("https://boiling-headland-36176.herokuapp.com/products/men")
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         setProducts(data);
+        console.log(data);
       });
   }, []);
 
