@@ -1,8 +1,96 @@
-# Live Site Link: https://e-shop-40f88.web.app/
-# This project is on going phase, coming soon will end.
-# Functionalities:   
-        1. User can buy products, see his order status, previous orders history, see each order details individually, see his profile details and can change his password
-        2. To any products, user has to log in with email and password which is verified by firebase and pay the bill via card
-        3. User can search products by search field, by category drawer and also shop by category
-        4. Admin can add products, add new admin, update order status pending to delivered and also see all orders of all users
-        5. Technologies: React.js, Bootstrap, React-Bootstrap, React-router, Context API, MongoDB, Node.js, Express.js, stripe.js, Firebase, Heroku
+# eShop
+
+An e-commerce platform built with MERN stack
+
+
+## [Live Application](https://e-shop-40f88.web.app/)
+
+
+
+
+
+  
+![App Screenshot](project-ss.png)
+
+  
+## Tech Stack
+
+**Fronted:** 
+- React Js
+- Bootstrap
+- React‑Bootstrap
+- React‑router
+- Context API
+- Stripe Js
+- Calender Js
+
+**Backend:** 
+- Node Js
+- Express Js
+- MongoDB
+- JWT Authentication 
+
+**Hosting:**
+- Heroku
+- Firebase
+
+## Features
+
+- Fully functional Cart
+- Product Details, ratings
+- Product Search
+- JWT authentication
+- User password update
+- User order management
+- Admin role with authorization
+- Admin product management
+- Admin Order management
+- Admin Order details page
+- Mark order as delivered option
+- Checkout feature
+- Payment gateway integration with Stripe
+  
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/jobeda123/e-shop.git
+```
+
+Go to the project directory
+
+```bash
+  cd e-shop
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+  
+## Sample login credentials:
+
+```bash
+jojo@gmail.com (Admin)
+jojo123
+
+jobedanur@gmail.com (User)
+jobedanur123
+```
+
+```bash
+Payment Information
+Sample Card Number: 4242 4242 4242 4242
+CVC: Any 3 digits number
+```
+
+  
