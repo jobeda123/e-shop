@@ -19,7 +19,7 @@ const PriceSummary = (props) => {
       )
       .then((res) => {
         const newPrice = {
-          totalAmount: res.data.totalAmount,
+          totalAmount: res.data.totalAmountPrice,
           subAmount: res.data.subAmount,
         };
         setPrice(newPrice);

@@ -111,7 +111,7 @@ const OrderHistory = () => {
                   <tr>
                     <td>{data.email}</td>
                     <td>{data.eventPaymentInfo.date}</td>
-                    <td>${data.totalAmount}</td>
+                    <td>${data.totalAmountPrice}</td>
 
                     <td id="status">
                       {user.role === "admin" ? (
