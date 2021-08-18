@@ -14,12 +14,16 @@ import UserDrawer from "../UserDrawer/UserDrawer";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { UserContext } from "./../../App";
 
 const Header = () => {
   let history = useHistory();
 
   const [searchText, setSearchText] = useState("");
   const [addCart, setAddCart] = useContext(CartContext);
+  const [user, setUser] = useContext(UserContext);
+
+  console.log(user);
 
   const textHandle = (e) => {
     setSearchText(e.target.value);
@@ -75,7 +79,12 @@ const Header = () => {
               data-bs-target="#offcanvasUser"
               aria-controls="offcanvasUser"
             >
-              <FontAwesomeIcon icon={faUser} size="2x" />
+              {" "}
+              {user.isSignedIn ? (
+                <h2>{user.name}</h2>
+              ) : (
+                <FontAwesomeIcon icon={faUser} size="2x" />
+              )}
             </button>
 
             <button
