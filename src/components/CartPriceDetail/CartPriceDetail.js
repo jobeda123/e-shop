@@ -23,7 +23,7 @@ const CartPriceDetail = () => {
   }
 
   return (
-    <div className="pt-4 pb-5">
+    <div className="pt-4 pb-2">
       <div className="d-flex justify-content-between" style={{ color: "gray" }}>
         <h6>Shipping Charge : </h6>
         <h6>${deliveryCharge}</h6>
